@@ -278,22 +278,26 @@ abstract class ilObjPortfolioBaseGUI extends ilObject2GUI
 		$button = ilLinkButton::getInstance();
 		$button->setCaption("prtf_add_page");
 		$button->setUrl($this->ctrl->getLinkTarget($this, "addPage"));
-		$ilToolbar->addButtonInstance($button);
+		$ilToolbar->addStickyItem($button);
 
 		if(!$ilSetting->get('disable_wsp_blogs'))
 		{
 			$button = ilLinkButton::getInstance();
 			$button->setCaption("prtf_add_blog");
 			$button->setUrl($this->ctrl->getLinkTarget($this, "addBlog"));
-			$ilToolbar->addButtonInstance($button);
+			$ilToolbar->addStickyItem($button);
 		}
 
 		$ilToolbar->addSeparator();
 		
-		$button = ilLinkButton::getInstance();
-		$button->setCaption("export_html");
-		$button->setUrl($this->ctrl->getLinkTarget($this, "export"));
-		$ilToolbar->addButtonInstance($button);
+		// #16571
+		if($this->getType() == "prtf")
+		{
+			$button = ilLinkButton::getInstance();
+			$button->setCaption("export_html");
+			$button->setUrl($this->ctrl->getLinkTarget($this, "export"));
+			$ilToolbar->addButtonInstance($button);
+		}
 		
 		include_once "Modules/Portfolio/classes/class.ilPortfolioPageTableGUI.php";
 		$table = new ilPortfolioPageTableGUI($this, "view");
@@ -617,8 +621,12 @@ abstract class ilObjPortfolioBaseGUI extends ilObject2GUI
 		}
 		
 		global $ilMainMenu;
-		$ilMainMenu->setMode(ilMainMenuGUI::MODE_TOPBAR_ONLY);		
-		$ilMainMenu->setTopBarBack($back, $back_caption);
+		$ilMainMenu->setMode(ilMainMenuGUI::MODE_TOPBAR_ONLY);	
+		if($back)
+		{
+			// might already be set in ilPublicUserProfileGUI
+			$ilMainMenu->setTopBarBack($back, $back_caption);
+		}
 		
 		// render tabs
 		$current_blog = null;

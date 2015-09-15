@@ -16,7 +16,7 @@ class assLongMenu extends assQuestion implements ilObjQuestionScoringAdjustable
 	const ANSWER_TYPE_SELECT_VAL	= 0;
 	const ANSWER_TYPE_TEXT_VAL		= 1;
 	const GAP_PLACEHOLDER			= 'Longmenu';
-	const MIN_LENGTH_AUTOCOMPLETE 	= 0;
+	const MIN_LENGTH_AUTOCOMPLETE 	= 1;
 	const MAX_INPUT_FIELDS 			= 500;
 
 	function __construct(
@@ -171,6 +171,10 @@ class assLongMenu extends assQuestion implements ilObjQuestionScoringAdjustable
 		foreach($correct_answers as $key => $correct_answers_row)
 		{
 			if($this->correctAnswerDoesNotExistInAnswerOptions($correct_answers_row, $hidden_text_files[$key]))
+			{
+				return false;
+			}
+			if( !is_array($correct_answers_row[0]) || sizeof($correct_answers_row[0]) == 0)
 			{
 				return false;
 			}
@@ -583,7 +587,7 @@ class assLongMenu extends assQuestion implements ilObjQuestionScoringAdjustable
 	 * @throws ilTestException
 	 * @return integer/array $points/$details (array $details is deprecated !!)
 	 */
-	public function calculateReachedPoints($active_id, $pass = NULL, $returndetails = FALSE)
+	public function calculateReachedPoints($active_id, $pass = NULL, $authorizedSolution = true, $returndetails = FALSE)
 	{
 		if( $returndetails )
 		{
@@ -595,10 +599,7 @@ class assLongMenu extends assQuestion implements ilObjQuestionScoringAdjustable
 		{
 			$pass = $this->getSolutionMaxPass($active_id);
 		}
-		$result = $this->ilDB->queryF("SELECT * FROM tst_solutions WHERE active_fi = %s AND question_fi = %s AND pass = %s",
-			array('integer','integer','integer'),
-			array($active_id, $this->getId(), $pass)
-		);
+		$result = $this->getCurrentSolutionResultSet($active_id, $pass, $authorizedSolution);
 		while ($data =  $this->ilDB->fetchAssoc($result))
 		{
 			$found_values[(int)$data['value1']] = $data['value2'];
@@ -634,7 +635,7 @@ class assLongMenu extends assQuestion implements ilObjQuestionScoringAdjustable
 	 * @param integer $pass Test pass
 	 * @return boolean $status
 	 */
-	public function saveWorkingData($active_id, $pass = NULL)
+	public function saveWorkingData($active_id, $pass = NULL, $authorized = true)
 	{
 		if (is_null($pass))
 		{
@@ -644,14 +645,14 @@ class assLongMenu extends assQuestion implements ilObjQuestionScoringAdjustable
 		$this->getProcessLocker()->requestUserSolutionUpdateLock();
 
 		$entered_values = 0;
-		$this->removeCurrentSolution($active_id, $pass);
+		$this->removeCurrentSolution($active_id, $pass, $authorized);
 
 		foreach($this->getSolutionSubmit() as $val1 => $val2)
 		{
 			$value = ilUtil::stripSlashes($val2, FALSE);
 			if (strlen($value))
 			{
-				$this->saveCurrentSolution($active_id,$pass, $val1, $value);
+				$this->saveCurrentSolution($active_id,$pass, $val1, $value, $authorized);
 				$entered_values++;
 			}
 		}

@@ -18,6 +18,11 @@ class ilToolbarGUI
 {
 
 	/**
+	 * @var int
+	 */
+	protected static $instances = 0;
+
+	/**
 	 * @var string
 	 */
 	protected $id = '';
@@ -82,7 +87,7 @@ class ilToolbarGUI
 
 	public function __construct()
 	{
-	
+		self::$instances++;
 	}
 
 	/**
@@ -158,7 +163,7 @@ class ilToolbarGUI
 	 */
 	public function getId()
 	{
-		return $this->id;
+		return $this->id ? $this->id : self::$instances;
 	}
 
 	/**
@@ -243,19 +248,20 @@ class ilToolbarGUI
 	 * Sticky items are displayed first in the toolbar.
 	 *
 	 * @param ilToolbarItem $a_item
+	 * @param bool $a_output_label
 	 */
-	public function addStickyItem(ilToolbarItem $a_item)
-	{
-		$this->sticky_items[] = $a_item;
+	public function addStickyItem(ilToolbarItem $a_item, $a_output_label = false)
+	{		
+		$this->sticky_items[] = array("item"=>$a_item, "label"=>$a_output_label);
 	}
 
 
 	/**
 	 * Add button instance
-	 * 
-	 * @param ilButton $a_button
+	  
+	 * @param ilButtonBase $a_button
 	 */
-	public function addButtonInstance(ilButton $a_button)
+	public function addButtonInstance(ilButtonBase $a_button)
 	{
 		if ($a_button->isPrimary()) {
 			$this->addStickyItem($a_button);
@@ -409,13 +415,20 @@ class ilToolbarGUI
 		if (count($this->items) || count($this->sticky_items))
 		{
 			$tpl = new ilTemplate("tpl.toolbar.html", true, true, "Services/UIComponent/Toolbar");
+			$tpl->setVariable('TOOLBAR_ID', $this->getId());
 			if (count($this->sticky_items)) {
 				$tpl_sticky = new ilTemplate("tpl.toolbar_sticky_items.html", true, true, "Services/UIComponent/Toolbar");
 				/** @var ilToolbarItem $sticky_item */
 				foreach ($this->sticky_items as $sticky_item)
 				{
+					if($sticky_item['label'])
+					{
+						$tpl_sticky->setCurrentBlock('input_label');
+						$tpl_sticky->setVariable('TXT_INPUT', $sticky_item['item']->getTitle());
+						$tpl_sticky->parseCurrentBlock();
+					}
 					$tpl_sticky->setCurrentBlock('sticky_item');
-					$tpl_sticky->setVariable('STICKY_ITEM_HTML', $sticky_item->getToolbarHTML());
+					$tpl_sticky->setVariable('STICKY_ITEM_HTML', $sticky_item['item']->getToolbarHTML());
 					$tpl_sticky->parseCurrentBlock();
 				}
 				$tpl->setCurrentBlock('sticky_items');

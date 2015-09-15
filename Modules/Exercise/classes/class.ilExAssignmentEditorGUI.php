@@ -82,11 +82,18 @@ class ilExAssignmentEditorGUI
 	function listAssignmentsObject()
 	{
 		global $tpl, $ilToolbar, $lng, $ilCtrl;
+				
+		$ilToolbar->setFormAction($ilCtrl->getFormAction($this, "addAssignment"));		
 		
 		include_once "Services/Form/classes/class.ilSelectInputGUI.php";		
-		$ilToolbar->addInputItem($this->getTypeDropdown());		
-		$ilToolbar->setFormAction($ilCtrl->getFormAction($this, "addAssignment"));				
-		$ilToolbar->addFormButton($lng->txt("exc_add_assignment"), "addAssignment");
+		$ilToolbar->addStickyItem($this->getTypeDropdown());		
+		
+		include_once "Services/UIComponent/Button/classes/class.ilSubmitButton.php";
+		$button = ilSubmitButton::getInstance();
+		$button->setCaption("exc_add_assignment");
+		$button->setCommand("addAssignment");			
+		$ilToolbar->addStickyItem($button);
+		
 		
 		include_once("./Modules/Exercise/classes/class.ilAssignmentsTableGUI.php");
 		$t = new ilAssignmentsTableGUI($this, "listAssignments", $this->exercise_id);
@@ -558,7 +565,9 @@ class ilExAssignmentEditorGUI
 				}
 			}			
 			
-			$ilCtrl->redirect($this, "listAssignments");
+			// because of sub-tabs we stay on settings screen
+			$ilCtrl->setParameter($this, "ass_id", $ass->getId());
+			$ilCtrl->redirect($this, "editAssignment");
 		}
 		else
 		{
@@ -587,6 +596,8 @@ class ilExAssignmentEditorGUI
 	 */
 	public function getAssignmentValues(ilPropertyFormGUI $a_form)
 	{
+		global $lng, $ilCtrl;
+		
 		$values = array();	
 		$values["type"] = $this->assignment->getType();
 		$values["title"] = $this->assignment->getTitle();
@@ -620,10 +631,15 @@ class ilExAssignmentEditorGUI
 		
 		// global feedback		
 		if($this->assignment->getFeedbackFile())
-		{						
+		{													
 			$a_form->getItemByPostVar("fb")->setChecked(true);			
 			$a_form->getItemByPostVar("fb_file")->setValue(basename($this->assignment->getGlobalFeedbackFilePath()));	
 			$a_form->getItemByPostVar("fb_file")->setRequired(false); // #15467
+			$a_form->getItemByPostVar("fb_file")->setInfo(
+				// #16400
+				'<a href="'.$ilCtrl->getLinkTarget($this, "downloadGlobalFeedbackFile").'">'.
+				$lng->txt("download").'</a>' 
+			); 
 		}
 		$a_form->getItemByPostVar("fb_cron")->setChecked($this->assignment->hasFeedbackCron());			
 		$a_form->getItemByPostVar("fb_date")->setValue($this->assignment->getFeedbackDate());	
@@ -844,6 +860,19 @@ class ilExAssignmentEditorGUI
 			$ilCtrl->getLinkTargetByClass(array("ilexassignmenteditorgui", "ilfilesystemgui"), "listFiles"));
 	}
 	
+	public function downloadGlobalFeedbackFileObject()
+	{
+		global $ilCtrl;
+		
+		if(!$this->assignment || 
+			!$this->assignment->getFeedbackFile())
+		{
+			$ilCtrl->redirect($this, "returnToParent");
+		}
+		
+		ilUtil::deliverFile($this->assignment->getGlobalFeedbackFilePath(), $this->assignment->getFeedbackFile());
+	}
+	
 	
 	//
 	// PEER REVIEW
@@ -949,6 +978,14 @@ class ilExAssignmentEditorGUI
 					$cats->addOption($opt);
 				}
 			}			
+		}
+		else
+		{
+			// see ilExcCriteriaCatalogueGUI::view()
+			$url = $ilCtrl->getLinkTargetByClass("ilexccriteriacataloguegui", "");
+			$def->setInfo('<a href="'.$url.'">[+] '.
+				$lng->txt("exc_add_criteria_catalogue").
+				'</a>');
 		}
 		
 		

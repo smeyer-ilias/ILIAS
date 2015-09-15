@@ -140,7 +140,7 @@ class assLongMenuGUI extends assQuestionGUI implements ilGuiQuestionScoringAdjus
 	{
 		$long_menu_text = new ilTextAreaInputGUI($this->lng->txt("longmenu_text"), 'longmenu_text');
 		$long_menu_text->setRequired(true);
-		$long_menu_text->setInfo($this->lng->txt("longmenu_hint"));
+		//$long_menu_text->setInfo($this->lng->txt("longmenu_hint"));
 		$long_menu_text->setRows( 10 );
 		$long_menu_text->setCols( 80 );
 		if (!$this->object->getSelfAssessmentEditingMode())
@@ -322,7 +322,9 @@ class assLongMenuGUI extends assQuestionGUI implements ilGuiQuestionScoringAdjus
 	
 	function getTestOutput($active_id,
 						   $pass = NULL,
-						   $is_postponed = FALSE
+						   $is_postponed = FALSE,
+						   $use_post_solutions = FALSE,
+						   $show_feedback = FALSE
 	)
 	{
 		$user_solution = $this->getUserSolution($active_id, $pass);

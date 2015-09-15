@@ -23,6 +23,7 @@ include_once("Services/Payment/classes/class.ilPaymentObject.php");
 * @ilCtrl_Calls ilRepositoryGUI: ilObjPollGUI, ilObjRemoteCategoryGUI, ilObjRemoteWikiGUI, ilObjRemoteLearningModuleGUI
 * @ilCtrl_Calls ilRepositoryGUI: ilObjRemoteGlossaryGUI, ilObjRemoteFileGUI, ilObjRemoteGroupGUI
 * @ilCtrl_Calls ilRepositoryGUI: ilObjRemoteTestGUI, ilObjCloudGUI, ilObjPortfolioTemplateGUI
+* @ilCtrl_Calls ilRepositoryGUI: ilObjStudyProgrammeGUI
 *
 */
 class ilRepositoryGUI
@@ -225,6 +226,9 @@ class ilRepositoryGUI
 				// Copy Category uses this call structure:
 				// RespositoryGUI -> CategoryGUI -> ilObjectCopyGUI
 				// Without this fix, the cmdClass ilObjectCopyGUI would never be reached
+				
+				ilLoggerFactory::getLogger('obj')->debug($this->ctrl->getNextClass().' <-> '. $class_name);
+				
 				if($this->ctrl->getNextClass() != strtolower('ilObj'.$class_name.'GUI'))
 				{
 					$this->ctrl->setCmdClass($next_class);

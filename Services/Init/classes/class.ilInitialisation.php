@@ -325,6 +325,7 @@ class ilInitialisation
 		define ("DEBUG",$ilClientIniFile->readVariable("system","DEBUG"));
 		define ("DEVMODE",$ilClientIniFile->readVariable("system","DEVMODE"));
 		define ("SHOWNOTICES",$ilClientIniFile->readVariable("system","SHOWNOTICES"));
+		define ("DEBUGTOOLS",$ilClientIniFile->readVariable("system","DEBUGTOOLS"));
 		define ("ROOT_FOLDER_ID",$ilClientIniFile->readVariable('system','ROOT_FOLDER_ID'));
 		define ("SYSTEM_FOLDER_ID",$ilClientIniFile->readVariable('system','SYSTEM_FOLDER_ID'));
 		define ("ROLE_FOLDER_ID",$ilClientIniFile->readVariable('system','ROLE_FOLDER_ID'));
@@ -838,11 +839,14 @@ class ilInitialisation
 			// no further differentiating of php version regarding to 5.4 neccessary
 			// when the error reporting is set to E_ALL anyway
 			
-			// remove notices from error reporting
+			// add notices to error reporting
 			error_reporting(E_ALL);
 		}
-
-		include_once "include/inc.debug.php";
+		
+		if(defined('DEBUGTOOLS') && DEBUGTOOLS)
+		{
+			include_once "include/inc.debug.php";
+		}
 	}
 	
 	protected static $already_initialized;
@@ -901,12 +905,10 @@ class ilInitialisation
 	}
 	
 	/**
-	 * Init core objects (level 0)
+	 * Set error reporting level
 	 */
-	protected static function initCore()
-	{
-		global $ilErr;
-		
+	public static function handleErrorReporting()
+	{		
 		// remove notices from error reporting
 		if (version_compare(PHP_VERSION, '5.4.0', '>='))
 		{
@@ -919,6 +921,20 @@ class ilInitialisation
 		{
 			error_reporting((ini_get("error_reporting") & ~E_NOTICE) & ~E_DEPRECATED);
 		}
+		
+		// see handleDevMode() - error reporting might be overwritten again
+		// but we need the client ini first
+	}
+	
+	/**
+	 * Init core objects (level 0)
+	 */
+	protected static function initCore()
+	{
+		global $ilErr;
+		
+		self::handleErrorReporting();
+		
 		// breaks CAS: must be included after CAS context isset in AuthUtils
 		//self::includePhp5Compliance();
 
@@ -944,6 +960,7 @@ class ilInitialisation
 
 		self::initIliasIniFile();
 
+		define('IL_INITIAL_WD', getcwd());
 		
 		// deprecated
 		self::initGlobal("ilias", "ILIAS", "./Services/Init/classes/class.ilias.php");				

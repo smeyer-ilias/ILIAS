@@ -255,7 +255,7 @@ class ilSCTreeTasksGUI extends ilSCComponentTaskGUI
 		else
 		{
 			$this->getTask()->setStatus(ilSCTask::STATUS_COMPLETED);
-			ilUtil::sendFailure($this->getLang()->txt('sysc_messaage_success'),TRUE);
+			ilUtil::sendFailure($this->getLang()->txt('sysc_message_success'),TRUE);
 		}
 		
 		$this->getTask()->setLastUpdate(new ilDateTime(time(),IL_CAL_UNIX));
@@ -328,6 +328,12 @@ class ilSCTreeTasksGUI extends ilSCComponentTaskGUI
 		$GLOBALS['ilLog']->write(__METHOD__.': Removing from repository: '.$_REQUEST['duplicate_id']);
 		include_once './Services/Tree/classes/class.ilSCTreeTasks.php';
 		ilSCTreeTasks::deleteDuplicateFromTree((int) $_REQUEST['duplicate_id'], FALSE);
+
+		$tasks = new ilSCTreeTasks($this->getTask());
+		if($tasks->checkDuplicates())
+		{
+			ilSCTreeTasks::repairPK();
+		}
 		
 		ilUtil::sendSuccess($this->getLang()->txt('sysc_deleted_duplicate'),TRUE);
 		$this->getCtrl()->returnToParent($this);
@@ -339,6 +345,13 @@ class ilSCTreeTasksGUI extends ilSCComponentTaskGUI
 		$GLOBALS['ilLog']->write(__METHOD__.': Removing from repository: '.$_REQUEST['duplicate_id']);
 		include_once './Services/Tree/classes/class.ilSCTreeTasks.php';
 		ilSCTreeTasks::deleteDuplicateFromTree((int) $_REQUEST['duplicate_id'], TRUE);
+		
+
+		$tasks = new ilSCTreeTasks($this->getTask());
+		if($tasks->checkDuplicates())
+		{
+			ilSCTreeTasks::repairPK();
+		}
 
 		ilUtil::sendSuccess($this->getLang()->txt('sysc_deleted_duplicate'),TRUE);
 		$this->getCtrl()->returnToParent($this);

@@ -222,10 +222,14 @@ class ilExerciseManagementGUI
 			$si = new ilSelectInputGUI($this->lng->txt(""), "ass_id");
 			$si->setOptions($options);
 			$si->setValue($this->assignment->getId());
-			$ilToolbar->addInputItem($si);
+			$ilToolbar->addStickyItem($si);
 					
-			$ilToolbar->addFormButton($this->lng->txt("exc_select_ass"),
-				"selectAssignment");
+			include_once("./Services/UIComponent/Button/classes/class.ilSubmitButton.php");
+			$button = ilSubmitButton::getInstance();
+			$button->setCaption("exc_select_ass");
+			$button->setCommand("selectAssignment");			
+			$ilToolbar->addStickyItem($button);
+			
 			$ilToolbar->addSeparator();
 		}
 		// #16165 - if only 1 assignment dropdown is not displayed;
@@ -502,11 +506,15 @@ class ilExerciseManagementGUI
 			$si = new ilSelectInputGUI($this->lng->txt(""), "part_id");
 			$si->setOptions($options);
 			$si->setValue($_GET["part_id"]);
-			$ilToolbar->addInputItem($si);
+			$ilToolbar->addStickyItem($si);
 			
-			$ilToolbar->setFormAction($ilCtrl->getFormAction($this));
-			$ilToolbar->addFormButton($this->lng->txt("exc_select_part"),
-				"selectParticipant");
+			include_once("./Services/UIComponent/Button/classes/class.ilSubmitButton.php");
+			$button = ilSubmitButton::getInstance();
+			$button->setCaption("exc_select_part");
+			$button->setCommand("selectParticipant");			
+			$ilToolbar->addStickyItem($button);
+			
+			$ilToolbar->setFormAction($ilCtrl->getFormAction($this));		
 		}
 
 		if (count($mems) > 0)
@@ -591,9 +599,26 @@ class ilExerciseManagementGUI
 				$logins[] = ilObjUser::_lookupLogin($user_id);
 			}
 			$logins = implode($logins, ",");
+			
+			// #16530 - see ilObjCourseGUI::createMailSignature
+			$sig = chr(13).chr(10).chr(13).chr(10);
+			$sig .= $this->lng->txt('exc_mail_permanent_link');
+			$sig .= chr(13).chr(10).chr(13).chr(10);
+			include_once './Services/Link/classes/class.ilLink.php';
+			$sig .= ilLink::_getLink($this->exercise->getRefId());
+			$sig = rawurlencode(base64_encode($sig));
 						
 			require_once 'Services/Mail/classes/class.ilMailFormCall.php';
-			ilUtil::redirect(ilMailFormCall::getRedirectTarget($this, $this->getViewBack(), array(), array('type' => 'new', 'rcp_to' => $logins)));
+			ilUtil::redirect(ilMailFormCall::getRedirectTarget(
+				$this, 
+				$this->getViewBack(), 
+				array(), 
+				array(
+					'type' => 'new', 
+					'rcp_to' => $logins, 
+					ilMailFormCall::SIGNATURE_KEY => $sig
+				)
+			));
 		}
 
 		ilUtil::sendFailure($this->lng->txt("no_checkbox"),true);

@@ -96,7 +96,7 @@ class ilObjectCopyGUI
 		{
 			$this->setSubMode((int) $_REQUEST['smode']);
 			$GLOBALS['ilCtrl']->setParameter($this,'smode',$this->getSubMode());
-			$GLOBALS['ilLog']->write(__METHOD__.': Submode is:' . $this->getSubMode());
+			ilLoggerFactory::getLogger('obj')->debug('Submode is: '. $this->getSubMode());
 		}
 		
 		
@@ -104,12 +104,16 @@ class ilObjectCopyGUI
 		if($_REQUEST['new_type'])
 		{
 			$this->setMode(self::SEARCH_SOURCE);
-	
-			$ilCtrl->setParameter($this,'new_type',$this->getType());
-			$ilCtrl->setParameterByClass(get_class($this->parent_obj), 'new_type', $this->getType());
-			$ilCtrl->setParameterByClass(get_class($this->parent_obj), 'cpfl', 1);
-			$ilCtrl->setReturnByClass(get_class($this->parent_obj), 'create');
-			$GLOBALS['ilLog']->write(__METHOD__.': Creation mode. ' );
+			$this->setType($_REQUEST['new_type']);
+			$this->setTarget((int) $_GET['ref_id']);
+
+			$GLOBALS['ilCtrl']->setParameter($this, 'new_type', $this->getType());
+			$GLOBALS['ilCtrl']->setParameterByClass(get_class($this->getParentObject()),'new_type', $this->getType());
+			$GLOBALS['ilCtrl']->setParameterByClass(get_class($this->getParentObject()),'cpfl', 1);
+			$GLOBALS['ilCtrl']->setReturnByClass(get_class($this->getParentObject()),'create');
+			
+			ilLoggerFactory::getLogger('obj')->debug('Copy from object creation for type: '. $this->getType());
+			return TRUE;
 		}
 		// adopt content, and others?
 		elseif($_REQUEST['selectMode'] == self::SOURCE_SELECTION)
@@ -129,7 +133,6 @@ class ilObjectCopyGUI
 		}
 		
 		// save sources
-		
 		if($_REQUEST['source_ids'])
 		{
 			$this->setSource(explode('_',$_REQUEST['source_ids']));
@@ -148,9 +151,12 @@ class ilObjectCopyGUI
 			$this->setTargets(explode('_',$_REQUEST['target_ids']));
 		}
 		
-		$this->setType(
-				ilObject::_lookupType(ilObject::_lookupObjId($this->getFirstSource()))
-		);
+		if($this->getFirstSource())
+		{
+			$this->setType(
+					ilObject::_lookupType(ilObject::_lookupObjId($this->getFirstSource()))
+			);
+		}
 	}
 	
 	/**
@@ -441,6 +447,12 @@ class ilObjectCopyGUI
 			$this->setTargets($_REQUEST['target']);
 			$GLOBALS['ilCtrl']->setParameter($this,'target_ids',  implode('_', $this->getTargets()));
 		}
+		// paste from clipboard
+		elseif((int) $_REQUEST['target'])
+		{
+			$this->setTarget($_REQUEST['target']);
+			$GLOBALS['ilCtrl']->setParameter($this,'target_ids',  implode('_', $this->getTargets()));
+		}
 		// end-patch multi copy
 		else
 		{
@@ -560,8 +572,18 @@ class ilObjectCopyGUI
 	/**
 	 * Get source id
 	 * @return array
+	 * @deprecated since version 5.1
 	 */
 	public function getSource()
+	{
+		return $this->getSources();
+	}
+	
+	/**
+	 * Get sources
+	 * @return type
+	 */
+	public function getSources()
 	{
 		return (array) $this->sources;
 	}
@@ -637,7 +659,7 @@ class ilObjectCopyGUI
 	{
 		global $ilCtrl;
 		$_SESSION['clipboard']['cmd'] = "copy";
-		$_SESSION['clipboard']['ref_ids'] = explode('_', $this->getSource());
+		$_SESSION['clipboard']['ref_ids'] = $this->getSource();
 		$ilCtrl->returnToParent($this);
 	}
 
@@ -659,7 +681,7 @@ class ilObjectCopyGUI
 		{
 			$_POST['tit'] = $_SESSION['source_query'];
 		}
-
+		
 		$this->initFormSearch();
 		$this->form->setValuesByPost();		
 		
@@ -696,7 +718,8 @@ class ilObjectCopyGUI
 		}
 	
 		include_once './Services/Object/classes/class.ilObjectCopySearchResultTableGUI.php';
-		$table = new ilObjectCopySearchResultTableGUI($this,'searchSource',$_REQUEST['new_type']);
+		$table = new ilObjectCopySearchResultTableGUI($this,'searchSource',$this->getType());
+		$table->setFormAction($GLOBALS['ilCtrl']->getFormAction($this));
 		$table->setSelectedReference($this->getFirstSource());
 		$table->parseSearchResults($results);
 		$tpl->setContent($table->getHTML());
@@ -878,12 +901,14 @@ class ilObjectCopyGUI
 		}
 
 		reset($a_sources);
+		
+		
+		ilLoggerFactory::getLogger('obj')->debug(print_r($a_sources,TRUE));
 
 		// clone
 		foreach ($a_sources as $source_ref_id)
 		{
-			
-			$GLOBALS['ilLog']->write(__METHOD__.': +++++++++++++++ '.$source_ref_id);
+			ilLoggerFactory::getLogger('obj')->debug('Copying source ref_id : ' . $source_ref_id);
 			
 			// begin-patch mc
 			foreach($this->getTargets() as $target_ref_id)
@@ -1114,7 +1139,9 @@ class ilObjectCopyGUI
 		include_once './Services/Form/classes/class.ilPropertyFormGUI.php';
 		$this->form = new ilPropertyFormGUI();
 		$this->form->setTableWidth('600px');
+
 		$ilCtrl->setParameter($this,'new_type',$this->getType());
+		
 		#$ilCtrl->setParameter($this, 'cp_mode', self::SOURCE_SELECTION);
 		$this->form->setFormAction($ilCtrl->getFormAction($this));
 		$this->form->setTitle($lng->txt($this->getType().'_copy'));

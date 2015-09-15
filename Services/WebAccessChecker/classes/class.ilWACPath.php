@@ -72,6 +72,16 @@ class ilWACPath {
 		'm4v',
 		'mov',
 		'wmv',
+		'webm',
+	);
+	/**
+	 * @var array
+	 */
+	protected static $audio_suffixes = array(
+		'mp3',
+		'aiff',
+		'aif',
+		'wav',
 	);
 
 
@@ -113,6 +123,20 @@ class ilWACPath {
 	 */
 	public function isVideo() {
 		return in_array(strtolower($this->getSuffix()), self::$video_suffixes);
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isAudio() {
+		return in_array(strtolower($this->getSuffix()), self::$audio_suffixes);
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isStreamable() {
+		return ($this->isAudio() || $this->isVideo());
 	}
 
 

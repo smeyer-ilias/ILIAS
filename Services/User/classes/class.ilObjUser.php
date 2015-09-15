@@ -691,7 +691,7 @@ class ilObjUser extends ilObject
 	/**
 	* Private function for lookup methods
 	*/
-	private function _lookup($a_user_id, $a_field)
+	private static function _lookup($a_user_id, $a_field)
 	{
 		global $ilDB;
 		
@@ -805,7 +805,7 @@ class ilObjUser extends ilObject
 	/**
 	* lookup login
 	*/
-	function _lookupLogin($a_user_id)
+	public static function  _lookupLogin($a_user_id)
 	{
 		return ilObjUser::_lookup($a_user_id, "login");
 	}
@@ -5785,9 +5785,12 @@ class ilObjUser extends ilObject
 					$value = trim($value);
 					if($value)
 					{
+						$uniq_id = $ilDB->nextId('usr_data_multi');
+
 						$ilDB->manipulate("INSERT usr_data_multi".
-							" (usr_id,field_id,value) VALUES".
-							" (".$ilDB->quote($this->getId(), "integer").
+							" (id,usr_id,field_id,value) VALUES".
+							" (".$ilDB->quote($uniq_id, "integer").
+							",".$ilDB->quote($this->getId(), "integer").
 							",".$ilDB->quote($id, "text").
 							",".$ilDB->quote($value, "text").
 							")");		

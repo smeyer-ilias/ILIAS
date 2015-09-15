@@ -3851,7 +3851,6 @@ class ilObjTestGUI extends ilObjectGUI
 			case "confirmSubmitAnswers":
 			case "finalSubmission":
 			case "postpone":
-			case "redirectQuestion":
 			case "outUserPassDetails":
 			case "checkPassword":
 				$ilLocator->addItem($this->object->getTitle(), $this->ctrl->getLinkTarget($this, "infoScreen"), "", $_GET["ref_id"]);
@@ -4123,8 +4122,14 @@ class ilObjTestGUI extends ilObjectGUI
 
 			// tab handling happens within GUIs
 			case 'iltestevaluationgui':
+				$nonSelfTabbingCommands = array(
+					'outParticipantsResultsOverview', 'outEvaluation'
+				);
+				if( in_array($this->ctrl->getCmd(), $nonSelfTabbingCommands) )
+				{
+					break;
+				}
 			case 'iltestevalobjectiveorientedgui':
-
 				return;
 				
 			case 'ilmarkschemagui':
@@ -4170,7 +4175,6 @@ class ilObjTestGUI extends ilObjectGUI
 			case "confirmSubmitAnswers":
 			case "finalSubmission":
 			case "postpone":
-			case "redirectQuestion":
 			case "outUserPassDetails":
 			case "checkPassword":
 			case "exportCertificate":

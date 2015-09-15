@@ -116,7 +116,24 @@ class ilPublicUserProfileGUI
 	{
 		return $this->backurl;
 	}
+		
+	protected function handleBackUrl()
+	{
+		global $ilMainMenu;
+				
+		$back = ($this->getBackUrl() != "")
+			? $this->getBackUrl()
+			: $_GET["back_url"];
+		
+		if(!$back)
+		{
+			// #15984
+			$back = 'ilias.php?baseClass=ilPersonalDesktopGUI';
+		}
 
+		$ilMainMenu->setTopBarBack($back);
+	}
+	
 	/**
 	 * Set custom preferences for public profile fields
 	 *
@@ -177,6 +194,8 @@ class ilPublicUserProfileGUI
 				$portfolio_id = $this->getProfilePortfolio();
 				if($portfolio_id)
 				{					
+					$this->handleBackUrl();
+					
 					include_once "Modules/Portfolio/classes/class.ilObjPortfolioGUI.php";
 					$gui = new ilObjPortfolioGUI($portfolio_id); // #11876		
 					$gui->setAdditional($this->getAdditional());
@@ -248,7 +267,7 @@ class ilPublicUserProfileGUI
 			
 			if(!$is_active)
 			{
-				$ilCtrl->redirectByClass('ilPersonalDesktopGUI');
+				ilUtil::redirect('ilias.php?baseClass=ilPersonalDesktopGUI');
 			}
 			
 			// Check from Database if value
@@ -258,7 +277,7 @@ class ilPublicUserProfileGUI
 				($user->getPref("public_profile") != "g" || !$ilSetting->get('enable_global_profiles')) &&
 				!$this->custom_prefs)
 			{
-				$ilCtrl->redirectByClass('ilPersonalDesktopGUI');
+				ilUtil::redirect('ilias.php?baseClass=ilPersonalDesktopGUI');
 			}
 			
 			return $this->getEmbeddable(true);	
@@ -766,7 +785,7 @@ class ilPublicUserProfileGUI
 	
 	function renderTitle()
 	{
-		global $tpl, $ilTabs, $lng;
+		global $tpl;
 		
 		$tpl->resetHeaderBlock();
 		
@@ -774,16 +793,7 @@ class ilPublicUserProfileGUI
 		$tpl->setTitle(ilUserUtil::getNamePresentation($this->getUserId()));
 		$tpl->setTitleIcon(ilObjUser::_getPersonalPicturePath($this->getUserId(), "xxsmall"));
 		
-		$back = ($this->getBackUrl() != "")
-			? $this->getBackUrl()
-			: $_GET["back_url"];
-
-		if ($back != "")
-		{
-			$ilTabs->clearTargets();
-			$ilTabs->setBackTarget($lng->txt("back"),
-				$back);
-		}
+		$this->handleBackUrl();
 	}
 	
 	/**
@@ -876,7 +886,7 @@ class ilPublicUserProfileGUI
 		}
 
 		$ilCtrl->setParameterByClass('ilBuddySystemGUI', 'user_id', $this->getUserId());
-		$ilCtrl->redirectByClass('ilBuddySystemGUI', 'link');
+		$ilCtrl->redirectByClass(array('ilPublicUserProfileGUI', 'ilBuddySystemGUI'), 'link');
 	}
 
 	/**
@@ -895,7 +905,7 @@ class ilPublicUserProfileGUI
 		}
 
 		$ilCtrl->setParameterByClass('ilBuddySystemGUI', 'user_id', $this->getUserId());
-		$ilCtrl->redirectByClass('ilBuddySystemGUI', 'ignore');
+		$ilCtrl->redirectByClass(array('ilPublicUserProfileGUI', 'ilBuddySystemGUI'), 'ignore');
 	}
 }
 ?>

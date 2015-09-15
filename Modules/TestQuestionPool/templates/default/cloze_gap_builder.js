@@ -114,6 +114,10 @@ var ClozeGapBuilder = (function () {
     {
         var cursor, inGap;
         if (typeof(tinymce) != 'undefined') {
+            if (navigator.userAgent.indexOf('Firefox') !== -1)
+            {
+                text = text.replace(new RegExp('(<p>(&nbsp;)*<\/p>(\n)*)' , 'g'), '');
+            }
             //ToDo: Bug in tiny steals focus on setContent (tinymce Bug #6423)
             var inst = tinyMCE.activeEditor;
             cursor = pro.getCursorPositionTiny(inst);
@@ -204,11 +208,11 @@ var ClozeGapBuilder = (function () {
             //ToDo: find out why location function breaks keyboard input
             /*var inst = tinyMCE.activeEditor;
              var cursorPosition = getCursorPositionTiny(inst);
-             var pos = cursorInGap(cursorPosition);
+             var pos = pro.cursorInGap(cursorPosition);
              g_cursor_pos = cursorPosition;
              if (pos[1] != -1) {
-             setCursorPositionTiny(inst, pos[1]);
-             focusOnFormular(pos);
+             pro.setCursorPositionTiny(inst, pos[1]);
+             pro.focusOnFormular(pos);
              }*/
         });
         tinymce_iframe_selector.keyup(function(e){
@@ -616,7 +620,7 @@ var ClozeGapBuilder = (function () {
         });
         cloze_text_selector.click(function () {
             var cursorPosition = $('#cloze_text').prop('selectionStart');
-            var pos = cursorInGap(cursorPosition);
+            var pos = pro.cursorInGap(cursorPosition);
             ClozeGlobals.cursor_pos = cursorPosition;
             if (pos[1] != -1) {
                 pro.setCaretPosition(document.getElementById('cloze_text'), pos[1]);
@@ -1278,6 +1282,7 @@ var ClozeGapBuilder = (function () {
            return false;
        });
 
+       $('.remove_gap_button').off('click');
        $('.remove_gap_button').on('click', function ()
        {
            var getPosition = $(this).attr('id');
@@ -1286,7 +1291,7 @@ var ClozeGapBuilder = (function () {
            if (confirm($('#delete_gap_question').text())) {
                ClozeSettings.gaps_php[0].splice(pos[2], 1);
                pro.removeFromTextarea(pos[2]);
-               pro.paintGaps();
+               pub.paintGaps();
                if(whereAmI == 'modal-body')
                {
                    $('#ilGapModal').modal('hide');
@@ -1374,6 +1379,7 @@ var ClozeGapBuilder = (function () {
         pro.moveFooterBelow();
         pro.bindSelectHandler();
         pro.bindInputHandler();
+        pro.appendEventListenerToBeRefactored();
         pro.checkForm();
         if (ClozeGlobals.clone_active != -1) {
             pro.cloneFormPart(ClozeGlobals.clone_active);
