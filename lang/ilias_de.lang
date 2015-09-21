@@ -15292,7 +15292,7 @@ payment#:#enable_topics_info#:#Wenn aktiviert, können Sie kaufbare Objekte selb
 exc#:#exc_assignment_type#:#Abgabetyp
 trac#:#trac_mode_event_info#:#Der Status des Lernfortschritts wird durch den Teilnahmestatus bestimmt.
 sess#:#sess_lp_preset#:#Lernfortschritt aktivieren
-sess#:#sess_lp_preset_info#:#Den Lernfortschritt für alle Session-Termine (de-)aktivieren.
+sess#:#sess_lp_preset_info#:#Den Lernfortschritt für alle Session-Termine aktivieren.
 glo#:#glo_copy#:#Glossar kopieren
 form#:#form_open_answer#:#Freitext
 survey#:#survey_access_codes#:#Authentifizierung mit Zugangsschlüsseln
@@ -15598,7 +15598,7 @@ exc#:#exc_adopt_group_teams_conflict#:#Benutzer "%1$s" ist bereits in Gruppe "%2
 exc#:#exc_adopt_group_teams_added#:#%s Benutzer wurden hinzugefügt.
 exc#:#exc_adopt_group_teams_blocked#:#%s Benutzer waren bereits vorhanden.
 exc#:#exc_deadline_ext_mismatch#:#Die Karenzzeit muss nach dem Abgabetermin enden.
-exc#:#exc_peer_review_ass_setting_info#:#Nachdem der Abgabetermin und ggfs. die Karenzzeit verstrichen sind, können Teilnehmer ihre Arbeitsergebnisse gegenseitig bewerten.
+exc#:#exc_peer_review_ass_setting_info#:#Nachdem der Abgabetermin und ggfs. die Karenzzeit verstrichen sind, können Teilnehmer ihre Arbeitsergebnisse gegenseitig bewerten. Genaue Einstellungen zum Peer-Feedback werden im gleichnamigen Reiter vorgenommen. Der Reiter wird eingeblendet, wenn diese Option aktiviert und gepeichert wurde. 
 exc#:#exc_peer_review_min_number#:#Geforderte Anzahl von Feedbacks
 exc#:#exc_peer_review_min_number_info#:#Anzahl von Feedback, die ein Teilnehmer den Peers geben muss. Sollte die Anzahl der geforderten Feedbacks die Anzahl der tatsächlichen Einreichungen übersteigen, wird die geforderte Anzahl automatisch auf die Anzahl der tatsächlichen Einreichungen reduziert.
 exc#:#exc_criteria_catalogues#:#Kriterienkataloge
@@ -15672,7 +15672,7 @@ trac#:#trac_lp_settings_info_parent_usage#:#Bestimmt Lernfortschritt
 trac#:#trac_lp_settings_info_parent_group#:#Andere Objekte in der Gruppierung
 book#:#book_bobj#:#Buchungsobjekt
 crs#:#crs_subscription_min_members#:#Minimale Anzahl
-crs#:#crs_subscription_min_members_info#:#Siehe Cron-Job "Stornierungsende"
+crs#:#crs_subscription_min_members_info#:#Wird die geforderte Mindestanzahl an Mitgliedern nicht erreicht, kann der Kurs nicht stattfinden. Wird die Mindestanzahl bis zum Ende des Beitrittszeitraums bzw. dem spätesten Kursaustritt nicht erreicht, dann wird eine Mail an jene Kursadministratoren oder -tutoren versendet, die im Reiter 'Mitglieder' die Option'Benachrichtigung' aktiviert haben. 
 crs#:#crs_waiting_list_autofill#:#Mit automatischem Aufrücken
 crs#:#crs_waiting_list_no_autofill#:#Ohne automatisches Aufrücken
 crs#:#crs_waiting_list_autofill_info#:#Teilnehmer rücken automatisch bei Stornierungen von der Warteliste nach.
@@ -16026,3 +16026,5 @@ rbac#:#prgs_edit_permission#:#Rechteeinstellungen in Studienprogramm-Administrat
 user#:#feedhash#:#Newsfeedhash
 wsp#:#wsp_shared_filter_reset_button#:#Suche zurücksetzen
 wsp#:#wsp_shared_filter_button#:#Suche
+wiki#:#wiki_page_title_too_long#:#Die Seite konnte nicht angelegt werden, da der Titel zu lang ist. Bitte wählen Sie einen kürzeren Seitentitel.
+exc#:#exc_direct_submit#:#Abgeben

@@ -15289,7 +15289,7 @@ payment#:#enable_topics_info#:#If enabled, you can assign purchasable objects to
 exc#:#exc_assignment_type#:#Type of Submission
 trac#:#trac_mode_event_info#:#The learning progress status will be determined by the participation status.
 sess#:#sess_lp_preset#:#Activate Learning Progress
-sess#:#sess_lp_preset_info#:#(De-)Actives the learning progress for all session events.
+sess#:#sess_lp_preset_info#:#Activates the learning progress for all session events.
 glo#:#glo_copy#:#Copy Glossary
 form#:#form_open_answer#:#Open Answer
 survey#:#survey_access_codes#:#Authentication by Access Codes
@@ -15607,7 +15607,7 @@ exc#:#exc_adopt_group_teams_conflict#:#User "%1$s" is already selected for group
 exc#:#exc_adopt_group_teams_added#:#%s Users were added.
 exc#:#exc_adopt_group_teams_blocked#:#%s User were already assigned.
 exc#:#exc_deadline_ext_mismatch#:#The grace period has to end after the deadline.
-exc#:#exc_peer_review_ass_setting_info#:#Users can rate the solutions of their peers after the deadline and (if granted) grace period lapsed. 
+exc#:#exc_peer_review_ass_setting_info#:#Users can rate the solutions of their peers after the deadline and if granted the grace period lapsed. Specific settings on peer-feedback are made in the respective tab. After activation this option and saving it, the tab 'Peer-Feedback' will be displayed. 
 exc#:#exc_peer_review_min_number#:#Required Number of Feedbacks
 exc#:#exc_peer_review_min_number_info#:#Number of feedbacks a participant is required to give to peers. In case the minimum number of required feedbacks is greater than the actual number of submissions, the required minimum is automatically reduced to the the number of peer submissions.
 exc#:#exc_criteria_catalogues#:#Criteria Catalogues
@@ -15680,7 +15680,7 @@ trac#:#trac_lp_settings_info_parent_usage#:#Determines Learning Progress
 trac#:#trac_lp_settings_info_parent_group#:#Other objects in grouping
 book#:#book_bobj#:#Booking Object
 crs#:#crs_subscription_min_members#:#Minimum Number
-crs#:#crs_subscription_min_members_info#:#See cron job "Cancellation Limit".
+crs#:#crs_subscription_min_members_info#:#Define the number of users that is minimally required for this course to be held at all. If this number is not met either after the date until which users can register or unsubscribe from the course a mail will be send to those course administrators or tutors that have activated the 'Notification' flag in the 'Members'-tab.
 crs#:#crs_waiting_list_no_autofill#:#Without Auto-Fill
 crs#:#crs_waiting_list_autofill#:#With Auto-Fill
 crs#:#crs_waiting_list_autofill_info#:#Participants are recruited from the waiting list automatically on cancellations.
@@ -16026,3 +16026,5 @@ rbac#:#prgs_edit_permission#:#Change permission settings in Study Programme admi
 user#:#feedhash#:#Newsfeedhash
 wsp#:#wsp_shared_filter_reset_button#:#Reset Search
 wsp#:#wsp_shared_filter_button#:#Search
+wiki#:#wiki_page_title_too_long#:#Sorry, the title of the wiki page is too long. Please replace it with a shorter title.
+exc#:#exc_direct_submit#:#Submit
