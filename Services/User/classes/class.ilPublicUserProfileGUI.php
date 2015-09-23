@@ -681,7 +681,8 @@ class ilPublicUserProfileGUI
 			"getZipcode" => "zipcode", "getCity" => "city", "getCountry" => "country",
 			"getPhoneOffice" => "phone_office", "getPhoneHome" => "phone_home",
 			"getPhoneMobile" => "phone_mobile", "getFax" => "fax", "getEmail" => "email",
-			"getHobby" => "hobby", "getMatriculation" => "matriculation", "getClientIP" => "client_ip");
+			"getHobby" => "hobby", "getMatriculation" => "matriculation", "getClientIP" => "client_ip",
+			"dummy" => "location");
 
 		$org = array();
 		$adr = array();
@@ -728,10 +729,13 @@ class ilPublicUserProfileGUI
 					case "hobby":
 						$vcard->setNote($user->$key());
 						break;
+					case "location":
+						$vcard->setPosition($user->getLatitude(), $user->getLongitude());
+						break;
 				}
 			}
 		}
-
+		
 		if (count($org))
 		{
 			$vcard->setOrganization(join(";", $org));
@@ -741,7 +745,7 @@ class ilPublicUserProfileGUI
 			$vcard->setAddress($adr[0], $adr[1], $adr[2], $adr[3], $adr[4], $adr[5], $adr[6]);
 		}
 		
-		ilUtil::deliverData(utf8_decode($vcard->buildVCard()), $vcard->getFilename(), $vcard->getMimetype());
+		ilUtil::deliverData($vcard->buildVCard(), $vcard->getFilename(), $vcard->getMimetype());
 	}
 	
 	/**

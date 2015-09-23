@@ -12065,3 +12065,30 @@ if($data['cnt'] > 0)
 	die("There are still wrong child entries in table 'mail_tree'. Please execute database update step 4761 again. Execute the following SQL string manually: UPDATE settings SET value = 4760 WHERE keyword = 'db_version'; ");
 }
 ?>
+<#4764>
+<?php
+	$ilCtrlStructureReader->getStructure();
+?>
+<#4765>
+<?php
+if(!$ilDB->indexExistsByFields('frm_posts_tree', array('thr_fk')))
+{
+	$ilDB->addIndex('frm_posts_tree', array('thr_fk'), 'i1');
+}
+?>
+<#4766>
+<?php
+if(!$ilDB->indexExistsByFields('frm_posts_tree', array('pos_fk')))
+{
+	$ilDB->addIndex('frm_posts_tree', array('pos_fk'), 'i2');
+}
+?>
+<#4767>
+<?php
+
+	if(!$ilDB->indexExistsByFields('role_data',array('auth_mode')))
+	{
+		$ilDB->addIndex('role_data',array('auth_mode'),'i1');
+	}
+?>
+
