@@ -263,8 +263,7 @@ class ilPublicUserProfileGUI
 		}
 		else
 		{
-			$this->renderTitle();
-			
+
 			if(!$is_active)
 			{
 				ilUtil::redirect('ilias.php?baseClass=ilPersonalDesktopGUI');
@@ -279,7 +278,9 @@ class ilPublicUserProfileGUI
 			{
 				ilUtil::redirect('ilias.php?baseClass=ilPersonalDesktopGUI');
 			}
-			
+
+			$this->renderTitle();
+
 			return $this->getEmbeddable(true);	
 		}		
 	}
@@ -358,7 +359,8 @@ class ilPublicUserProfileGUI
 			$imagefile = basename($imagefile);			
 		}
 
-		if ($this->getPublicPref($user, "public_upload")=="y" && $imagefile != "")
+		if ($this->getPublicPref($user, "public_upload")=="y" && $imagefile != "" &&
+			($ilUser->getId() != ANONYMOUS_USER_ID || $user->getPref("public_profile") == "g"))
 		{
 			//Getting the flexible path of image form ini file
 			//$webspace_dir = ilUtil::getWebspaceDir("output");

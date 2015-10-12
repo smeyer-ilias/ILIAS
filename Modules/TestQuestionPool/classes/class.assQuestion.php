@@ -636,9 +636,19 @@ abstract class assQuestion
 	* @return boolean TRUE if the question type supports JavaScript output, FALSE otherwise
 	* @access public
 	*/
-	function supportsJavascriptOutput()
+	public function supportsJavascriptOutput()
 	{
 		return FALSE;
+	}
+
+	public function supportsNonJsOutput()
+	{
+		return true;
+	}
+	
+	public function requiresJsSwitch()
+	{
+		return $this->supportsJavascriptOutput() && $this->supportsNonJsOutput();
 	}
 
 	/**
@@ -4640,6 +4650,24 @@ abstract class assQuestion
 		return $ilDB->update("tst_solutions", $fieldData, array(
 			'solution_id' => array('integer', $solutionId)
 		));
+	}
+	
+	public function updateCurrentSolutionsAuthorization($activeId, $pass, $authorized)
+	{
+		global $ilDB;
+
+		$fieldData = array(
+			'tstamp' => array('integer', time()),
+			'authorized' => array('integer', (int)$authorized)
+		);
+		
+		$whereData = array(
+			'question_fi' => array('integer', $this->getId()),
+			'active_fi' => array('integer', $activeId),
+			'pass' => array('integer', $pass)
+		);
+		
+		return $ilDB->update('tst_solutions', $fieldData, $whereData);
 	}
 
 

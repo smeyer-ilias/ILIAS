@@ -1048,19 +1048,23 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
 	
 	abstract protected function isShowingPostponeStatusReguired($questionId);
 
-	protected function showQuestionViewable(assQuestionGUI $questionGui, $formAction)
+	protected function showQuestionViewable(assQuestionGUI $questionGui, $formAction, $isQuestionWorkedThrough, $instantResponse)
 	{
-		$questionGui->setNavigationGUI($this->buildReadOnlyStateQuestionNavigationGUI(
-			$questionGui->object->getId()
-		));
+		$questionNavigationGUI = $this->buildReadOnlyStateQuestionNavigationGUI($questionGui->object->getId());
+		$questionNavigationGUI->setQuestionWorkedThrough($isQuestionWorkedThrough);
+		$questionGui->setNavigationGUI($questionNavigationGUI);
+		
+		$answerFeedbackEnabled = (
+			$instantResponse && $this->object->getSpecificAnswerFeedback()
+		);
 
 		$solutionoutput = $questionGui->getSolutionOutput(
 			$this->testSession->getActiveId(), 	#active_id
-			null, 								#pass
+			$this->testSession->getPass(),		#pass
 			false, 								#graphical_output
 			false,								#result_output
 			true, 								#show_question_only
-			false,								#show_feedback
+			$answerFeedbackEnabled,				#show_feedback
 			false, 								#show_correct_solution
 			false, 								#show_manual_scoring
 			true								#show_question_text
@@ -1084,11 +1088,22 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
 		$this->tpl->setVariable("FORM_TIMESTAMP", time());
 	}
 
-	protected function showQuestionEditable(assQuestionGUI $questionGui, $instantResponse, $formAction)
+	protected function showQuestionEditable(assQuestionGUI $questionGui, $formAction, $isQuestionWorkedThrough, $instantResponse)
 	{
-		$questionGui->setNavigationGUI($this->buildEditableStateQuestionNavigationGUI(
+		$questionNavigationGUI = $this->buildEditableStateQuestionNavigationGUI(
 			$questionGui->object->getId(), $this->populateCharSelectorIfRequired()
-		));
+		);
+		if( $isQuestionWorkedThrough )
+		{
+			$questionNavigationGUI->setDiscardSolutionButtonEnabled(true);
+		}
+		else
+		{
+			$questionNavigationGUI->setSkipQuestionLinkTarget(
+				$this->ctrl->getLinkTarget($this, ilTestPlayerCommands::SKIP_QUESTION)
+			);
+		}
+		$questionGui->setNavigationGUI($questionNavigationGUI);
 
 		$isPostponed = $this->isShowingPostponeStatusReguired($questionGui->object->getId());
 		
@@ -1134,6 +1149,8 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
 	abstract protected function submitSolutionCmd();
 
 	abstract protected function discardSolutionCmd();
+	
+	abstract protected function skipQuestionCmd();
 
 	abstract protected function startTestCmd();
 /**
@@ -1835,10 +1852,6 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
 		if( !$this->isParticipantsAnswerFixed($questionId) )
 		{
 			$navigationGUI->setEditSolutionCommand(ilTestPlayerCommands::EDIT_SOLUTION);
-			
-			$navigationGUI->setQuestionWorkedThrough(assQuestion::_isWorkedThrough(
-				$this->testSession->getActiveId(), $questionId, $this->testSession->getPass()
-			));
 		}
 
 		if($this->object->getShowMarker())
@@ -1874,7 +1887,6 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
 		$navigationGUI = new ilTestQuestionNavigationGUI($this->lng);
 
 		$navigationGUI->setSubmitSolutionCommand(ilTestPlayerCommands::SUBMIT_SOLUTION);
-		$navigationGUI->setDiscardSolutionButtonEnabled(true);
 		
 		// feedback
 		switch( 1 )
@@ -2072,16 +2084,6 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
 		return null;
 	}
 
-	protected function getCurrentPresentationMode()
-	{
-		if( $this->getPresentationModeParameter() )
-		{
-			return $this->getPresentationModeParameter();
-		}
-
-		return $this->testSession->getLastPresentationMode();
-	}
-
 	protected function getPresentationModeParameter()
 	{
 		if( isset($_GET['pmode']) )
@@ -2118,6 +2120,7 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
 		{
 			$questionGui = $this->object->createQuestionGUI("", $questionId);
 			$questionGui->setTargetGui($this);
+			$questionGui->setPresentationContext(assQuestionGUI::PRESENTATION_CONTEXT_TEST);
 			$questionGui->object->setObligationsToBeConsidered($this->object->areObligationsEnabled());
 			$questionGui->object->setOutputType(OUTPUT_JAVASCRIPT);
 			$questionGui->object->setShuffler($this->buildQuestionAnswerShuffler($questionId));
@@ -2177,11 +2180,6 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
 		);
 		
 		return $shuffler;
-	}
-
-	public static function getDefaultPresentationMode()
-	{
-		return ilTestPlayerAbstractGUI::PRESENTATION_MODE_VIEW;
 	}
 
 	/**
@@ -2259,5 +2257,15 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
 		{
 			$this->tpl->addJavaScript('Services/UICore/lib/bootstrap-3.2.0/dist/js/bootstrap.min.js', true);
 		}
+	}
+	
+	protected function getQuestionsDefaultPresentationMode($isQuestionWorkedThrough)
+	{
+		if( $isQuestionWorkedThrough )
+		{
+			return self::PRESENTATION_MODE_VIEW;
+		}
+
+		return self::PRESENTATION_MODE_EDIT;
 	}
 }

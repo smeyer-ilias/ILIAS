@@ -7895,6 +7895,10 @@ a.ilTreeView:focus {
   width: 20px;
   height: 20px;
 }
+img.il_ExplorerIcon {
+  height: 20px;
+  width: 20px;
+}
 /* Modules/Forum */
 a.postread,
 a.postread:visited {
@@ -11053,6 +11057,9 @@ div.ilPCMyCoursesPath {
 #awareness-content .ilHighlighted {
   background-color: #ffff9d;
   color: #606060;
+}
+.ilAwrnBadgeHidden {
+  visibility: hidden;
 }
 .noMargin {
   margin: 0;

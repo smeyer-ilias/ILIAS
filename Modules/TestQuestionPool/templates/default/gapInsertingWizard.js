@@ -286,6 +286,12 @@ var GapInsertingWizard = (function () {
 			}
 			return false;
 		});
+		cloze_text_selector.keyup(function(e){
+			if(e.keyCode == 8 || e.keyCode == 46)
+			{
+				pro.checkDataConsitencyCallback();
+			}
+		});
 	};
 
 	pro.appendGapTrigger = function ()
@@ -361,7 +367,7 @@ var GapInsertingWizard = (function () {
 			{
 				pub.active_gap = parseInt(inGap[0], 10);
 			}
-			pro.setCursorPositionTiny(inst, parseInt(inGap[1], 10));
+			pro.setCursorPositionTiny(inst, parseInt(cursor, 10));
 		}
 		else {
 			var textarea =  $('textarea#' + pub.textarea);
