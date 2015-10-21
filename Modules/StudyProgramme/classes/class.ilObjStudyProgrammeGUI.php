@@ -164,7 +164,7 @@ class ilObjStudyProgrammeGUI extends ilContainerGUI {
 				$this->ctrl->forwardCommand($ilTranslationGui);
 				break;*/
 			case "ilobjstudyprogrammemembersgui":
-				$this->denyAccessIfNot("manage_members");
+				$this->denyAccessIfNot("write");
 				$this->tabs_gui->setTabActive(self::TAB_MEMBERS);
 				require_once("Modules/StudyProgramme/classes/class.ilObjStudyProgrammeMembersGUI.php");
 				$gui = new ilObjStudyProgrammeMembersGUI($this, $this->ref_id);
@@ -401,7 +401,6 @@ class ilObjStudyProgrammeGUI extends ilContainerGUI {
 
 		$gui = new ilAdvancedMDRecordGUI(ilAdvancedMDRecordGUI::MODE_EDITOR, 'prg', $this->object->getId(), 'prg_type', $this->object->getSubtypeId());
 		$gui->setPropertyForm($form);
-		$gui->setSelectedOnly(true);
 		$gui->parse();
 		$this->tpl->setContent($form->getHTML());
 	}
@@ -419,7 +418,6 @@ class ilObjStudyProgrammeGUI extends ilContainerGUI {
 		$form = $this->initAdvancedSettingsForm();
 		$gui = new ilAdvancedMDRecordGUI(ilAdvancedMDRecordGUI::MODE_EDITOR, 'prg', $this->object->getId(), 'prg_type', $this->object->getSubtypeId());
 		$gui->setPropertyForm($form);
-		$gui->setSelectedOnly(true);
 		$form->checkInput();
 		$gui->parse();
 		if ($gui->importEditFormPostValues()) {
@@ -515,7 +513,8 @@ class ilObjStudyProgrammeGUI extends ilContainerGUI {
 								   );
 		}
 		
-		if ($this->checkAccess("manage_members")) {
+		//Maybe some time this will be: if ($this->checkAccess("manage_members")) {
+		if ($this->checkAccess("write")) {
 			$this->tabs_gui->addTab( self::TAB_MEMBERS
 								   , $this->lng->txt("members")
 								   , $this->getLinkTarget("members")
