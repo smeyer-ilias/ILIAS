@@ -5,11 +5,12 @@
 require_once './Services/User/classes/class.ilObjUser.php';
 require_once "Services/Mail/classes/class.ilMailbox.php";
 require_once "Services/Mail/classes/class.ilFormatMail.php";
+require_once 'Services/Contact/BuddySystem/classes/class.ilBuddySystem.php';
 
 /**
 * @author Jens Conze
 * @version $Id$
-*
+* @ilCtrl_Calls ilMailSearchCoursesGUI: ilBuddySystemGUI
 * @ingroup ServicesMail
 */
 class ilMailSearchCoursesGUI
@@ -48,9 +49,26 @@ class ilMailSearchCoursesGUI
 
 	public function executeCommand()
 	{
+		/**
+		 * @var $ilErr ilErrorHandling
+		 */
+		global $ilErr;
+
 		$forward_class = $this->ctrl->getNextClass($this);
 		switch($forward_class)
 		{
+			case 'ilbuddysystemgui':
+				if(!ilBuddySystem::getInstance()->isEnabled())
+				{
+					$ilErr->raiseError($this->lng->txt('msg_no_perm_read'), $ilErr->MESSAGE);
+				}
+
+				require_once 'Services/Contact/BuddySystem/classes/class.ilBuddySystemGUI.php';
+				$this->ctrl->saveParameter($this, 'search_crs');
+				$this->ctrl->setReturn($this, 'showMembers');
+				$this->ctrl->forwardCommand(new ilBuddySystemGUI());
+				break;
+
 			default:
 				if (!($cmd = $this->ctrl->getCmd()))
 				{
@@ -483,7 +501,25 @@ class ilMailSearchCoursesGUI
 						'members_crs_grp' => $ilObjDataCache->lookupTitle($crs_id),
 						'search_crs'      => $crs_id
 					);
-					
+
+					if('mail' == $context && ilBuddySystem::getInstance()->isEnabled())
+					{
+						$relation = ilBuddyList::getInstanceByGlobalUser()->getRelationByUserId($member);
+						$state_name = ilStr::convertUpperCamelCaseToUnderscoreCase($relation->getState()->getName());
+						$rowData['status'] = '';
+						if($member != $ilUser->getId())
+						{
+							if($relation->isOwnedByRequest())
+							{
+								$rowData['status'] = $this->lng->txt('buddy_bs_state_' . $state_name . '_a');
+							}
+							else
+							{
+								$rowData['status'] = $this->lng->txt('buddy_bs_state_' . $state_name . '_p');
+							}
+						}
+					}
+
 					$tableData[] = $rowData;
 				}
 			}

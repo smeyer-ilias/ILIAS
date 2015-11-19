@@ -131,7 +131,7 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
 
 			default:
 
-				if( $this->isTestExecutionCommand($cmd) )
+				if( ilTestPlayerCommands::isTestExecutionCommand($cmd) )
 				{
 					$this->checkTestExecutable();
 				}
@@ -141,16 +141,6 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
 				break;
 		}
 		return $ret;
-	}
-
-	protected function isTestExecutionCommand($cmd)
-	{
-		if( $cmd == 'autosave' || $cmd = 'redirectAfterAutosave' )
-		{
-			return false;
-		}
-		
-		return true;
 	}
 
 	protected function startTestCmd()
@@ -313,7 +303,7 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
 		$headerBlockBuilder->setQuestionCount($this->testSequence->getUserQuestionCount());
 		$headerBlockBuilder->setQuestionPostponed($this->testSequence->isPostponedQuestion($questionId));
 		$headerBlockBuilder->setQuestionObligatory(
-			$this->object->areObligationsEnabled() && ilObjTest::isQuestionObligatory($this->object->getId())
+			$this->object->areObligationsEnabled() && ilObjTest::isQuestionObligatory($questionGui->object->getId())
 		);
 		if( $this->testSession->isObjectiveOriented() )
 		{
@@ -370,8 +360,6 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
 			$sequenceElement, $presentationMode == ilTestPlayerAbstractGUI::PRESENTATION_MODE_EDIT
 		);
 		
-		$this->populateObligationIndicatorIfRequired($questionGui);
-
 		if ($instantResponse)
 		{
 			$this->populateInstantResponseBlocks(
@@ -386,6 +374,40 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
 		$this->ctrl->redirect($this, ilTestPlayerCommands::SHOW_QUESTION);
 	}
 
+	protected function submitSolutionAndNextCmd()
+	{
+		if( $this->object->isForceInstantFeedbackEnabled() )
+		{
+			return $this->submitSolutionCmd();
+		}
+		
+		if( $this->saveQuestionSolution(true, false) )
+		{
+			$questionId = $this->testSequence->getQuestionForSequence(
+				$this->getCurrentSequenceElement()
+			);
+
+			$this->getQuestionInstance($questionId)->removeIntermediateSolution(
+				$this->testSession->getActiveId(), $this->testSession->getPass()
+			);
+			
+			$nextSequenceElement = $this->testSequence->getNextSequence($this->getCurrentSequenceElement());
+
+			if(!$this->isValidSequenceElement($nextSequenceElement))
+			{
+				$nextSequenceElement = $this->testSequence->getFirstSequence();
+			}
+
+			$this->testSession->setLastSequence($nextSequenceElement);
+			$this->testSession->saveToDb();
+
+			$this->ctrl->setParameter($this, 'sequence', $nextSequenceElement);
+			$this->ctrl->setParameter($this, 'pmode', '');
+		}
+
+		$this->ctrl->redirect($this, ilTestPlayerCommands::SHOW_QUESTION);
+	}
+
 	protected function submitSolutionCmd()
 	{
 		if( $this->saveQuestionSolution(true, false) )
@@ -397,8 +419,6 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
 			$this->getQuestionInstance($questionId)->removeIntermediateSolution(
 				$this->testSession->getActiveId(), $this->testSession->getPass()
 			);
-			
-			$this->ctrl->setParameter($this, 'pmode', ilTestPlayerAbstractGUI::PRESENTATION_MODE_VIEW);
 
 			if( $this->object->isForceInstantFeedbackEnabled() )
 			{
@@ -406,21 +426,6 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
 
 				$this->testSequence->setQuestionChecked($questionId);
 				$this->testSequence->saveToDb();
-			}
-			else
-			{
-				$nextSequenceElement = $this->testSequence->getNextSequence($this->getCurrentSequenceElement());
-
-				if(!$this->isValidSequenceElement($nextSequenceElement))
-				{
-					$nextSequenceElement = $this->testSequence->getFirstSequence();
-				}
-
-				$this->testSession->setLastSequence($nextSequenceElement);
-				$this->testSession->saveToDb();
-
-				$this->ctrl->setParameter($this, 'sequence', $nextSequenceElement);
-				$this->ctrl->setParameter($this, 'pmode', '');
 			}
 		}
 

@@ -538,6 +538,20 @@ class ilObjQuestionPool extends ilObject
 	}
 
 	/**
+	 * @param ilXmlWriter $xmlWriter
+	 */
+	private function exportXMLSettings($xmlWriter)
+	{
+		$xmlWriter->xmlStartTag('Settings');
+
+		$xmlWriter->xmlElement('ShowTaxonomies', null, (int)$this->getShowTaxonomies());
+		$xmlWriter->xmlElement('NavTaxonomy', null, (int)$this->getNavTaxonomyId());
+		$xmlWriter->xmlElement('SkillService', null, (int)$this->isSkillServiceEnabled());
+		
+		$xmlWriter->xmlEndTag('Settings');
+	}
+
+	/**
 	* export pages of test to xml (see ilias_co.dtd)
 	*
 	* @param	object		$a_xml_writer	ilXmlWriter object that receives the
@@ -556,6 +570,9 @@ class ilObjQuestionPool extends ilObject
 
 		// MetaData
 		$this->exportXMLMetaData($a_xml_writer);
+
+		// Settings
+		$this->exportXMLSettings($a_xml_writer);
 
 		// PageObjects
 		$expLog->write(date("[y-m-d H:i:s] ")."Start Export Page Objects");
@@ -1170,6 +1187,26 @@ class ilObjQuestionPool extends ilObject
 		$_SESSION["qpl_clipboard"][$question_id] = array("question_id" => $question_id, "action" => "move");
 	}
 	
+	public function cleanupClipboard($deletedQuestionId)
+	{
+		if( !isset($_SESSION['qpl_clipboard']) )
+		{
+			return;
+		}
+		
+		if( !isset($_SESSION['qpl_clipboard'][$deletedQuestionId]) )
+		{
+			return;
+		}
+
+		unset($_SESSION['qpl_clipboard'][$deletedQuestionId]);
+		
+		if( !count($_SESSION['qpl_clipboard']) )
+		{
+			unset($_SESSION['qpl_clipboard']);
+		}
+	}
+	
 /**
 * Returns true, if the question pool is writeable by a given user
 * 
@@ -1713,5 +1750,11 @@ class ilObjQuestionPool extends ilObject
 		return self::$isSkillManagementGloballyActivated;
 	}
 	
+	public function fromXML($xmlFile)
+	{
+		require_once 'Modules/TestQuestionPool/classes/class.ilObjQuestionPoolXMLParser.php';
+		$parser = new ilObjQuestionPoolXMLParser($this, $xmlFile);
+		$parser->startParsing();
+	}
 } // END class.ilObjQuestionPool
 ?>

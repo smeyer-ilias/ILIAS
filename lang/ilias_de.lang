@@ -392,12 +392,12 @@ assessment#:#available_points#:#Erreichbare Punkte
 assessment#:#available_terms#:#Auswählbare Terme
 assessment#:#average_reached_points#:#Durchschnittlich erreichte Punktezahl
 assessment#:#backtocallingtest#:#Zurück zum aufrufenden Test
-assessment#:#assLongMenu#:#Langes Menü
+assessment#:#assLongMenu#:#‘Long Menu’-Frage
 assessment#:#answers_text_box#:#Textfeld
 assessment#:#answers_select#:#Auswahl
-assessment#:#info_text_upload#:#Wählen Sie eine Antwort Datei zum hochladen aus
+assessment#:#info_text_upload#:#Wählen Sie eine Textdatei (UTF-8) mit Antworten zum Hochladen aus.
 assessment#:#manual_editing#:#Manuelle Editierung
-assessment#:#longmenu_text#:#Langes Menü Text
+assessment#:#longmenu_text#:#‘Long Menu’-Text
 assessment#:#correct_answers#:#Richtige Antworten: 
 assessment#:#answer_options#:#Antwortoptionen: 
 assessment#:#add_answers#:#Antworten hinzufügen 
@@ -1040,6 +1040,11 @@ assessment#:#submit_answer#:#Speichern und weiter
 assessment#:#skip_question#:#Nicht antworten und weiter
 assessment#:#discard_answer#:#Antwort löschen
 assessment#:#discard_answer_confirmation#:#Ihre Antwort wird vollständig und endgültig gelöscht. Zu einem späteren Zeitpunkt können Sie die Frage aber erneut beantworten.<br /><br />Soll Ihre Antwort endgültig gelöscht werden?
+assessment#:#tst_denied_nav_modal_header#:#Entscheidung über Antworten
+assessment#:#tst_denied_nav_modal_text#:#Was soll mit den Antworten dieser Fragen geschehen, die Sie ggfs. bereits gegeben haben?
+assessment#:#tst_denied_nav_modal_save_btn#:#Speichern
+assessment#:#tst_denied_nav_modal_nosave_btn#:#Nicht Speichern
+assessment#:#tst_denied_nav_modal_cancel_btn#:#Abbrechen
 assessment#:#edit_answer#:#Antwort ändern
 assessment#:#answer_question#:#Frage beantworten
 assessment#:#back_to_objective_container#:#Zurück zum Kurs
@@ -1321,6 +1326,7 @@ assessment#:#tst_password_entered_wrong_password#:#Sie können den Test nicht st
 assessment#:#tst_password_introduction#:#Dieser Test kann nur mit einem Testpasswort gestartet werden. Bitte tragen Sie das Passwort hier ein.
 assessment#:#tst_percent_solved#:#Prozent gelöst
 assessment#:#tst_position#:#Frage %s von %s
+assessment#:#tst_position_without_total#:#Frage %s
 assessment#:#tst_postpone#:#Nicht beantwortete Fragen
 assessment#:#tst_postpone_on#:#Nicht beantwortete Fragen werden ans Testende geschoben
 assessment#:#tst_postpone_on_desc#:#Fragen, deren Antworten die Teilnehmer verwerfen oder überblättern, präsentiert ILIAS am Ende des Test noch einmal. Diese Einstellung wirkt sich nicht auf den Modus 'Wiedervorlage' aus.
@@ -5501,7 +5507,7 @@ common#:#with#:#mit
 common#:#wizard_search_list#:#Ihre Suche ergab folgende Ergebnisse. Bitte wählen Sie eines aus.
 common#:#wizard_title_info#:#Bitte geben Sie den Titel des zu kopierenden Objektes ein.
 common#:#write#:#Schreiben
-common#:#wrong_ip_detected#:#Der Zugang zum System wird aufgrund einer falschen Client IP verweigert.<br />Bitte kontaktieren Sie den Systemadministrator.
+common#:#wrong_ip_detected#:#Der Zugang zum System wird aufgrund einer falschen Client IP verweigert.<br>Ihre aktuelle IP-Adresse: %s<br>Bitte kontaktieren Sie den Systemadministrator.
 common#:#year#:#Jahr
 common#:#yearly#:#jährlich
 common#:#years#:#Jahre
@@ -6400,7 +6406,7 @@ content#:#cont_upload_dir_info#:#Server-Verzeichnis, von dem große SCORM- und H
 content#:#cont_upload_file#:#Datei hochladen
 content#:#cont_uploaded_file#:#Vorhandene Datei
 content#:#cont_url#:#URL
-content#:#cont_usage#:#Gebrauch
+content#:#cont_usage#:#Verwendung
 content#:#cont_use_same_resource_as_above#:#Obige Datei benutzen
 content#:#cont_users_answered#:#Benutzerantworten
 content#:#cont_users_have_mob_in_clip1#:#Dieses Medienobjekt befindet sich in der Zwischenablage von
@@ -6732,7 +6738,7 @@ crs#:#crs_no_members_assigned#:#Diesem Kurs sind noch keine Mitglieder zugeordne
 crs#:#crs_no_notify#:#Keine Benachrichtigung bei Beitritten
 crs#:#crs_no_objective_lms_found#:#Dieser Kurs enthält keine Lerninhalte, die dem Lernziel zugeordnet werden könnten.
 crs#:#crs_no_objective_selected#:#Bitte wählen Sie mindestens ein Lernziel aus.
-crs#:#crs_no_objectives_created#:#Diesem Kurs sind keine Lernziele zugeordnet.
+crs#:#crs_no_objectives_created#:#Keine Lernziele angelegt
 crs#:#crs_no_question_selected#:#Bitte wählen Sie mindestens eine Frage aus.
 crs#:#crs_no_questions_assigned#:#Diesem Lernziel sind keine Fragen zugeordnet.
 crs#:#crs_no_results_found#:#Es wurden keine passenden Ergebnisse gefunden
@@ -8564,7 +8570,7 @@ mep#:#mep_copy_to_mep#:#In Medienpool kopieren
 mep#:#mep_create#:#Neuen Medienpool anlegen
 mep#:#mep_create_content_snippet#:#Inhaltsbaustein anlegen
 mep#:#mep_create_folder#:#Ordner anlegen
-mep#:#mep_create_from_upload_dir#:#Medienobjekte aus Upload-Verzeichnis hinzufügen.
+mep#:#mep_create_from_upload_dir#:#Medienobjekte aus Upload-Verzeichnis hinzufügen
 mep#:#mep_create_media_files#:#Mediaobjekte anlegen
 mep#:#mep_create_mob#:#Medienobjekt anlegen
 mep#:#mep_default_height#:#Standardhöhe
@@ -8625,7 +8631,7 @@ meta#:#md_adv_select_one_file#:#Bitte wählen Sie eine Datei aus.
 meta#:#md_adv_show#:#Anzeigen
 meta#:#md_adv_substitution#:#Text
 meta#:#md_adv_substitution_table#:#Darstellung im Magazin
-meta#:#md_advanced#:#Erweiterte Metadaten
+meta#:#md_advanced#:#Benutzerdefinierte Metadaten
 meta#:#md_copyright#:#Copyright
 meta#:#md_copyright_add#:#Neue Vorgabe
 meta#:#md_copyright_edit#:#Copyright Vorgabe bearbeiten
@@ -8645,7 +8651,7 @@ meta#:#md_general_settings#:#Einstellungen
 meta#:#md_months#:#Monate:
 meta#:#md_obj_types#:#Zugeordnete Objekte
 meta#:#md_record_export_table#:#Exportdateien
-meta#:#md_record_list_table#:#Verfügbare Metadatensätze
+meta#:#md_record_list_table#:#Benutzerdefinierte Metadatensätze
 meta#:#md_separated_by#:#Getrennt mit %s
 meta#:#md_time#:#Zeit:
 meta#:#md_used#:#Verwendung (Anzahl)
@@ -9985,7 +9991,7 @@ ps#:#ps_new_select_field#:#Neue Auswahlliste anlegen
 ps#:#ps_new_text_field#:#Neues Textfeld anlegen
 ps#:#ps_not_accepted#:#Nicht zugestimmt
 ps#:#ps_password_change_on_first_login_enabled#:#Passwort ändern bei Erstanmeldung
-ps#:#ps_password_change_on_first_login_enabled_info#:#Wenn aktiviert, müssen Benutzer bei der ersten Anmeldung ihr Passwort ändern (außer selbstregistrierte Benutzer):
+ps#:#ps_password_change_on_first_login_enabled_info#:#Zwingt Benutzer, die sich nicht selbst registriert haben, bei der ersten Anmeldung in ILIAS ihr Passwort zu ändern.
 ps#:#ps_password_chars_and_numbers_enabled#:#Buchstaben und Zahlen erzwingen
 ps#:#ps_password_chars_and_numbers_enabled_info#:#Wenn aktiviert, müssen Passwörter Buchstaben und Zahlen enthalten.
 ps#:#ps_password_max_age#:#Maximales Alter von Passwörtern
@@ -12155,13 +12161,13 @@ user#:#user_account_code_generated#:#Erzeugt am
 user#:#user_account_code_generated_all#:#Alle Daten
 user#:#user_account_code_not_valid#:#Der gegebene Code ist ungültig oder wurde bereits benutzt.
 user#:#user_account_code_setting#:#Account-Reaktivierung durch Codes ermöglichen
-user#:#user_account_code_setting_info#:#Inaktive Accounts können durch vordefinierte Codes durch die Benutzer reaktiviert werden.
+user#:#user_account_code_setting_info#:#Benutzer können mithilfe eines Registrierungscodes ihren inaktiven Account reaktieren. Entsprechende Codes für die Verlängerung zeitlich begrenzter Benutzerkonten werden in 'Administration » Authentifizierung / Neuanmeldung » ILIAS-Auth/Selbstregistrierung : Registrierungscodes' erzeugt.
 user#:#user_account_code_used#:#Verbraucht am
 user#:#user_account_code_valid_until#:#Gültig bis
 user#:#user_account_code_valid_until_dynamic#:#Anzahl Tage
 user#:#user_account_code_valid_until_static#:#Enddatum
 user#:#user_account_code_valid_until_unlimited#:#Unlimitiert
-user#:#user_account_codes#:#Account-Reaktivierungs-Codes
+user#:#user_account_codes#:#Accountreaktivierungs-Codes
 user#:#user_account_codes_add#:#Codes erzeugen
 user#:#user_account_codes_edit_header#:#Neue Codes erzeugen
 user#:#user_account_codes_export#:#Codes exportieren
@@ -13667,7 +13673,7 @@ registration#:#registration_codes_override_info#:#Diese Einstellung hat Vorrang 
 registration#:#registration_codes_override_global_info#:#Diese Einstellungen werden evtl. durch Registrierungscodes aufgehoben.
 crs#:#event_list_registered_only#:#Nur angemeldete Mitglieder
 didactic#:#didactic_default_type#:#Standard
-pd#:#pd_info_delete_sure_remove#:#Wollen Sie wirklich die folgenden Objekte vom Persönlichen Schreibtisch entfernen?
+pd#:#pd_info_delete_sure_remove#:#Wollen Sie die folgenden Objekte aus der Liste "Ausgewählte Angebote" auf Ihrem Persönlichen Schreibtisch entfernen?
 pd#:#pd_info_delete_sure_unsubscribe#:#Wollen Sie sich wirklich aus den folgenden Objekten abmelden?
 pd#:#pd_min_one_admin#:#Diesem Objekt muß mindestens ein Administrator zugeordnet bleiben.
 file#:#enable_personal_workspace_disk_quota#:#Aktiviere Disk-Quota für den Persönlichen Arbeitsraum
@@ -13784,9 +13790,9 @@ assessment#:#tst_header_participant#:#Ihre Antwort:
 assessment#:#tst_header_solution#:#Bestmögliche Lösung:
 common#:#obj_cld#:#Cloud-Objekt
 common#:#objs_cld#:#Cloud-Objekte
-rbac#:#delete_files#:#Dateien Löschen
+rbac#:#delete_files#:#Dateien löschen
 rbac#:#cld_delete_files#:#Benutzer können Dateien im Cloud-Objekt löschen
-rbac#:#delete_folders#:#Ordner Löschen
+rbac#:#delete_folders#:#Ordner löschen
 rbac#:#cld_delete_folders#:#Benutzer können Ordner im Cloud-Objekt löschen
 rbac#:#files_visible#:#Dateien sichtbar
 rbac#:#cld_files_visible#:#Dateien im Cloud-Objekt sind für die Benutzer sichtbar
@@ -13797,7 +13803,7 @@ rbac#:#cld_folders_create#:#Ordner können im Cloud-Objekt erstellt werden
 rbac#:#cld_visible#:#Cloud-Objekt sichtbar
 rbac#:#cld_read#:#Benutzer können Cloud-Objekt öffnen
 rbac#:#cld_write#:#Benutzer können Cloud-Objekt Einstellungen bearbeiten
-rbac#:#cld_delete#:#Benutzer können können Cloud-Objekte löschen
+rbac#:#cld_delete#:#Benutzer können Cloud-Objekte löschen
 rbac#:#cld_permission#:#Benutzer können Rechteeinstellungen bearbeiten
 rbac#:#cld_upload#:#Benutzer können Dateien in das Cloud-Objekt laden
 rbac#:#cld_download#:#Benutzer können Dateien vom Cloud-Objekt herunterladen
@@ -14954,7 +14960,7 @@ wiki#:#wiki_template_added#:#Seitenvorlage hinzugefügt
 wiki#:#wiki_templ_new_pages#:#Verfügbar für neue Seite
 wiki#:#wiki_templ_add_to_page#:#Verfügbar für bestehende Seite
 wiki#:#wiki_add_template#:#Als Seitenvorlage nutzen
-wiki#:#wiki_empty_page_template#:#Keine Seitenvorlage beim Erstellen einer neuen Seite anwenden
+wiki#:#wiki_empty_page_template#:#Erstellen einer neuen Seite ohne Vorlage anbieten (leere Seite)
 wiki#:#wiki_page_not_exist_select_templ#:#Diese Seite existiert noch nicht. Bitte wählen Sie eine Vorlage für die neue Seite.
 wiki#:#wiki_new_page#:#Neue Seite
 wiki#:#wiki_page_template#:#Seitenvorlage
@@ -15523,8 +15529,8 @@ style#:#sty_type_sup#:#Hochgestellt
 content#:#cont_text_sub#:#Tiefgestellt
 content#:#cont_text_sup#:#Hochgestellt
 cmps#:#cmps_uninstall#:#Deinstallieren
-cmps#:#cmps_uninstall_confirm#:#Wollen Sie wirklich das Plugin "%s" deinstallieren? 
-cmps#:#cmps_plugin_uninstalled#:#Das Plugin wurde deinstalliert.
+cmps#:#cmps_uninstall_confirm#:#Wollen Sie wirklich das Plugin "%s" deinstallieren und alle zugehörigen Datenbankeinträge löschen?
+cmps#:#cmps_plugin_uninstalled#:#Alle Sprach- und Datenbankeinträge, die sich auf das Plugin beziehen, wurden gelöscht und das Plugin deaktiviert. Sie können jetzt das Verzeichnis und den Quellcode des Plugins aus dem ‘Customizing’-Verzeichnis entfernen, um das Plugin endgültig zu deinstallieren.
 content#:#cont_pc_carousel#:#Karussell
 style#:#sty_carousel_templates#:#Karussell Templates
 style#:#sty_ca_cntr_class#:#Carousel Container
@@ -15642,11 +15648,11 @@ meta#:#meta_obj_type_inactive#:#Inaktiv
 meta#:#meta_obj_type_mandatory#:#Verpflichtend
 meta#:#meta_obj_type_optional#:#Optional
 common#:#obj_tool_setting_custom_metadata#:#Benutzerdefinierte Metadaten
-common#:#obj_tool_setting_custom_metadata_info#:#Wenn aktiviert können Metadaten konfiguriert werden.
+common#:#obj_tool_setting_custom_metadata_info#:#Wenn aktiviert können benutzerdefinierte Metadaten konfiguriert werden.
 meta#:#meta_section#:#Bereich
 meta#:#meta_tab_lom#:#LOM
 meta#:#meta_tab_advmd#:#Benutzerdefinierte Metadaten
-meta#:#meta_tab_advmd_def#:#Benutzerdefinierte Metadaten-Definition
+meta#:#meta_tab_advmd_def#:#Metadatensätze verwalten
 meta#:#meta_global#:#Global
 wiki#:#wiki_unhide_meta_adv_records#:#Zusätzliche Eigenschaften anzeigen
 prtf#:#prtf_back_to_portfolio_owner#:#Portfolio bearbeiten
@@ -15832,14 +15838,25 @@ buddysystem#:#buddy_notification_contact_request#:#Kontaktanfrage
 buddysystem#:#buddy_notification_contact_request_short#:#Der Benutzer "[REQUESTING_USER]" möchte mit Ihnen in Kontakt treten.[BR][BR][APPROVE_REQUEST][BR][IGNORE_REQUEST]
 buddysystem#:#buddy_notification_contact_request_link#:#Anfrage bestätigen:
 buddysystem#:#buddy_notification_contact_request_link_osd#:#Anfrage bestätigen
-buddysystem#:#buddy_notification_contact_request_ignore#:#Anfrage Ignorieren: 
-buddysystem#:#buddy_notification_contact_request_ignore_osd#:#Anfrage Ignorieren
+buddysystem#:#buddy_notification_contact_request_ignore#:#Anfrage ignorieren:
+buddysystem#:#buddy_notification_contact_request_ignore_osd#:#Anfrage ignorieren
 buddysystem#:#buddy_notification_contact_request_long#:#[SALUTATION][BR][BR]der Benutzer "[REQUESTING_USER]" möchte mit Ihnen in Kontakt treten.[BR][BR][APPROVE_REQUEST_TXT] [APPROVE_REQUEST][BR][IGNORE_REQUEST_TXT] [IGNORE_REQUEST]
 buddysystem#:#buddy_request_approved#:#Der Kontakt wurde erfolgreich hergestellt.
 buddysystem#:#buddy_request_ignored#:#Sie haben den Benutzer ignoriert.
+buddysystem#:#buddy_relation_requested#:#Dem Benutzer wurde eine Kontaktanfrage gesendet.
+buddysystem#:#buddy_enable#:#Aktviere „Benutzerkontakte“
+buddysystem#:#buddy_enable_info#:#Falls aktiviert, können Benutzer im System über Kontaktanfragen miteinander in Verbindung treten. Eine zusätzliche persönliche Einstellung ermöglicht jedem Benutzer, Kontaktaufnahmen zuzulassen oder zu verhindern.
+buddysystem#:#buddy_allow_to_contact_me#:#Kontaktanfragen erlauben
+buddysystem#:#buddy_allow_to_contact_me_info#:#Wenn aktiviert, können andere Benutzer mir Kontaktanfragen senden. 
+common#:#obj_cadm#:#Benutzerkontakte
+common#:#obj_cadm_desc#:#Administration für Benutzerkontakte
+rbac#:#cadm_visible#:#Administration für Benutzerkontakte ist sichtbar
+rbac#:#cadm_read#:#Administration für Benutzerkontakte lesen
+rbac#:#cadm_write#:#Administration für Benutzerkontakte editieren
+rbac#:#cadm_edit_permission#:#Rechteeinstellungen der Administration für Benutzerkontakte ändern
 common#:#no_gallery_users_available#:#Aktuell befinden sich keine Benutzer in der Galerie.
 crs#:#crs_mem_contact#:#Kursbetreuung
-awrn#:#awareness_now_online#:#Jetzt Online
+awrn#:#awareness_now_online#:#Jetzt online
 awrn#:#awareness_now_online_users#:#[ONLINE_USER_NAMES]
 common#:#obj_awra_desc#:#„Wer ist online?“-Anzeige administrieren
 common#:#obj_awra#:#„Wer ist online?“-Anzeige
@@ -15852,31 +15869,31 @@ crs#:#crs_awrn_support_contacts#:#Kursbetreuung
 crs#:#crs_awrn_support_contacts_info#:#Benutzer, die den Kurs betreuen, werden aufgelistet. Die jeweiligen Benutzer werden im Reiter Mitglieder des Kurses für die Kursbetreuung eingetragen.
 awrn#:#awrn_inactive#:#Keine Anzeige
 awrn#:#awrn_online_only#:#Nur Online
-awrn#:#awrn_incl_offline#:#Online und Offline
+awrn#:#awrn_incl_offline#:#Online und offline
 contact#:#contact_awrn_ap_contacts#:#Bestätigte Kontakte
 contact#:#contact_awrn_ap_contacts_info#:#Alle bestätigten Kontakte eines Benutzers werden aufgelistet.
 adm#:#adm_support_contacts#:#Technische Betreuung
-adm#:#adm_awrn_support_contacts_info#:#Die Benutzer der technischen Betreuung werden aufgelistet. Die Benutzer werden im Bereich "Allgemeine Einstellungen" > "Kontaktinformationen" der technischen Betreuung zugeordnet.
-adm#:#adm_support_contacts_info#:#Technische Betreuer werden in der Fußzeile verlinkt und (wenn aktiviert) in der „Wer ist online?“-Anzeige aufgelistet. Komma-separierte Liste von Benutzer-Logins.
+adm#:#adm_awrn_support_contacts_info#:#Die Benutzer für die technische Betreuung werden aufgelistet. Die Benutzer werden im Bereich "Allgemeine Einstellungen" » "Kontaktinformationen" der technischen Betreuung zugeordnet.
+adm#:#adm_support_contacts_info#:#Technische Betreuer werden in der Fußzeile verlinkt und - wenn aktiviert - in der „Wer ist online?“-Anzeige aufgelistet. Komma-separierte Liste von Benutzeraccounts.
 mmbr#:#mmbr_awrn_my_groups_courses#:#Meine Kurse und Gruppen
 mmbr#:#mmbr_awrn_my_groups_courses_info#:#Alle Mitglieder von Gruppen und Kursen eines Benutzers werden aufgelistet.
 crs#:#crs_awrn_current_course#:#Aktueller Kurs
 crs#:#crs_awrn_current_course_info#:#Innerhalb eines Kurses werden alle Mitglieder des Kurses aufgelistet.
 awrn#:#awrn_caching_period#:#Caching-Zeitraum
-awrn#:#awrn_caching_period_info#:#Dieser Zeitraum wird gewartet, bevor die Anzahl der Benutzer in der Top-Anzeige aktualisiert wird und bevor neue Online-Benutzer ermittelt werden.
+awrn#:#awrn_caching_period_info#:#Dieser Zeitraum wird abgewartet, bevor die Anzahl der Benutzer in der Top-Anzeige aktualisiert und neue Online-Benutzer ermittelt werden.
 awrn#:#awrn_seconds#:#Sek.
 awrn#:#awrn_max_nr_entries#:#Anzahl max. Einträge
-awrn#:#awrn_max_nr_entries_info#:#Diese Anzahl an Einträgen wird maximal in der Awareness-Liste angezeigt.
+awrn#:#awrn_max_nr_entries_info#:#Diese Anzahl an Einträgen wird maximal in der „Wer ist online?“-Liste angezeigt.
 awrn#:#awrn_hide_from_awareness#:#Mich nicht in „Wer ist online?“-Anzeige auflisten
 awrn#:#awrn_hide_from_awareness_info#:#Die „Wer ist online?“-Anzeige erscheint oben im Kopf der Anwendung und listet ausgewählte Benutzer auf (z.B. Kontakte oder Mitglieder Ihrer Kurse).
 common#:#contact_sysadmin#:#Technische Betreuung kontaktieren
 ldap#:#ldap_servers#:#LDAP Server
-ldap#:#add_ldap_server#:#Server Hinzufügen
+ldap#:#add_ldap_server#:#Server hinzufügen
 ldap#:#ldap_username_filter#:#Benutzernamen Filter
 ldap#:#ldap_username_filter_info#:#Benutzen Sie * als Wildcard.
 search#:#search_filter_cd#:#Filter nach Erstellungsdatum
 search#:#search_filter_date#:#Nach Datum
-search#:#search_filter_duration#:#Search by duration
+search#:#search_filter_duration#:#Nach Dauer
 search#:#search_created_before#:#Objekte erstellt vor dem...
 search#:#search_created_after#:#Objekte erstellt nach dem...
 search#:#search_created_on#:#Objekte erstellt am...
@@ -15937,7 +15954,7 @@ prg#:#prg_status_outdated#:#abgelaufen
 prg#:#prg_status_in_progress#:#In Bearbeitung
 prg#:#prg_status_completed#:#Abgeschlossen
 prg#:#prg_status_accredited#:#Akkreditiert
-prg#:#prg_status_not_relevant#:#Nicht Relevant
+prg#:#prg_status_not_relevant#:#Nicht relevant
 prg#:#prg_possible#:#Möglich
 prg#:#prg_completion_by#:#Abgeschlossen durch
 prg#:#prg_changed_by#:#Geändert durch
@@ -16062,7 +16079,9 @@ meta#:#md_adv_field_filter_warning#:#Die Feldtypen %s werden aktuell nicht als T
 grp#:#grp_subscription_min_members_info#:#Wird die geforderte Mindestanzahl an Mitgliedern nicht erreicht, kann die Gruppe nicht stattfinden. Wird die Mindestanzahl bis zum Ende des Beitrittszeitraums bzw. dem spätesten Gruppenaustritt nicht erreicht, versendet ILIAS eine Mail an jene Gruppenadministratoren, für die im Reiter 'Mitglieder' die Option 'Benachrichtigung' aktiviert ist.
 grp#:#grp_max_and_min_members_invalid#:#Die minimale Anzahl muss kleiner als die maximale Anzahl sein.
 crs#:#mem_cron_min_members_reason#:#Sie erhalten diese Email, da Sie die Benachrichtigung im jeweiligen Mitglieder-Tab aktiviert haben.
-crs#:#mem_cron_min_members_task#:#Informieren Sie die Teilnehmenden rechtzeitig, falls der Kurs wegen Nicht-Erreichens der geforderten Mindestanzahl nicht stattfindet. Passen Sie nach Ablauf des Beitrittszeitraums die Kurseinstellungen an.
+crs#:#mem_cron_min_members_task#:#Informieren Sie die Teilnehmenden rechtzeitig, falls der Kurs wegen Nicht-Erreichung der geforderten Mindestanzahl nicht stattfindet. Passen Sie nach Ablauf des Beitrittszeitraums die Kurseinstellungen an.
+common#:#prg_copy_threads_info#:#Bitte wählen Sie aus, welche Elemente des Studienprogramms kopiert, verknüpft oder aber bei dem Kopiervorgang ausgelassen werden sollen.
+common#:#prg_wizard_page#:#Studienprogramm kopieren (Schritt 2/2)
 crs#:#crs_loc_settings_passed_mode#:#Bestandene Lernziele
 crs#:#crs_loc_settings_passed_mode_hide#:#Testfragen zu bestandenen Lernzielen werden ausgeblendet.
 crs#:#crs_loc_settings_passed_mode_mark#:#Testfragen zu bestandenen Lernzielen werden markiert.
@@ -16080,3 +16099,13 @@ crs#:#crs_loc_settings_type_q_selected_info#:#Abschlusstest pro Lernziel
 crs#:#crs_visibility_until_info#:#---
 crs#:#crs_registration_limited_info#:#---
 crs#:#crs_subscription_max_members_short_info#:#---
+crs#:#crs_unsubscribe_member_explanation#:#Sie erhalten diese Mail, da Sie die Kursmitgliedschaft des oben genannten Kurses beendet haben.
+rbac#:#prg_read#:#Seiteninhalt des Studienprogramms kann gelesen werden
+sess#:#sess_max_members_needed#:#Für die Warteliste wird eine maximale Anzahl Mitglieder benötigt.
+obj#:#obj_import_file_error#:#Die Datei konnte nicht importiert werden. Bitte stellen Sie sicher, dass es sich um eine ILIAS-Exportdatei (XML-Export) des gleichen Objekttyps handelt und der Dateiename unverändert ist. Fehlermeldung:
+content#:#cont_sqst#:#Frage in Umfrage (Material)
+mmbr#:#info_refuse_sure#:#Sind Sie sicher, dass Sie den/die folgenden Benutzer ablehnen möchten?
+administration#:#adm_user_starting_point_inherit#:#Standard-Einstellungen übernehmen
+administration#:#adm_user_starting_point_inherit_info#:#Es werden die Einstellungen übernommen, wie sie vom Administrator für die ganze Plattform  global aktiviert wurden.
+survey#:#svy_export_format#:#Umfragen exportieren als
+survey#:#svy_fraction_of_selections#:#Anteil an den insgesamt ausgewählten Antwortoptionen

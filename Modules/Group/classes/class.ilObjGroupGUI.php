@@ -1787,89 +1787,6 @@ class ilObjGroupGUI extends ilContainerGUI
 	}
 
 	/**
-	* Form for mail to group members
-	*/
-	function mailMembersObject()
-	{
-		global $rbacreview, $ilObjDataCache, $ilias;
-		include_once('./Services/AccessControl/classes/class.ilObjRole.php');
-		
-		$this->lng->loadLanguageModule('mail');
-		if(!isset($_GET['returned_from_mail']))
-		{
-			ilUtil::sendInfo($this->lng->txt('mail_select_recipients'));
-		}
-
-		$this->tpl->addBlockFile('ADM_CONTENT','adm_content','tpl.mail_members.html','Services/Contact');
-		
-
-		$this->tabs_gui->setTabActive('members');
-		$b_cmd = $_GET["back_cmd"] ? $_GET["back_cmd"] : "members";
-		$this->tabs_gui->setBackTarget($this->lng->txt("back"), $this->ctrl->getLinkTarget($this,$b_cmd));
-
-
-        require_once 'Services/Mail/classes/class.ilMailFormCall.php';
-		$this->tpl->setVariable("MAILACTION", ilMailFormCall::getLinkTarget($this, $b_cmd, array(), array('type' => 'role','sig' => $this->createMailSignature())));
-		$this->tpl->setVariable("IMG_ARROW",ilUtil::getImagePath('arrow_downright.svg'));
-		$this->tpl->setVariable("TXT_MARKED_ENTRIES",$this->lng->txt('marked_entries'));
-		$this->tpl->setVariable("OK",$this->lng->txt('next'));
-		
-		// Get role mailbox addresses
-		$role_ids = $rbacreview->getRolesOfRoleFolder($this->object->getRefId(), false);
-		$role_addrs = array();
-		
-		// Sort by relevance
-		$sorted_role_ids = array();
-		$counter = 2;
-		foreach($role_ids as $role_id)
-		{
-			switch(substr(ilObject::_lookupTitle($role_id),0,8))
-			{
-				case 'il_grp_a':
-					$sorted_role_ids[1] = $role_id;
-					break;
-					
-				case 'il_grp_m':
-					$sorted_role_ids[0] = $role_id;
-					break;
-					
-				default:
-					$sorted_role_ids[$counter++] = $role_id;
-					break;
-			}
-		}
-		ksort($sorted_role_ids,SORT_NUMERIC);
-		foreach ((array) $sorted_role_ids as $role_id)
-		{
-			$this->tpl->setCurrentBlock("mailbox_row");
-			$role_addr = $rbacreview->getRoleMailboxAddress($role_id);
-
-			// check if role title is unique. if not force use pear mail for roles
-			$ids_for_role_title = ilObject::_getIdsForTitle(ilObject::_lookupTitle($role_id), 'role');
-			if(count($ids_for_role_title) >= 2)
-			{
-				$ilias->setSetting('pear_mail_enable', 1);
-			}
-
-			$this->tpl->setVariable("CHECK_MAILBOX",ilUtil::formCheckbox(1,'roles[]',
-					htmlspecialchars($role_addr)
-			));
-
-			if (ilMail::_usePearMail() && substr($role_addr, 0, 4) != '#il_')
-			{
-				// if pear mail is enabled, mailbox addresses are already localized in the language of the user
-				$this->tpl->setVariable("MAILBOX",$role_addr);
-			}
-			else
-			{
-				// if pear mail is not enabled, we need to localize mailbox addresses in the language of the user
-				$this->tpl->setVariable("MAILBOX",ilObjRole::_getTranslation($ilObjDataCache->lookupTitle($role_id)) . " (".$role_addr.")");
-			}
-			$this->tpl->parseCurrentBlock();
-		}
-	}
-
-	/**
 	* adds applicant to group as member
 	* @access	public
 	*/
@@ -3229,6 +3146,159 @@ class ilObjGroupGUI extends ilContainerGUI
 	protected function jump2UsersGalleryObject()
 	{
 		$this->ctrl->redirectByClass('ilUsersGalleryGUI');
+	}
+
+	public function confirmRefuseSubscribersObject()
+	{
+		if(!is_array($_POST["subscribers"]))
+		{
+			ilUtil::sendFailure($this->lng->txt("no_checkbox"));
+			$this->membersObject();
+
+			return false;
+		}
+
+		$this->lng->loadLanguageModule('mmbr');
+
+		$this->checkPermission('write');
+		$this->setSubTabs('members');
+		$this->tabs_gui->setTabActive('members');
+		$this->tabs_gui->setSubTabActive('grp_edit_members');
+
+		include_once("Services/Utilities/classes/class.ilConfirmationGUI.php");
+		$c_gui = new ilConfirmationGUI();
+
+		// set confirm/cancel commands
+		$c_gui->setFormAction($this->ctrl->getFormAction($this, "refuseSubscribers"));
+		$c_gui->setHeaderText($this->lng->txt("info_refuse_sure"));
+		$c_gui->setCancel($this->lng->txt("cancel"), "members");
+		$c_gui->setConfirm($this->lng->txt("confirm"), "refuseSubscribers");
+
+		foreach($_POST["subscribers"] as $subscribers)
+		{
+			$name = ilObjUser::_lookupName($subscribers);
+
+			$c_gui->addItem('subscribers[]',
+							$name['user_id'],
+							$name['lastname'].', '.$name['firstname'].' ['.$name['login'].']',
+							ilUtil::getImagePath('icon_usr.svg'));
+		}
+
+		$this->tpl->setContent($c_gui->getHTML());
+	}
+
+	public function confirmAssignSubscribersObject()
+	{
+		if(!is_array($_POST["subscribers"]))
+		{
+			ilUtil::sendFailure($this->lng->txt("no_checkbox"));
+			$this->membersObject();
+
+			return false;
+		}
+		$this->checkPermission('write');
+		$this->setSubTabs('members');
+		$this->tabs_gui->setTabActive('members');
+		$this->tabs_gui->setSubTabActive('grp_edit_members');
+
+		include_once("Services/Utilities/classes/class.ilConfirmationGUI.php");
+		$c_gui = new ilConfirmationGUI();
+
+		// set confirm/cancel commands
+		$c_gui->setFormAction($this->ctrl->getFormAction($this, "assignSubscribers"));
+		$c_gui->setHeaderText($this->lng->txt("info_assign_sure"));
+		$c_gui->setCancel($this->lng->txt("cancel"), "members");
+		$c_gui->setConfirm($this->lng->txt("confirm"), "assignSubscribers");
+
+		foreach($_POST["subscribers"] as $subscribers)
+		{
+			$name = ilObjUser::_lookupName($subscribers);
+
+			$c_gui->addItem('subscribers[]',
+							$name['user_id'],
+							$name['lastname'].', '.$name['firstname'].' ['.$name['login'].']',
+							ilUtil::getImagePath('icon_usr.svg'));
+		}
+
+		$this->tpl->setContent($c_gui->getHTML());
+		return true;
+	}
+
+	public function confirmRefuseFromListObject()
+	{
+		if(!is_array($_POST["waiting"]))
+		{
+			ilUtil::sendFailure($this->lng->txt("no_checkbox"));
+			$this->membersObject();
+
+			return false;
+		}
+
+		$this->lng->loadLanguageModule('mmbr');
+
+		$this->checkPermission('write');
+		$this->setSubTabs('members');
+		$this->tabs_gui->setTabActive('members');
+		$this->tabs_gui->setSubTabActive('grp_edit_members');
+
+		include_once("Services/Utilities/classes/class.ilConfirmationGUI.php");
+		$c_gui = new ilConfirmationGUI();
+
+		// set confirm/cancel commands
+		$c_gui->setFormAction($this->ctrl->getFormAction($this, "refuseFromList"));
+		$c_gui->setHeaderText($this->lng->txt("info_refuse_sure"));
+		$c_gui->setCancel($this->lng->txt("cancel"), "members");
+		$c_gui->setConfirm($this->lng->txt("confirm"), "refuseFromList");
+
+		foreach($_POST["waiting"] as $waiting)
+		{
+			$name = ilObjUser::_lookupName($waiting);
+
+			$c_gui->addItem('waiting[]',
+							$name['user_id'],
+							$name['lastname'].', '.$name['firstname'].' ['.$name['login'].']',
+							ilUtil::getImagePath('icon_usr.svg'));
+		}
+
+		$this->tpl->setContent($c_gui->getHTML());
+		return true;
+	}
+
+	public function confirmAssignFromWaitingListObject()
+	{
+		if(!is_array($_POST["waiting"]))
+		{
+			ilUtil::sendFailure($this->lng->txt("no_checkbox"));
+			$this->membersObject();
+
+			return false;
+		}
+		$this->checkPermission('write');
+		$this->setSubTabs('members');
+		$this->tabs_gui->setTabActive('members');
+		$this->tabs_gui->setSubTabActive('grp_edit_members');
+
+		include_once("Services/Utilities/classes/class.ilConfirmationGUI.php");
+		$c_gui = new ilConfirmationGUI();
+
+		// set confirm/cancel commands
+		$c_gui->setFormAction($this->ctrl->getFormAction($this, "assignFromWaitingList"));
+		$c_gui->setHeaderText($this->lng->txt("info_assign_sure"));
+		$c_gui->setCancel($this->lng->txt("cancel"), "members");
+		$c_gui->setConfirm($this->lng->txt("confirm"), "assignFromWaitingList");
+
+		foreach($_POST["waiting"] as $waiting)
+		{
+			$name = ilObjUser::_lookupName($waiting);
+
+			$c_gui->addItem('waiting[]',
+							$name['user_id'],
+							$name['lastname'].', '.$name['firstname'].' ['.$name['login'].']',
+							ilUtil::getImagePath('icon_usr.svg'));
+		}
+
+		$this->tpl->setContent($c_gui->getHTML());
+		return true;
 	}
 } // END class.ilObjGroupGUI
 ?>

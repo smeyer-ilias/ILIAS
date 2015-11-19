@@ -12307,3 +12307,66 @@ $ilDB->modifyTableColumn(
 <?php
 	$ilCtrlStructureReader->getStructure();
 ?>
+<#4782>
+<?php
+	$ilCtrlStructureReader->getStructure();
+?>
+<#4783>
+<?php
+	$ilCtrlStructureReader->getStructure();
+?>
+<#4784>
+<?php
+	include_once('./Services/Migration/DBUpdate_3560/classes/class.ilDBUpdateNewObjectType.php');
+	$obj_type_id = ilDBUpdateNewObjectType::getObjectTypeId("prg");
+	$existing_ops = array("read");
+	foreach ($existing_ops as $op) {
+		$op_id = ilDBUpdateNewObjectType::getCustomRBACOperationId($op);
+		ilDBUpdateNewObjectType::addRBACOperation($obj_type_id, $op_id);
+	}
+?>
+<#4785>
+<?php
+	$ilCtrlStructureReader->getStructure();
+?>
+<#4786>
+<?php
+$ilCtrlStructureReader->getStructure();
+?>
+<#4787>
+<?php
+include_once('./Services/Migration/DBUpdate_3560/classes/class.ilDBUpdateNewObjectType.php');
+ilDBUpdateNewObjectType::addAdminNode('cadm', 'Contact');
+?>
+<#4788>
+<?php
+$ilSetting = new ilSetting('buddysystem');
+$ilSetting->set('enabled', 1);
+?>
+<#4789>
+<?php
+$stmt = $ilDB->prepareManip('INSERT INTO usr_pref (usr_id, keyword, value) VALUES(?, ?, ?)', array('integer', 'text', 'text'));
+
+$notin = $ilDB->in('usr_data.usr_id', array(13), true, 'integer');
+$query = 'SELECT usr_data.usr_id FROM usr_data LEFT JOIN usr_pref ON usr_pref.usr_id = usr_data.usr_id AND usr_pref.keyword = %s WHERE usr_pref.keyword IS NULL AND ' . $notin;
+$res   = $ilDB->queryF($query, array('text'), array('bs_allow_to_contact_me'));
+while($row = $ilDB->fetchAssoc($res))
+{
+	$ilDB->execute($stmt, array($row['usr_id'], 'bs_allow_to_contact_me', 'y'));
+}
+?>
+<#4790>
+<?php
+
+	if(!$ilDB->indexExistsByFields('page_question',array('question_id')))
+	{
+		$ilDB->addIndex('page_question',array('question_id'),'i2');
+	}
+?>
+<#4791>
+<?php
+	if(!$ilDB->indexExistsByFields('help_tooltip', array('tt_id', 'module_id')))
+	{
+		$ilDB->addIndex('help_tooltip', array('tt_id', 'module_id'), 'i1');
+	}
+?>

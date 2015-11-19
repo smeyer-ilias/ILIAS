@@ -1,3 +1,4 @@
+
 /* Copyright (c) 1998-2015 ILIAS open source eLearning e.V., Extended GPL, see docs/LICENSE */
 /**
 * ILIAS language file
@@ -291,7 +292,7 @@ assessment#:#backtocallingtest#:#Back to the calling test
 assessment#:#assLongMenu#:#Long Menu
 assessment#:#answers_text_box#:#Text
 assessment#:#answers_select#:#Select
-assessment#:#info_text_upload#:#Choose an answer file to upload
+assessment#:#info_text_upload#:#Choose an answer text (UTF-8) file to upload.
 assessment#:#manual_editing#:#Manual Editing
 assessment#:#longmenu_text#:#Long Menu Text
 assessment#:#correct_answers#:#Correct Answers: 
@@ -924,6 +925,11 @@ assessment#:#submit_answer#:#Save Answer and Next
 assessment#:#skip_question#:#Do not Answer and Next
 assessment#:#discard_answer#:#Delete Answer
 assessment#:#discard_answer_confirmation#:#Your answer will be finally and completely deleted. You can provide a new answer at any time. But this one will be purged.<br /><br />Do you want to delete your answer?
+assessment#:#tst_denied_nav_modal_header#:#Decision about Answers
+assessment#:#tst_denied_nav_modal_text#:#What to do with the answers you possibly entered for this question?
+assessment#:#tst_denied_nav_modal_save_btn#:#Save
+assessment#:#tst_denied_nav_modal_nosave_btn#:#Do Not Save
+assessment#:#tst_denied_nav_modal_cancel_btn#:#Cancel
 assessment#:#edit_answer#:#Edit Answer
 assessment#:#answer_question#:#Answer Question
 assessment#:#back_to_objective_container#:#Go to Course
@@ -1158,6 +1164,7 @@ assessment#:#tst_password_form#:#Enter Test Password
 assessment#:#tst_password#:#Test Password
 assessment#:#tst_percent_solved#:#Percent Solved
 assessment#:#tst_position#:#Question %s of %s
+assessment#:#tst_position_without_total#:#Question %s
 assessment#:#tst_postpone#:#Unanswered Questions
 assessment#:#tst_postpone_on#:#Unanswered questions will be enqueued
 assessment#:#tst_postpone_on_desc#:#Question that users just look at and flip over without answering them, will be enqueued to be presented again automatically the end of the test.
@@ -4827,7 +4834,7 @@ common#:#with#:#with
 common#:#wizard_search_list#:#Your search produced the following hits. Please select one of them.
 common#:#wizard_title_info#:#Please enter the title of the object you want to duplicate.
 common#:#write#:#Write
-common#:#wrong_ip_detected#:#Your access is denied because of a wrong client ip.<br>Please contact the system administrator.
+common#:#wrong_ip_detected#:#Your access is denied because of a wrong client ip.<br>You are currently using this IP address: %s<br>Please contact the system administrator.
 common#:#year#:#Year
 common#:#years#:#Years
 common#:#yes#:#Yes
@@ -5822,7 +5829,7 @@ crs#:#crs_no_members_assigned#:#There are no members assigned to this course
 crs#:#crs_no_notify#:#No notify for new registrations
 crs#:#crs_no_objective_lms_found#:#This course does not contain learning material that could be assigned to the learning objective.
 crs#:#crs_no_objective_selected#:#Please select one objective.
-crs#:#crs_no_objectives_created#:#There are no objectives assigned.
+crs#:#crs_no_objectives_created#:#No Course Materials created
 crs#:#crs_no_question_selected#:#Please select one question.
 crs#:#crs_no_questions_assigned#:#There are no questions assigned.
 crs#:#crs_no_results_found#:#No results found
@@ -6057,7 +6064,7 @@ crs#:#crs_unblocked_member_body#:#your membership in course "%s" has been restor
 crs#:#crs_unblocked_member#:#Access granted in course "%s"
 crs#:#crs_unblocked#:#Free entrance
 crs#:#crs_unlimited#:#Unlimited
-crs#:#crs_unsubscribe_member_body#:#we confirm your cancellation of membership in course "%s". We hope that you find an opportunity to participate in another course.
+crs#:#crs_unsubscribe_member_body#:#We confirm your cancellation of membership in course "%s".
 crs#:#crs_unsubscribe_member#:#Your cancellation of membership in course "%s"
 crs#:#crs_unsubscribe_sure#:#Are you sure you want to unsubscribe from this course?
 crs#:#crs_unsubscribed_from_crs#:#You have been unsubscribed from this course.
@@ -7487,7 +7494,7 @@ meta#:#md_adv_select_one_file#:#Please choose one file.
 meta#:#md_adv_show#:#Show
 meta#:#md_adv_substitution_table#:#Presentation in the Repository/Personal Desktop
 meta#:#md_adv_substitution#:#Text
-meta#:#md_advanced#:#Advanced Metadata
+meta#:#md_advanced#:#Custom Metadata
 meta#:#md_copyright_add#:#Add Copyright Presetting
 meta#:#md_copyright_edit#:#Edit Copyright Presetting
 meta#:#md_copyright_enable_info#:#Choose this option to offer a selection of predefined copyrights.
@@ -7507,7 +7514,7 @@ meta#:#md_general_settings#:#General Settings
 meta#:#md_months#:#Month:
 meta#:#md_obj_types#:#Assigned Objects
 meta#:#md_record_export_table#:#Export Files
-meta#:#md_record_list_table#:#Available Metadata Sets
+meta#:#md_record_list_table#:#Custom Metadata Sets
 meta#:#md_separated_by#:#Separated by %s
 meta#:#md_time#:#Time:
 meta#:#md_used#:#Usage
@@ -7840,7 +7847,7 @@ meta#:#meta_l_be#:#Byelorussian
 meta#:#meta_l_bg#:#Bulgarian
 meta#:#meta_l_bh#:#Bihari
 meta#:#meta_l_bi#:#Bislama
-meta#:#meta_l_bn#:#Bengali;bangla
+meta#:#meta_l_bn#:#Bengali; Bangla
 meta#:#meta_l_bo#:#Tibetan
 meta#:#meta_l_br#:#Breton
 meta#:#meta_l_ca#:#Catalan
@@ -7915,7 +7922,7 @@ meta#:#meta_l_om#:#Afan (oromo)
 meta#:#meta_l_or#:#Oriya
 meta#:#meta_l_pa#:#Punjabi
 meta#:#meta_l_pl#:#Polish
-meta#:#meta_l_ps#:#Pashto;pushto
+meta#:#meta_l_ps#:#Pashto; Pushto
 meta#:#meta_l_pt#:#Portuguese
 meta#:#meta_l_qu#:#Quechua
 meta#:#meta_l_rm#:#Rhaeto-romance
@@ -11807,7 +11814,7 @@ user#:#user_account_code_setting_info#:#Inactive Accounts can be re-activated by
 registration#:#registration_code_optional_info#:#If you have got a registration code, please enter it here.
 registration#:#registration_code_required_info#:#A pre-defined code is mandatory for the registration process.
 auth#:#auth_account_code#:#Code
-auth#:#auth_account_code_info#:#To re-activate your account you can use a ILIAS account code.
+auth#:#auth_account_code_info#:#To re-activate your account you can use an ILIAS account code.
 auth#:#auth_account_code_title#:#Account Code
 auth#:#auth_account_code_used#:#Your account has been re-activated. Please login once again for security reasons.
 prtf#:#prtf_no_blogs_info#:#Your "%s" does not contain any blogs. Create blogs to use them as part of your portfolios.
@@ -15533,8 +15540,8 @@ style#:#sty_type_sup#:#Superscript
 content#:#cont_text_sub#:#Subscript
 content#:#cont_text_sup#:#Superscript
 cmps#:#cmps_uninstall#:#Uninstall
-cmps#:#cmps_uninstall_confirm#:#Are you sure you want to uninstall the plugin "%s"?
-cmps#:#cmps_plugin_uninstalled#:#The plugin has been uninstalled.
+cmps#:#cmps_uninstall_confirm#:#Are you sure you want to uninstall the plugin "%s" and remove all related database entries?
+cmps#:#cmps_plugin_uninstalled#:#All language and database related entries have been deleted and the plugin has been set inactive. Now you can remove the plugin's directory and source code in the ‘Customizing’ directory to uninstall the plugin definitely.
 content#:#cont_pc_carousel#:#Carousel
 style#:#sty_carousel_templates#:#Carousel Templates
 style#:#sty_ca_cntr_class#:#Carousel Container
@@ -15850,6 +15857,17 @@ buddysystem#:#buddy_notification_contact_request_ignore_osd#:#Ignore Request
 buddysystem#:#buddy_notification_contact_request_long#:#[SALUTATION][BR][BR]the user "[REQUESTING_USER]" wants to add you to his friends list.[BR][BR][APPROVE_REQUEST_TXT] [APPROVE_REQUEST][BR][IGNORE_REQUEST_TXT] [IGNORE_REQUEST]
 buddysystem#:#buddy_request_approved#:#You successfully approved the contact.
 buddysystem#:#buddy_request_ignored#:#You ignored the user.
+buddysystem#:#buddy_relation_requested#:#A request has been sent to the user.
+buddysystem#:#buddy_enable#:#Activate ‘Contacts’
+buddysystem#:#buddy_enable_info#:#If enabled, users are allowed to contact each other by initiating contact requests. Additionally, there is a personal user setting to allow or prevent being contacted.
+buddysystem#:#buddy_allow_to_contact_me#:#Allow to contact me
+buddysystem#:#buddy_allow_to_contact_me_info#:#If enabled, other users are able to send me request for getting into contact.
+common#:#obj_cadm#:#Contacts
+common#:#obj_cadm_desc#:#Contacts Administration
+rbac#:#cadm_visible#:#User connection administration is visible
+rbac#:#cadm_read#:#User has read access to user connection administration
+rbac#:#cadm_write#:#User has write access to user connection administration
+rbac#:#cadm_edit_permission#:#User can change permission settings
 common#:#no_gallery_users_available#:#There are currently no users in the gallery.
 crs#:#crs_mem_contact#:#Tutorial Support
 awrn#:#awareness_now_online#:#Online Now
@@ -16064,6 +16082,8 @@ grp#:#grp_subscription_min_members_info#:#Define the number of users that is min
 grp#:#grp_max_and_min_members_invalid#:#The minimum number must be smaller than the maximum number of members.
 crs#:#mem_cron_min_members_reason#:#You receive this message because you have activated the notification in the members-tab.
 crs#:#mem_cron_min_members_task#:#Please inform the participants if the course will not take place because of not enough attendants. Adjust the settings afterwards.
+common#:#prg_copy_threads_info#:#Please decide which Study Program elements should be copied, linked or even omitted.
+common#:#prg_wizard_page#:#Copy Study Program (Step 2/2)
 crs#:#crs_loc_settings_passed_mode#:#Mastered Learning Objectives
 crs#:#crs_loc_settings_passed_mode_hide#:#Test questions for mastered learning objectives will be hidden
 crs#:#crs_loc_settings_passed_mode_mark#:#Test questions for mastered learning objectives will be flagged
@@ -16080,3 +16100,13 @@ crs#:#crs_loc_settings_type_q_selected_info#:#Abschlusstest pro Lernziel
 crs#:#crs_visibility_until_info#:#---
 crs#:#crs_registration_limited_info#:#---
 crs#:#crs_subscription_max_members_short_info#:#---
+crs#:#crs_unsubscribe_member_explanation#:#You receive this message because you unsubscribed from the course mentioned above.
+rbac#:#prg_read#:#User has read access to Study Programme
+sess#:#sess_max_members_needed#:#A maximum number of members is needed for the waiting list feature.
+obj#:#obj_import_file_error#:#This file could not be imported. Please make sure that this is a valid ILIAS export file (XML Export), of the same object type. The filename must not be modified after export. Error Message:
+content#:#cont_sqst#:#Survey Question (Assigned Material)
+mmbr#:#info_refuse_sure#:#Are you sure you want to refuse the following user(s)?
+administration#:#adm_user_starting_point_inherit#:#Use Standard-Settings
+administration#:#adm_user_starting_point_inherit_info#:#The settings that were made by the administrator of the platform as a whole will be used.
+survey#:#svy_export_format#:#Export survey data as
+survey#:#svy_fraction_of_selections#:#Fraction of selections

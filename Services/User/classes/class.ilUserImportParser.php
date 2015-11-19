@@ -1162,7 +1162,7 @@ class ilUserImportParser extends ilSaxParser
 							
 							// Set default prefs						
 							$this->userObj->setPref('hits_per_page',$ilSetting->get('hits_per_page',30));
-							$this->userObj->setPref('show_users_online',$ilSetting->get('show_users_online','y'));
+							//$this->userObj->setPref('show_users_online',$ilSetting->get('show_users_online','y'));
 
 							if (count ($this->prefs)) 
 							{
@@ -2432,6 +2432,12 @@ class ilUserImportParser extends ilSaxParser
 			case 'hide_own_online_status':
 				if (!in_array($value, array('y', 'n')))
 					$this->logFailure("---", "Wrong value '$value': Value 'y' or 'n' expected for preference $key.");				
+				break;
+			case 'bs_allow_to_contact_me':
+				if(!in_array($value, array('y', 'n')))
+				{
+					$this->logFailure("---", "Wrong value '$value': Value 'y' or 'n' expected for preference $key.");
+				}
 				break;
 			case 'public_profile':
 				if (!in_array($value, array('y', 'n', 'g')))
