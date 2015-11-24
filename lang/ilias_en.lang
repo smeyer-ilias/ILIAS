@@ -10345,7 +10345,7 @@ trac#:#trac_user_objects#:#Learning Objects for User
 content#:#cont_link_whole_picture#:#Link Whole Picture
 content#:#cont_edit_shape_whole_picture#:#Edit Shape (Whole Picture)
 user#:#enable_local_user_administration#:#Enable Local User Administration
-user#:#enable_local_user_administration_info#:#If enabled, local user accounts can be administrated in categories.
+user#:#enable_local_user_administration_info#:#If enabled, local user accounts can be administrated in categories and organisational units.
 user#:#restrict_user_access#:#Restricted Access to User Accounts
 user#:#restrict_user_access_info#:#Enabled this option only if you want to restrict the access to user accounts. If enabled access to local and global user accounts is only granted when a role has the permission ‘Read Access to User Account’.
 common#:#backto_lua#:#Back to Local User Administration
@@ -16052,6 +16052,7 @@ wsp#:#wsp_shared_filter_reset_button#:#Reset Search
 wsp#:#wsp_shared_filter_button#:#Search
 wiki#:#wiki_page_title_too_long#:#Sorry, the title of the wiki page is too long. Please replace it with a shorter title.
 exc#:#exc_direct_submit#:#Submit
+membership#:#mem_error_preconditions#:#A registration is not possible, since minimum one precondition is not fullfilled.
 export#:#no_file#:#No file
 content#:#lm_no_download_files#:#There are currently no files for download available.
 rbac#:#feed_copy#:#User can copy webfeed
