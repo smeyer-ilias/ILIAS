@@ -154,6 +154,13 @@ class ilLocalUserGUI {
 		$auto = new ilUserAutoComplete();
 		$auto->setSearchFields(array( 'login', 'firstname', 'lastname', 'email' ));
 		$auto->enableFieldSearchableCheck(true);
+		$auto->setMoreLinkAvailable(true);
+
+		if(($_REQUEST['fetchall']))
+		{
+			$auto->setLimit(ilUserAutoComplete::MAX_ENTRIES);
+		}
+
 		echo $auto->getList($_REQUEST['term']);
 		exit();
 	}
@@ -242,7 +249,7 @@ class ilLocalUserGUI {
 				$role['obj_id'],
 				$disabled);
 			$f_result[$counter][] = $role_obj->getTitle();
-			$f_result[$counter][] = $role_obj->getDescription();
+			$f_result[$counter][] = $role_obj->getDescription()?$role_obj->getDescription():'';
 			$f_result[$counter][] = $role['role_type'] == 'global' ?
 				$this->lng->txt('global') :
 				$this->lng->txt('local');
@@ -361,10 +368,8 @@ class ilLocalUserGUI {
 		// SET FOOTER BUTTONS
 		$tpl->setVariable("COLUMN_COUNTS", 4);
 		$tpl->setVariable("IMG_ARROW", ilUtil::getImagePath("arrow_downright.svg"));
-		$tpl->setCurrentBlock("tbl_action_button");
 		$tpl->setVariable("BTN_NAME", "assignSave");
 		$tpl->setVariable("BTN_VALUE", $this->lng->txt("change_assignment"));
-		$tpl->parseCurrentBlock();
 		$tpl->setCurrentBlock("tbl_action_row");
 		$tpl->setVariable("TPLPATH", $this->tpl->tplPath);
 		$tpl->parseCurrentBlock();
@@ -382,12 +387,20 @@ class ilLocalUserGUI {
 			"title",
 			"description",
 			"type"
-		), array(
+		), (get_class($this->parent_gui) == 'ilObjOrgUnitGUI') ? array(
+			"ref_id" => $this->object->getRefId(),
+			"cmd" => "assignRoles",
+			"obj_id" => $_GET['obj_id'],
+			"cmdNode" => $_GET["cmdNode"],
+			"baseClass" => 'ilAdministrationGUI',
+			"admin_mode" => "settings"
+		) : array(
 			"ref_id" => $this->object->getRefId(),
 			"cmd" => "assignRoles",
 			"obj_id" => $_GET['obj_id'],
 			"cmdClass" => "ilobjcategorygui",
-			"cmdNode" => $_GET["cmdNode"]
+			"baseClass" => 'ilRepositoryGUI',
+			"cmdNode" => $_GET["cmdNode"],
 		));
 		$tbl->setColumnWidth(array( "4%", "35%", "45%", "16%" ));
 		$this->set_unlimited = true;
