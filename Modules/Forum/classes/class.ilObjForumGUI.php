@@ -684,8 +684,8 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 				$cmd = 'showThreads';
 			}
 			$tbl = new ilForumTopicTableGUI($this, $cmd, '', (int) $_GET['ref_id'], $topicData, $this->is_moderator, $this->forum_overview_setting);
+			$tbl->init();
 			$tbl->setMapper($frm)->fetchData();
-			$tbl->populate();
 			$this->tpl->setVariable('THREADS_TABLE', $tbl->getHTML());
 		}
 

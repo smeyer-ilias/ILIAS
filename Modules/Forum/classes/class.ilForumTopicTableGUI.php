@@ -86,7 +86,7 @@ class ilForumTopicTableGUI extends ilTable2GUI
 
 		// Let the database do the work
 		$this->setDefaultOrderDirection('DESC');
-		$this->setDefaultOrderField('lp_date');
+		$this->setDefaultOrderField('post_date');
 		$this->setExternalSorting(true);
 		$this->setExternalSegmentation(true);
 
@@ -95,8 +95,8 @@ class ilForumTopicTableGUI extends ilTable2GUI
 		// Add global css for table styles
 		$tpl->addCss('./Modules/Forum/css/forum_table.css');
 	}
-	
-	public function populate()
+
+	public function init()
 	{
 		if($this->parent_cmd == 'mergeThreads')
 		{
@@ -130,7 +130,7 @@ class ilForumTopicTableGUI extends ilTable2GUI
 
 		$this->addColumn($this->lng->txt('forums_thread'), 'thr_subject');
 		$this->addColumn($this->lng->txt('forums_created_by'), '');
-		$this->addColumn($this->lng->txt('forums_articles'), 'article_stats');
+		$this->addColumn($this->lng->txt('forums_articles'), 'num_posts');
 		$this->addColumn($this->lng->txt('visits'), 'num_visit');
 		$this->addColumn($this->lng->txt('forums_last_post'), 'post_date');
 		if('showThreads' == $this->parent_cmd && $this->parent_obj->objProperties->isIsThreadRatingEnabled())
