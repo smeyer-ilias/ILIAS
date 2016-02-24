@@ -10,9 +10,9 @@
 	
 	# Regeln für das LiveVoting-Plugin
 	RewriteRule ^vote\?pin=([0-9]*) Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php?pin=$1 [L]
-    RewriteRule ^vote/([0-9]*) Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php?pin=$1 [L]
-    RewriteRule ^vote/ Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php [L]
-    RewriteRule ^vote Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php [L]
+	RewriteRule ^vote/([0-9]*) Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php?pin=$1 [L]
+	RewriteRule ^vote/ Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php [L]
+	RewriteRule ^vote Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php [L]
 
 	# WebAccessChecker (Temporarly disabled)
 	RewriteRule ^data/.*/.*/.*$ ./Services/WebAccessChecker/wac.php [L]
