@@ -8,11 +8,8 @@
 	RewriteRule ^goto_(.*)_([a-z]+_[0-9]+(.*)).html$ goto.php?client_id=$1&target=$2&lang=%1 [L]
 	RewriteRule ^goto_(.*)_([a-z]+_[0-9]+(.*)).html$ goto.php?client_id=$1&target=$2 [L]
 	
-	# Regeln für das LiveVoting-Plugin
-	RewriteRule ^vote\?pin=([0-9]*) Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php?pin=$1 [L]
-	RewriteRule ^vote/([0-9]*) Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php?pin=$1 [L]
-	RewriteRule ^vote/ Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php [L]
-	RewriteRule ^vote Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php [L]
+	# Regel für das LiveVoting-Plugin
+	RewriteRule ^vote(/[\w]*|) Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php?pin=$1 [L]
 
 	# WebAccessChecker (Temporarly disabled)
 	RewriteRule ^data/.*/.*/.*$ ./Services/WebAccessChecker/wac.php [L]
