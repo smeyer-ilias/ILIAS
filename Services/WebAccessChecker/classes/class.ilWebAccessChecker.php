@@ -49,7 +49,7 @@ class ilWebAccessChecker {
 	/**
 	 * @var bool
 	 */
-	protected static $DEBUG = true;
+	protected static $DEBUG = false;
 
 
 	/**
