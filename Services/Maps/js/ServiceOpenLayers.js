@@ -270,9 +270,9 @@ var _ilOpenLayers = function(OpenLayers, jQuery, addressInvalid, mapData, userMa
 		var mapLayer = new OpenLayers.Layer.OSM("OpenStreetMap", map_servers);
 		
 		/*var mapLayer = new OpenLayers.Layer.OSM("OpenStreetMap",
-			["https://a."+server_url+"/${z}/${x}/${y}.png",
-			"https://b."+server_url+"/${z}/${x}/${y}.png",
-			"https://c."+server_url+"/${z}/${x}/${y}.png"]);*/
+			["http://a."+server_url+"/${z}/${x}/${y}.png",
+			"http://b."+server_url+"/${z}/${x}/${y}.png",
+			"http://c."+server_url+"/${z}/${x}/${y}.png"]);*/
 
 		// central position of the map
 		var mapPos = this.OSMPosFromLonLat(longitude, latitude);
@@ -396,7 +396,7 @@ var _ilOpenLayers = function(OpenLayers, jQuery, addressInvalid, mapData, userMa
 		map_servers_count = map_servers.length;
 		
 		for(var j = 0; j < map_servers_count; j++) {
-			map_servers[j] = "https://"+map_servers[j]+"/${z}/${x}/${y}.png";
+			map_servers[j] = "http://"+map_servers[j]+"/${z}/${x}/${y}.png";
 		}
 
 		this.initMap(id, map[0], map[1], map[2], map[3], map[4], map[5], map_servers);
