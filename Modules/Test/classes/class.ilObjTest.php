@@ -1604,7 +1604,7 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware, ilEctsGradesEnabl
 				$item->toggleVisible($this->getActivationVisibility());
 			}						
 			
-			$item->update($this->ref_id);		
+			//$item->update($this->ref_id);		
 		}
 
 		if (!$properties_only)
@@ -11930,13 +11930,6 @@ function getAnswerFeedbackPoints()
 		$scoring = new ilTestScoring($this);
 		$scoring->setPreserveManualScores($preserve_manscoring);
 		$scoring->recalculateSolutions();
-
-		if ($this->getEnableArchiving())
-		{
-			require_once 'Modules/Test/classes/class.ilTestArchiveService.php';
-			$archiveService = new ilTestArchiveService($this);
-			$archiveService->archivePassesByActives($scoring->getRecalculatedPassesByActives());
-		}
 	}
 	
 	public static function getPoolQuestionChangeListeners(ilDB $db, $poolObjId)

@@ -441,7 +441,7 @@ class ilObjSessionGUI extends ilObjectGUI implements ilDesktopItemHandling
 	 */
 	public function infoScreen()
 	{
-		global $ilAccess, $ilUser,$ilCtrl,$tree,$ilToolbar;
+		global $ilAccess, $ilUser,$ilCtrl,$tree,$ilToolbar,$lng;
 
 		$this->checkPermission('visible');
 		$this->tabs_gui->setTabActive('info_short');
@@ -505,6 +505,8 @@ class ilObjSessionGUI extends ilObjectGUI implements ilDesktopItemHandling
 			$this->object->getId(),
 			$eventItems
 		);			
+		
+		$lng->loadLanguageModule("cntr");// #14158		
 		
 		foreach($eventItems as $item)
 		{						
@@ -1046,7 +1048,7 @@ class ilObjSessionGUI extends ilObjectGUI implements ilDesktopItemHandling
 		
 		include_once './Services/UIComponent/Toolbar/classes/class.ilToolbarGUI.php';
 		$toolbar = new ilToolbarGUI();		
-		$toolbar->addButton($this->lng->txt('sess_gen_attendance_list'), 
+		$toolbar->addButton($this->lng->txt('crs_print_list'),
 			$this->ctrl->getLinkTarget($this,'attendanceList'));		
 		
 		$this->tpl->setVariable('ACTION_BUTTONS',$toolbar->getHTML());
@@ -1109,7 +1111,7 @@ class ilObjSessionGUI extends ilObjectGUI implements ilDesktopItemHandling
 				$this->ctrl->clearParameters($this);
 			}
 			$table_gui->readSubscriberData();
-			$table_gui->setTitle($this->lng->txt('group_new_registrations'),'icon_usr.svg',$this->lng->txt('group_new_registrations'));
+			$table_gui->setTitle($this->lng->txt('sess_new_registrations'),'icon_usr.svg',$this->lng->txt('sess_new_registrations'));
 			$this->tpl->setVariable('TABLE_SUB',$table_gui->getHTML());
 		}
 		
