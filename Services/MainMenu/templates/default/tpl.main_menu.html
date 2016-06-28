@@ -35,9 +35,13 @@
 					<!-- BEGIN userisloggedin -->
 					<li id="userlog" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<span>{USER_IMG}{USERNAME} ({USER_NAME})<span class="caret"></span></span>
+							<span>{USER_IMG}{USERNAME} {LOGIN}<span class="caret"></span></span>
 						</a>
 						<ul class="dropdown-menu pull-right" role="menu">
+							<li>
+								{USERNAME}
+							</li>
+							<li role="presentation" class="divider"></li>
 							<li>
 								<a href="{USR_LINK_PROFILE}" target="_top">{USR_TXT_PROFILE}</a>
 							</li>
