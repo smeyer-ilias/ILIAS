@@ -191,6 +191,31 @@ span.ilAlert {
 	color: @brand-warning;
 }
 
+//== Added by Jan Start
+.alert {
+    margin-top:15px;   
+}
+
+a {
+    outline:0 !important;   
+}
+
+.ilMemberViewMainHeader a {
+    color:#fff !important;
+} 
+
+// start: hide Logo
+.ilMemberViewMainHeader a.navbar-brand,
+.hideLogo a.navbar-brand {
+    display:none !important;
+}
+
+
+// end: hide logo
+
+//== Added by Jan End
+
+
 //== Navs
 
 /* Drop Downs */
@@ -237,6 +262,25 @@ span.ilAlert {
 .ilAdvNoImg {
 	display: inline-block;
 	width: 22px;
+}
+
+// start: fix for larger sidebar icon
+.row {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+div#ilContentContainer .row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+// end: fix for larger sidebar icon
+
+ol.breadcrumb {
+    /* margin-left: 20px !important;
+    margin-right: 20px !important; */
+    /* padding-left: 20px !important; */
+    /* margin-left: 20px !important; */
 }
 
 // Hover/Focus state
@@ -362,13 +406,34 @@ div.ilFrame {
 	&:hover,
 	&:active,
 	&:focus {
-		color: lighten(@mid-gray, 70%);
+		color: @dropdown-link-color; /* lighten(@mid-gray, 70%); */
 	}
 }
 
 /* --------------------------------------------------------------
 	"Classic" fhdo part
 -------------------------------------------------------------- */
+
+li#nontab_members_view {
+    background-color: #ff8636;   
+}
+
+
+li#nontab_members_view a {
+    color:#fff;   
+}
+
+li#nontab_members_view a {
+    &:hover,
+    &:active,
+    &:focus {
+        color: @dropdown-link-hover-color;
+    }
+}
+
+div.il_ealearning {
+    margin: 20px 0 0 0;   
+}
 
 
 /* --------------------------------------------------------------
@@ -936,7 +1001,7 @@ div.il_info {
 
 
 a#il_mhead_t_focus {
-	color: @brand-secondary;
+	color: @mid-gray;
 	vertical-align: middle;
 	font-size: 26px;
     cursor: default;
@@ -1051,21 +1116,26 @@ footer.ilFooter {
 	padding: 20px 0 0;
 	text-align: left;
 	color: white;
-	background-color: @brand-primary;
+	background-color: @brand-bg;
 	div.ilFooterContainer {
-		color: white;
+		color: @grey-dark;
 		//float: left;
 		line-height: 1.75;
 		padding: 0 15px;
 	}
 	a.permalink_label,
 	div.ilFooterContainer > a {
-		color: white;
+		color: @grey-dark;
 		white-space: nowrap;
 		&:hover {
-			color: white;
+			color: @mid-gray;
 		}
 	}
+    
+    div.il_ealearning img {
+        width:150px;
+        height:48px;
+    }  
 }
 
 [dir="rtl"] footer.ilFooter {
@@ -1423,13 +1493,15 @@ div.ilBox {
 
 /* Top-Bar */
 div.ilTopBar {
-  background-color: #444;
-  color: white;
-  padding: 5px 10px;
+    /* background-color: #ff8636; */
+    background-color: #fff;
+    color: #fff;
+    padding: 5px 10px;
+    z-index:2000; 
 }
 
 div.ilTopBar a {
-	color: white;
+	color: @link-color;
 }
 
 div.ilTopBarLeft {
@@ -1573,6 +1645,31 @@ img.ilIcon {
 	width: 32px;
 	height: 32px;
 }
+
+/* specific fh dortmund stuff */
+#registrationMessage {
+    margin:40px 0;
+    border:1px solid #ff6600;
+    background-color: #fff;
+}
+
+#registrationMessage div.inner {
+    margin:0 auto;
+    padding:0px 10px 10px 10px;
+    max-width:700px;
+}
+
+#registrationMessage div.inner h2,
+#registrationMessage div.inner p
+{
+    margin-bottom:20px;
+}
+
+#registrationMessage div.inner p.small {
+    margin-bottom:-5px;
+}
+/* end specific fh dortmund stuff */
+
 
 /* PreventBreakOut, see https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
 .ilPreventBreakOut {
@@ -1799,6 +1896,13 @@ table.mceToolbar {
         margin: 0;
     }
 }
+
+a.hideHeaderIcon, .hideHeaderIcon img {
+    display:none;
+    pointer-events: none;
+   cursor: default;
+}
+
 /* basic responsiveness (beta)
 
    The following section targets smartphones.
@@ -1823,7 +1927,7 @@ table.mceToolbar {
     }
 
 	.ilContainerWidth {
-		padding: 0 15px;
+		padding: 0 30px;
 	}
     
     div.il_HeaderInner {
@@ -1905,6 +2009,47 @@ table.mceToolbar {
 		margin-top: 2px;
 		margin-right: 7px;
 	}
+    
+        .ilMainHeader > header > .row > a.fh-logo > img {
+        height:40px;
+        /*width:60px;*/
+        margin-top: 0px;
+		margin-right: 7px;
+        position:fixed;
+        top:0px;
+        left:55px;
+        display:none;
+        
+    }
+    
+    
+    ul.ilTopBarNav {
+        z-index:10000;   
+    }
+    
+    #ilTopBar.ilTopBar a.navbar-brand {
+        //height: 70px;
+        background:none;
+        
+		height: 40px;
+        float: left;
+		display: inline-block;
+		padding: 0 0 0 0;
+        margin:0;
+        /* margin-left: 500px; */
+		/* margin: 15px 15px 0; */
+		> img {
+			width: 40px;
+			height: 40px;
+		}
+        
+        
+	}
+    
+    .topIndex {
+        /* z-index:2000; */
+        
+    }
 
 	/* @import "less/Services/MainMenu/fhdo_sm.less"; */
 	/* @import "less/Services/UIComponent/Tabs/fhdo_sm.less"; */
@@ -1914,6 +2059,7 @@ table.mceToolbar {
 	@import "less/Services/MainMenu/fhdo_sm.less";
 	@import "less/Services/COPage/fhdo_sm.less";
 	@import "less/Services/UIComponent/Button/fhdo_sm.less";
+    @import "less/Services/Locator/fhdo_sm.less";
 
 
 	div.ilGoogleMap {

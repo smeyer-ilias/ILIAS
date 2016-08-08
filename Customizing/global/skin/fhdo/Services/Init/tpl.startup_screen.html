@@ -3,9 +3,10 @@
 	<div class="container">
 		<div class="row">
             <!-- BEGIN header_top_title -->
-            <div class="ilTopTitle">{TXT_HEADER_TITLE}</div>
+            <!-- <div class="ilTopTitle">{TXT_HEADER_TITLE}</div> -->
             <!-- END header_top_title -->
             <ul id="ilTopBarNav" class="">
+                <li><a href="#" class="navbar-brand"><img class="ilias-logo-start" src="{HEADER_ICON}" alt="Logo" /></a></li>
                 <!-- BEGIN lang_select -->
                 <li class="dropdown"><a id="mm_lang_sel" href="#" class="dropdown-toggle" data-toggle="dropdown">{TXT_LANGSELECT} <span class="caret"></span></a>
                     {LANG_SELECT}
@@ -18,7 +19,9 @@
 <div class="ilMainHeader">
 	<header class="container">
 		<div id="il_startup_logo" class="row">
-			<img src="{HEADER_ICON}" alt="Logo" />
+			 <a class="fh-logo-start" href="http://www.ilias.fh-dortmund.de">
+                <img src="./Customizing/global/skin/fhdo/images/fh_logo.svg" width="162" height="60" class="fh-logo-start" />
+            </a>
 		</div>
 	</header>
 </div>

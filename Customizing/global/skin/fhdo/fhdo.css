@@ -6379,6 +6379,19 @@ button.close {
 span.ilAlert {
   color: #fa8228;
 }
+.alert {
+  margin-top: 15px;
+}
+a {
+  outline: 0 !important;
+}
+.ilMemberViewMainHeader a {
+  color: #fff !important;
+}
+.ilMemberViewMainHeader a.navbar-brand,
+.hideLogo a.navbar-brand {
+  display: none !important;
+}
 /* Drop Downs */
 .dropdown-menu {
   background-color: #fafafa;
@@ -6413,6 +6426,20 @@ span.ilAlert {
 .ilAdvNoImg {
   display: inline-block;
   width: 22px;
+}
+.row {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+div#ilContentContainer .row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+ol.breadcrumb {
+  /* margin-left: 20px !important;
+    margin-right: 20px !important; */
+  /* padding-left: 20px !important; */
+  /* margin-left: 20px !important; */
 }
 .dropdown-menu li > a:hover,
 .dropdown-menu li > a:focus {
@@ -6520,11 +6547,26 @@ div.ilFrame {
 #ilTopBarNav .dropdown-menu #ilMMSearchMenu a:hover,
 #ilTopBarNav .dropdown-menu #ilMMSearchMenu a:active,
 #ilTopBarNav .dropdown-menu #ilMMSearchMenu a:focus {
-  color: #f5f5f5;
+  color: #333333;
+  /* lighten(@mid-gray, 70%); */
 }
 /* --------------------------------------------------------------
 	"Classic" fhdo part
 -------------------------------------------------------------- */
+li#nontab_members_view {
+  background-color: #ff8636;
+}
+li#nontab_members_view a {
+  color: #fff;
+}
+li#nontab_members_view a:hover,
+li#nontab_members_view a:active,
+li#nontab_members_view a:focus {
+  color: #262626;
+}
+div.il_ealearning {
+  margin: 20px 0 0 0;
+}
 /* --------------------------------------------------------------
    GLOBAL STYLES
 -------------------------------------------------------------- */
@@ -6973,7 +7015,7 @@ div.il_info {
 }
 /* ---------------- headlines ------------------ */
 a#il_mhead_t_focus {
-  color: #6ea03c;
+  color: #434343;
   vertical-align: middle;
   font-size: 26px;
   cursor: default;

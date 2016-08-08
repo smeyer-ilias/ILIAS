@@ -13,9 +13,12 @@ td.uneven {
 }
 
 td.today {
-	background-color: #E0E0FF;
+	background-color: @brand-orange;
 }
 
+td.calminiapp {
+    background-color: #ff6600; /* lighten(@brand-orange, 70%); */
+}
 
 td.date {
 	background-color: #F7F7F7;
@@ -71,6 +74,7 @@ span.ilCalColSpan {
 	width: 24px;
 	height: 25px;
 	float: left;
+    text-align: center;
 }
 
 ul.ilCalSel li img {
@@ -102,6 +106,9 @@ table.calmini {
 		color: lighten(@mid-gray, 45%);
 		background-color: transparent;
 	}
+    td.calminiapp {
+        background-color: #ffaa71;    
+    }
 	tr:nth-child(even) {
 		background-color: lighten(@mid-gray, 65%);
 	}
@@ -113,8 +120,11 @@ table.calmini {
 	td.calministd > .il_calmini_monthday > a {
 		color: lighten(@mid-gray, 15%);
 	}
+    td.calministd > .il_calmini_monthday > a.calminiapp {
+		color: #fff;
+	}
 	td.calminitoday {
-		background-color: lighten(@brand-primary, 15%);
+		background-color: @brand-orange; /*lighten(@brand-primary, 15%); */
 		> .il_calmini_monthday > a {
 			color: white;
 		}
