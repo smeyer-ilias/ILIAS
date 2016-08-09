@@ -21,7 +21,7 @@
 
 // Default navbar
 #ilTopNav {
-	margin: -38px 0 0 65px;
+	margin: -38px 0 0 200px;
 	&.navbar {
 		padding-top: 1px;
 		padding-bottom: 1px;
@@ -48,7 +48,7 @@
 	}
 	.navbar-nav {
 		float: left;
-		margin-left: 5px;
+		margin-left: 60px;
 		> li {
 			margin: 0 0 0 10px;
 				> a {
@@ -74,7 +74,7 @@
 			&:focus {
 				//background-color: lighten(@ilMainMenuColor, 42%);
 				outline: 0;
-				border-top: 4px solid @brand-primary;
+				border-top: 4px solid @brand-orange;
 				background-color: #fafafa;
 				box-shadow: 3px 9px 9px 0px rgba(0,0,0,0.176);
 			}
@@ -109,6 +109,7 @@
 /* Main Menu Top Title */
 .ilTopTitle {
 	/* color: darken(@ilMainMenuColor, 20%);*/
+    color: lighten(@mid-gray, 10%);
 	float: left;
 	font-weight: 600;
 	padding: 0 0 0 15px;
@@ -116,6 +117,10 @@
 	line-height: 40px;
 	/*letter-spacing: 0.05em;*/
 	/*word-spacing: -0.1em;*/
+}
+
+.ilTopTitle a {
+    color: @link-color;   
 }
 
 [dir="rtl"] .ilTopTitle {
@@ -139,6 +144,22 @@ input.ilOpenIDBox {
 	height: 40px;
 	top: 0;
 	z-index: 1040;
+    
+    a.navbar-brand {
+		//height: 70px;
+        background:none;
+		height: 70px;
+      float: left;
+		display: inline-block;
+		padding: 0 100px 0 0;
+        margin:0;
+        /* margin-left: 500px; */
+		/* margin: 15px 15px 0; */
+		> img {
+			width: 70px;
+			height: 70px;
+		}
+	}
 }
 
 .ilTopFixed {
@@ -151,6 +172,7 @@ input.ilOpenIDBox {
 }
 
 #ilTopBarNav {
+    z-index:2100 !important;
 	float: right;
 	margin: 0;
 	padding: 0;
@@ -169,16 +191,16 @@ input.ilOpenIDBox {
 		visibility: hidden;
 	}
 	.dropdown-menu {
-		background-color: lighten(@mid-gray, 42%);
+		background-color: lighten(@mid-gray, 90%);
 		border-radius: 0;
 		margin: 0;
-		color: lighten(@mid-gray, 70%);
+		color: @dropdown-link-color; /* lighten(@mid-gray, 70%); */
 		a {
-			color: lighten(@mid-gray, 70%);
+			color: @dropdown-link-color; /* lighten(@mid-gray, 70%); */
 			&:hover,
 			&:active,
 			&:focus {
-				color: lighten(@mid-gray, 42%);
+				color: @dropdown-link-hover-color; /* lighten(@mid-gray, 42%); */
 			}
 		}
 	}
@@ -195,8 +217,8 @@ input.ilOpenIDBox {
 		min-width: 40px;
 		height: 40px;
 		text-align: center;
-		background-color: lighten(@mid-gray, 20%);
-		color: lighten(@mid-gray, 70%);
+		background-color: lighten(@mid-gray, 65%);
+		color: #ff6600; /* lighten(@mid-gray, 70%); */
 		&:hover,
 		&:active,
 		&:focus {
@@ -270,19 +292,26 @@ input.ilOpenIDBox {
 .ilMainHeader {
 	background-color: white;
 	height: 80px;
-	border-bottom: 3px solid @body-bg;
+	border-bottom: 0px solid @body-bg;
+     /* JAN - erstmal wieder entfernt */
+    
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.11);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.11);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.11);
+    
 	&.ilTopFixed {
 		top: 40px;
 	}
-	> header > .row > a.navbar-brand {
+	 > header > .row > a.fh-logo {
 		//height: 70px;
-		height: 50px;
+		height: 60px;
 		display: inline-block;
 		padding: 0;
-		margin: 15px 15px 0;
+        float: left;
+		margin: 10px 0 0;
 		> img {
-			width: 50px;
-			height: 50px;
+			width: 162px;
+			height: 60px;
 		}
 	}
 }

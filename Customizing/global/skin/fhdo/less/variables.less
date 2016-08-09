@@ -13,10 +13,14 @@
 
 @brand-primary:         #4c6586;
 @brand-secondary:       #6ea03c;
+@brand-info:            #dcb496;
 @brand-success:         #6ea03c;
 @brand-info:            #dcb496;
 @brand-warning:         #fa8228;
 @brand-danger:          #fa8228;
+@brand-orange:          #ff6600;
+@brand-bg:              #f0f1ea;
+
 
 /** if left unchanged, you have to copy all the background images to your skin/images folder.
 * To use the fhdo background images in your skin,
@@ -31,6 +35,9 @@
 @web-font-path: "fonts/";
 
 @mid-gray: #434343;
+@grey-dark: #222222;
+@light-grey: #eee;
+
 @il-primary-container-bg: #FFFFFF;
 @il-secondary-container-bg: #F9F9F9;
 
@@ -41,9 +48,12 @@
 @il-brand-3rd: #21c5d8;
 
 
+//== Alerts
+@alert-padding: 20px;
+
 //== Scaffolding
-@body-bg:               #f0f0f0;
-@text-color:            @gray-dark;
+@body-bg:               @brand-bg;
+@text-color:            @grey-dark;
 @link-color:            lighten(@brand-primary, 5%);
 @link-hover-color:      darken(@link-color, 15%);
 
@@ -64,7 +74,7 @@
 
 
 //== Iconography
-@icon-font-path:            "../../Services/UICore/lib/bootstrap-3.2.0/fonts/";
+@icon-font-path:            "../../../../Services/UICore/lib/bootstrap-3.2.0/fonts/";
 
 //== Components
 //== Components
@@ -121,7 +131,7 @@
 
 @btn-default-color:             @link-color;
 @btn-default-border:            #d0d0d0;
-@btn-default-bg:                #fefefe;
+@btn-default-bg:                #ff6600;
 @disabled-btn-bg:               #b0b0b0;
 @disabled-btn-border:           #b0b0b0;
 @disabled-btn-color:            #e0e0e0;
@@ -166,7 +176,7 @@
 //##
 
 @panel-bg:                    @il-secondary-container-bg;
-@panel-body-padding:          15px;
+@panel-body-padding:          55px;
 @panel-heading-padding:       10px 15px;
 @panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
@@ -186,8 +196,12 @@
 //== DropDowns
 //
 //##
-@dropdown-link-hover-bg: #f2f2f2;
-@dropdown-link-hover-bg: lighten(@brand-primary, 53%);;
+/* @dropdown-link-hover-bg: #f2f2f2;
+@dropdown-link-hover-bg: lighten(@brand-primary, 53%); */
+@dropdown-link-hover-bg: #ff8636; /* lighten(@brand-orange, 20%); */
+@dropdown-link-hover-color: #fff;
+
+
 
 //== Tables
 //

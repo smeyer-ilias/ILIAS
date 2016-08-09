@@ -349,8 +349,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('../../Services/UICore/lib/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.eot');
-  src: url('../../Services/UICore/lib/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../Services/UICore/lib/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../../Services/UICore/lib/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../../Services/UICore/lib/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../../../../Services/UICore/lib/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.eot');
+  src: url('../../../../Services/UICore/lib/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../../../Services/UICore/lib/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../../../../Services/UICore/lib/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../../../../Services/UICore/lib/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -982,8 +982,8 @@ body {
   font-family: 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333333;
-  background-color: #f0f0f0;
+  color: #222222;
+  background-color: #f0f1ea;
 }
 input,
 button,
@@ -1029,7 +1029,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #f0f0f0;
+  background-color: #f0f1ea;
   border: 1px solid #dddddd;
   border-radius: 0px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -2177,7 +2177,7 @@ th {
   border-top: 2px solid #dddddd;
 }
 .table .table {
-  background-color: #f0f0f0;
+  background-color: #f0f1ea;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -2716,7 +2716,7 @@ select[multiple].input-lg {
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #737373;
+  color: #626262;
 }
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -2852,7 +2852,7 @@ fieldset[disabled] .btn {
 }
 .btn-default {
   color: #557196;
-  background-color: #fefefe;
+  background-color: #ff6600;
   border-color: #d0d0d0;
 }
 .btn-default:hover,
@@ -2861,7 +2861,7 @@ fieldset[disabled] .btn {
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
   color: #557196;
-  background-color: #e5e5e5;
+  background-color: #cc5200;
   border-color: #b1b1b1;
 }
 .btn-default:active,
@@ -2884,11 +2884,11 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: #fefefe;
+  background-color: #ff6600;
   border-color: #d0d0d0;
 }
 .btn-default .badge {
-  color: #fefefe;
+  color: #ff6600;
   background-color: #557196;
 }
 .btn-primary {
@@ -3250,8 +3250,8 @@ tbody.collapse.in {
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   text-decoration: none;
-  color: #262626;
-  background-color: #ecf0f4;
+  color: #ffffff;
+  background-color: #ff8636;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -3719,7 +3719,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555555;
-  background-color: #f0f0f0;
+  background-color: #f0f1ea;
   border: 1px solid #e0e0e0;
   border-bottom-color: transparent;
   cursor: default;
@@ -3765,7 +3765,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #f0f0f0;
+    border-bottom-color: #f0f1ea;
   }
 }
 .nav-pills > li {
@@ -3833,7 +3833,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom-color: #f0f0f0;
+    border-bottom-color: #f0f1ea;
   }
 }
 .tab-content > .tab-pane {
@@ -4664,7 +4664,7 @@ a.list-group-item.active > .badge,
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
-  background-color: #f0f0f0;
+  background-color: #f0f1ea;
   border: 1px solid #dddddd;
   border-radius: 0px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -4683,10 +4683,10 @@ a.thumbnail.active {
 }
 .thumbnail .caption {
   padding: 9px;
-  color: #333333;
+  color: #222222;
 }
 .alert {
-  padding: 15px;
+  padding: 20px;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 0px;
@@ -4707,7 +4707,7 @@ a.thumbnail.active {
 }
 .alert-dismissable,
 .alert-dismissible {
-  padding-right: 35px;
+  padding-right: 40px;
 }
 .alert-dismissable .close,
 .alert-dismissible .close {
@@ -5068,7 +5068,7 @@ a.list-group-item-danger.active:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .panel-body {
-  padding: 15px;
+  padding: 55px;
 }
 .panel-heading {
   padding: 10px 15px;
@@ -6284,6 +6284,9 @@ button.close {
 /* @il-highlight-bg: lighten(#21c5d8, 40%); */
 /* @nav-tabs-link-hover-border-color: @brand-primary; */
 /* ILIAS variables candidates */
+/* @dropdown-link-hover-bg: #f2f2f2;
+@dropdown-link-hover-bg: lighten(@brand-primary, 53%); */
+/* lighten(@brand-orange, 20%); */
 /* RTL review overwrite some specifics [bootstrap] styles
  *
  * use class "noMirror" to avoid image flip
@@ -6444,8 +6447,8 @@ ol.breadcrumb {
 .dropdown-menu li > a:hover,
 .dropdown-menu li > a:focus {
   text-decoration: none;
-  color: #262626;
-  background-color: #ecf0f4;
+  color: #ffffff;
+  background-color: #ff8636;
 }
 /* BS tables */
 .table {
@@ -6562,7 +6565,7 @@ li#nontab_members_view a {
 li#nontab_members_view a:hover,
 li#nontab_members_view a:active,
 li#nontab_members_view a:focus {
-  color: #262626;
+  color: #ffffff;
 }
 div.il_ealearning {
   margin: 20px 0 0 0;
@@ -7068,7 +7071,7 @@ div.ilHeadAction a:hover {
 div.ilHeaderDesc {
   font-size: 90%;
   padding: 0;
-  color: #737373;
+  color: #626262;
   font-weight: 300;
 }
 div.ilHeaderAlert {
@@ -7110,21 +7113,25 @@ footer.ilFooter {
   padding: 20px 0 0;
   text-align: left;
   color: white;
-  background-color: #4c6586;
+  background-color: #f0f1ea;
 }
 footer.ilFooter div.ilFooterContainer {
-  color: white;
+  color: #222222;
   line-height: 1.75;
   padding: 0 15px;
 }
 footer.ilFooter a.permalink_label,
 footer.ilFooter div.ilFooterContainer > a {
-  color: white;
+  color: #222222;
   white-space: nowrap;
 }
 footer.ilFooter a.permalink_label:hover,
 footer.ilFooter div.ilFooterContainer > a:hover {
-  color: white;
+  color: #434343;
+}
+footer.ilFooter div.il_ealearning img {
+  width: 150px;
+  height: 48px;
 }
 [dir="rtl"] footer.ilFooter {
   text-align: right;
@@ -7160,7 +7167,7 @@ div.ilPermaLink a {
   font-size: 1em;
 }
 #current_perma_link {
-  color: #333333;
+  color: #222222;
   width: 25%;
   font-size: 90%;
 }
@@ -7268,7 +7275,7 @@ div#bot_center_area {
   height: 300px;
   position: fixed;
   padding: 5px;
-  background-color: #f0f0f0;
+  background-color: #f0f1ea;
   border-top: 3px solid #E9E9E9;
   -webkit-overflow-scrolling: touch;
   /* Bug 11209 */
@@ -7414,12 +7421,14 @@ div.ilBox {
 }
 /* Top-Bar */
 div.ilTopBar {
-  background-color: #444;
-  color: white;
+  /* background-color: #ff8636; */
+  background-color: #fff;
+  color: #fff;
   padding: 5px 10px;
+  z-index: 2000;
 }
 div.ilTopBar a {
-  color: white;
+  color: #557196;
 }
 div.ilTopBarLeft {
   float: left;
@@ -7539,6 +7548,25 @@ img.ilIcon {
   width: 32px;
   height: 32px;
 }
+/* specific fh dortmund stuff */
+#registrationMessage {
+  margin: 40px 0;
+  border: 1px solid #ff6600;
+  background-color: #fff;
+}
+#registrationMessage div.inner {
+  margin: 0 auto;
+  padding: 0px 10px 10px 10px;
+  max-width: 700px;
+}
+#registrationMessage div.inner h2,
+#registrationMessage div.inner p {
+  margin-bottom: 20px;
+}
+#registrationMessage div.inner p.small {
+  margin-bottom: -5px;
+}
+/* end specific fh dortmund stuff */
 /* PreventBreakOut, see https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
 .ilPreventBreakOut {
   overflow-wrap: break-word;
@@ -7685,7 +7713,7 @@ input[type="file"].form-control {
 .ilFormFooter {
   color: #4d4d4d;
   /* background-color: lighten(@ilFormColor, 45%); */
-  background-color: #f0f0f0;
+  background-color: #f0f1ea;
 }
 .ilSubForm {
   background-color: #f8f8f8;
@@ -7734,7 +7762,7 @@ div[id^="ilFormField"] {
 div.ilHFormHeader,
 div.ilHFormFooter {
   color: #4d4d4d;
-  background-color: #f0f0f0;
+  background-color: #f0f1ea;
   padding: 4px 0px 4px 22px;
 }
 [dir="rtl"] div.ilHFormHeader,
@@ -7862,8 +7890,8 @@ a.ilTreeView > img {
   max-width: inherit;
   background-color: #fff;
   border-right: 2px solid #e0e0e0;
-  width: 28px;
-  height: 28px;
+  width: 50px;
+  height: 50px;
 }
 a.ilTreeView:hover > img,
 a.ilTreeView:active > img,
@@ -8573,7 +8601,11 @@ td.uneven {
   padding: 3px;
 }
 td.today {
-  background-color: #E0E0FF;
+  background-color: #ff6600;
+}
+td.calminiapp {
+  background-color: #ff6600;
+  /* lighten(@brand-orange, 70%); */
 }
 td.date {
   background-color: #F7F7F7;
@@ -8620,6 +8652,7 @@ span.ilCalColSpan {
   width: 24px;
   height: 25px;
   float: left;
+  text-align: center;
 }
 ul.ilCalSel li img {
   margin-top: 6px;
@@ -8655,6 +8688,9 @@ table.calmini th {
     padding: 5px 1px;
   }
 }
+table.calmini td.calminiapp {
+  background-color: #ffaa71;
+}
 table.calmini tr:nth-child(even) {
   background-color: #e9e9e9;
 }
@@ -8667,8 +8703,12 @@ table.calmini th.calminiweek {
 table.calmini td.calministd > .il_calmini_monthday > a {
   color: #696969;
 }
+table.calmini td.calministd > .il_calmini_monthday > a.calminiapp {
+  color: #fff;
+}
 table.calmini td.calminitoday {
-  background-color: #708bae;
+  background-color: #ff6600;
+  /*lighten(@brand-primary, 15%); */
 }
 table.calmini td.calminitoday > .il_calmini_monthday > a {
   color: white;
@@ -8730,7 +8770,7 @@ li.ilWikiBlockItem {
   padding: 3px 0px;
 }
 #ilTopNav {
-  margin: -38px 0 0 65px;
+  margin: -38px 0 0 200px;
 }
 #ilTopNav.navbar {
   padding-top: 1px;
@@ -8757,7 +8797,7 @@ li.ilWikiBlockItem {
 }
 #ilTopNav .navbar-nav {
   float: left;
-  margin-left: 5px;
+  margin-left: 60px;
 }
 #ilTopNav .navbar-nav > li {
   margin: 0 0 0 10px;
@@ -8777,7 +8817,7 @@ li.ilWikiBlockItem {
 #ilTopNav .navbar-nav > .active > a:focus,
 #ilTopNav .navbar-nav > .open > a:focus {
   outline: 0;
-  border-top: 4px solid #4c6586;
+  border-top: 4px solid #ff6600;
   background-color: #fafafa;
   box-shadow: 3px 9px 9px 0px rgba(0, 0, 0, 0.176);
 }
@@ -8806,6 +8846,7 @@ li.ilWikiBlockItem {
 /* Main Menu Top Title */
 .ilTopTitle {
   /* color: darken(@ilMainMenuColor, 20%);*/
+  color: #5d5d5d;
   float: left;
   font-weight: 600;
   padding: 0 0 0 15px;
@@ -8813,6 +8854,9 @@ li.ilWikiBlockItem {
   line-height: 40px;
   /*letter-spacing: 0.05em;*/
   /*word-spacing: -0.1em;*/
+}
+.ilTopTitle a {
+  color: #557196;
 }
 [dir="rtl"] .ilTopTitle {
   float: right;
@@ -8833,6 +8877,20 @@ input.ilOpenIDBox {
   top: 0;
   z-index: 1040;
 }
+#ilTopBar.ilTopBar a.navbar-brand {
+  background: none;
+  height: 70px;
+  float: left;
+  display: inline-block;
+  padding: 0 100px 0 0;
+  margin: 0;
+  /* margin-left: 500px; */
+  /* margin: 15px 15px 0; */
+}
+#ilTopBar.ilTopBar a.navbar-brand > img {
+  width: 70px;
+  height: 70px;
+}
 .ilTopFixed {
   z-index: 1030;
   position: fixed;
@@ -8842,6 +8900,7 @@ input.ilOpenIDBox {
   right: 0;
 }
 #ilTopBarNav {
+  z-index: 2100 !important;
   float: right;
   margin: 0;
   padding: 0;
@@ -8861,18 +8920,21 @@ input.ilOpenIDBox {
   visibility: hidden;
 }
 #ilTopBarNav .dropdown-menu {
-  background-color: #aeaeae;
+  background-color: #ffffff;
   border-radius: 0;
   margin: 0;
-  color: #f5f5f5;
+  color: #333333;
+  /* lighten(@mid-gray, 70%); */
 }
 #ilTopBarNav .dropdown-menu a {
-  color: #f5f5f5;
+  color: #333333;
+  /* lighten(@mid-gray, 70%); */
 }
 #ilTopBarNav .dropdown-menu a:hover,
 #ilTopBarNav .dropdown-menu a:active,
 #ilTopBarNav .dropdown-menu a:focus {
-  color: #aeaeae;
+  color: #ffffff;
+  /* lighten(@mid-gray, 42%); */
 }
 #ilTopBarNav > li {
   float: left;
@@ -8887,8 +8949,9 @@ input.ilOpenIDBox {
   min-width: 40px;
   height: 40px;
   text-align: center;
-  background-color: #767676;
-  color: #f5f5f5;
+  background-color: #e9e9e9;
+  color: #ff6600;
+  /* lighten(@mid-gray, 70%); */
 }
 #ilTopBarNav > li > a:hover,
 #ilTopBarNav > li > a:active,
@@ -8954,20 +9017,25 @@ input.ilOpenIDBox {
 .ilMainHeader {
   background-color: white;
   height: 80px;
-  border-bottom: 3px solid #f0f0f0;
+  border-bottom: 0px solid #f0f1ea;
+  /* JAN - erstmal wieder entfernt */
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.11);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.11);
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.11);
 }
 .ilMainHeader.ilTopFixed {
   top: 40px;
 }
-.ilMainHeader > header > .row > a.navbar-brand {
-  height: 50px;
+.ilMainHeader > header > .row > a.fh-logo {
+  height: 60px;
   display: inline-block;
   padding: 0;
-  margin: 15px 15px 0;
+  float: left;
+  margin: 10px 0 0;
 }
-.ilMainHeader > header > .row > a.navbar-brand > img {
-  width: 50px;
-  height: 50px;
+.ilMainHeader > header > .row > a.fh-logo > img {
+  width: 162px;
+  height: 60px;
 }
 .ilMainMenu {
   background-color: white;
@@ -9183,7 +9251,7 @@ fieldset.ilTableFilter {
 }
 div.ilTableFilterLabel {
   font-style: italic;
-  background-color: #f0f0f0;
+  background-color: #f0f1ea;
   padding: 3px 5px;
 }
 div.ilTableFilterLabel label {
@@ -9571,7 +9639,7 @@ input.ilMainMenuSearch {
 #mm_search_menu_ac .ui-menu {
   border: none;
   box-shadow: none;
-  color: #333333;
+  color: #222222;
 }
 span.ilSearchHighlight {
   font-weight: bold;
@@ -9699,7 +9767,7 @@ span.bibl_text_inline_Emph {
   width: 306px;
   color: #F0F0F0;
   margin-top: -240px;
-  background: url("images/black60.png");
+  background: url("images//black60.png");
 }
 .ilPlayerPreviewOverlay img {
   cursor: pointer;
@@ -9930,6 +9998,9 @@ li.smallPad {
 .ilCrsObjAcc {
   margin-bottom: 10px;
 }
+.il_CourseGallery p {
+  line-height: 0.9em;
+}
 /* LOK progress bars */
 .ilCourseObjectiveProgressBar {
   padding-right: 5px;
@@ -10012,6 +10083,7 @@ div.ilPreconditionItem {
 div.ilContainerListItemOuter {
   padding: 15px 10px;
   zoom: 1;
+  width: 100%;
   /* background-color: lighten(@mid-gray, 75%); */
 }
 [dir="rtl"] div.ilContainerListItemOuter {
@@ -10268,13 +10340,15 @@ div#right_bottom_area iframe {
 }
 /* Services/PersonalDesktop */
 h3.ilPDBlockSubHeader {
-  margin: 0;
-  font-weight: 300;
-  font-size: 90%;
+  margin: 0 5px 0 5px;
+  font-weight: 600;
+  font-size: 100%;
   font-style: italic;
   text-align: left;
   vertical-align: middle;
-  padding: 1px 0 0 5px;
+  padding: 5px 0 5px 5px;
+  color: #a0a0a0;
+  background-color: #f6f6f6;
 }
 .ilUserOnlineRow {
   margin: 0 0 0 40px;
@@ -10359,7 +10433,7 @@ div.ilCreationFormSection .form-horizontal {
   padding-top: 1px;
 }
 .ilObjListRow {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f1ea;
   background-color: #ffffff;
 }
 .ilObjListRow:hover {
@@ -10417,7 +10491,7 @@ table.il_Block {
   table-layout: fixed;
   word-wrap: break-word;
   background-color: #f9f9f9;
-  border: none;
+  border: 1px solid #dcdcdc;
   text-align: left;
   padding: 5px;
 }
@@ -10573,10 +10647,25 @@ div.ilStartupSection form.form-horizontal {
   text-align: left;
   width: 40em;
 }
-div#il_startup_logo img {
-  width: 50px;
-  height: 50px;
-  margin: 15px;
+/*
+img.ilias-logo-start {
+  width: 70px;
+  height: 70px;
+  //margin: 15px;
+  margin:0;
+  padding:0 100px 0 0;
+  float:left;
+  z-index:1200;
+ display:inline-block;
+} */
+div#il_startup_logo img.fh-logo-start {
+  width: 162px;
+  height: 60px;
+  margin: 0 15px 0 0;
+}
+div.ilStartupFrame div.ilc_section_Mnemonic {
+  margin-left: 0;
+  margin-right: 0;
 }
 /* Services/Bookmarks */
 #block_pdbookm_0 #tree_div {
@@ -10716,10 +10805,10 @@ div#il_startup_logo img {
 }
 /* Services/Locator */
 ol.breadcrumb {
-  margin: 0;
+  margin: 10px 0 0;
   font-weight: 600;
   padding-left: 15px;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 [dir="rtl"] ol.breadcrumb {
   padding-right: 15px;
@@ -10955,7 +11044,7 @@ div.ilRatingOverlay {
   background: #ffffff;
 }
 .panel-heading.ilHeader {
-  background: #f0f0f0;
+  background: #f0f1ea;
   padding-left: 0px;
   padding-bottom: 5px;
 }
@@ -11368,7 +11457,7 @@ div.ilNewObjectSelector > .btn-group .dropdown-menu.pull-right {
   padding-left: 4px;
 }
 .yui-panel-container {
-  color: #333333;
+  color: #222222;
 }
 .mceEditor,
 .mceLayout {
@@ -11414,6 +11503,12 @@ table.mceToolbar td {
     margin: 0;
   }
 }
+a.hideHeaderIcon,
+.hideHeaderIcon img {
+  display: none;
+  pointer-events: none;
+  cursor: default;
+}
 /* basic responsiveness (beta)
 
    The following section targets smartphones.
@@ -11432,7 +11527,7 @@ table.mceToolbar td {
     -webkit-text-size-adjust: none;
   }
   .ilContainerWidth {
-    padding: 0 15px;
+    padding: 0 30px;
   }
   div.il_HeaderInner {
     color: #222;
@@ -11483,6 +11578,36 @@ table.mceToolbar td {
     height: 35px;
     margin-top: 2px;
     margin-right: 7px;
+  }
+  .ilMainHeader > header > .row > a.fh-logo > img {
+    height: 40px;
+    /*width:60px;*/
+    margin-top: 0px;
+    margin-right: 7px;
+    position: fixed;
+    top: 0px;
+    left: 55px;
+    display: none;
+  }
+  ul.ilTopBarNav {
+    z-index: 10000;
+  }
+  #ilTopBar.ilTopBar a.navbar-brand {
+    background: none;
+    height: 40px;
+    float: left;
+    display: inline-block;
+    padding: 0 0 0 0;
+    margin: 0;
+    /* margin-left: 500px; */
+    /* margin: 15px 15px 0; */
+  }
+  #ilTopBar.ilTopBar a.navbar-brand > img {
+    width: 40px;
+    height: 40px;
+  }
+  .topIndex {
+    /* z-index:2000; */
   }
   /* @import "less/Services/MainMenu/fhdo_sm.less"; */
   /* @import "less/Services/UIComponent/Tabs/fhdo_sm.less"; */
@@ -11652,6 +11777,10 @@ table.mceToolbar td {
   input.btn,
   button.btn:not(.btn-link) > span:first-child:not(:empty) {
     min-width: 0;
+  }
+  /* Services/Locator */
+  .breadcrumb li {
+    display: inline;
   }
   div.ilGoogleMap {
     max-width: 100%;
