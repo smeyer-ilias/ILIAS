@@ -562,7 +562,10 @@ class ilPersonalSettingsGUI
 			switch ($ilUser->getAuthMode(true))
 			{
 				case AUTH_LOCAL :
-					$this->form->setTitle($lng->txt("chg_password"));
+					//$this->form->setTitle($lng->txt("chg_password"));
+                    // JAN
+                    // changed text variable to change ilias password
+                    $this->form->setTitle($lng->txt("chg_ilias_password"));
 					break;
 					
 				case AUTH_SHIBBOLETH :

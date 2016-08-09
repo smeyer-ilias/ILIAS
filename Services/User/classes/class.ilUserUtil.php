@@ -501,5 +501,37 @@ class ilUserUtil
 		}
 		return $ref_id;
 	}
+    
+    // JAN
+    // begin-patch code_username / ldap_username
+    /**
+     * Generate Username, count up if already used.
+     *
+     * @return string $c_login
+     */
+    public static function generateLogin($a_login)
+    {
+        global $ilDB;
+        // Check if username already exists
+        $found = false;
+        $postfix = 0;
+        $c_login = $a_login;
+        while(!$found)
+        {
+            $r = $ilDB->query("SELECT login FROM usr_data WHERE login = ".
+                $ilDB->quote($c_login));
+            if ($r->numRows() > 0)
+            {
+                $postfix++;
+                $c_login = $a_login.'00'.$postfix;
+            }
+            else
+            {
+                $found = true;
+            }
+        }
+        return $c_login;
+    }
+    // end-patch code_username / ldap_username
 }
 ?>
