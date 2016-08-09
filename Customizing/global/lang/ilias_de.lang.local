@@ -1,0 +1,134 @@
+/* Copyright (c) 1998-2015 ILIAS open source, Extended GPL, see docs/LICENSE */
+/**
+* ILIAS language file (Local changes only)
+*
+* @module			language file German
+* @modulegroup		language
+* @based_on			$Id: ilias_de.lang 61469 2015-12-15 12:09:55Z jrocho $
+* @il_server		http://www.ilias.fh-dortmund.de/ilias
+* @il_version		5.0.8 2015-11-24
+* @created			2016-02-24 15:51:42
+* @created_by		Jan Rocho <jan.rocho@fh-dortmund.de>
+*/
+// The language file starts beyond the HTML-comment below. DO NOT modify this line!
+// To edit your language file with a spreadsheet (i.e. Excel or StarCalc) remove all lines
+// from the first line to the HTML-comment. After editing paste the lines in place again.
+// NOTICE: Character coding of all ILIAS 3 lang files is UTF-8! Please set your editor
+// to the corresponding mode! 
+// Language file names refer to ISO 639, see: http://www.oasis-open.org/cover/iso639a.html
+<!-- language file start -->
+bibl#:#bibliography_file#:#Literaturlisten-Datei
+bibl#:#bib_default_editor#:#Herausgeber
+bibl#:#bib_default_publisher#:#Verlag
+certificate#:#certificate_ph_matriculation#:#Matrikelnummer des Benutzers
+certificate#:#certificate_var_matriculation#:#12345
+common#:#chat_invite#:#Chat Einladung
+common#:#default_role#:#Fachbereich
+common#:#default_role_error_notnull#:#Sie haben keinen Fachbereich ausgewählt
+common#:#default_role_register#:#Fachbereich
+common#:#default_studiengang#:#Studiengang
+common#:#default_studiengang_error#:#Sie haben keinen Studiengang ausgewählt
+common#:#fhkennung#:#FHKennung
+common#:#filename_special_characters#:# 
+common#:#hobby#:#Ansprechpartner im Fachbereich
+common#:#il_xavc_admin#:#Adobe Connect Administrator
+common#:#il_xavc_member#:#Adobe Connect Mitglied
+common#:#learning_module#:#Lernmodul
+common#:#matriculation_exists#:#Diese Matrikelnummer/FHKennung ist bereits registriert.
+common#:#menu_mobile#:#Menü
+common#:#objs_xmvn#:#Streaming Video
+common#:#objs_xmvn_duplicate#:#MUVIN kopieren
+common#:#objs_xpdl#:#Etherpad Lite
+common#:#obj_xavc#:#Adobe Connect
+common#:#obj_xmvn#:#Streaming Video
+common#:#obj_xmvn_duplicate#:#Kopieren
+common#:#obj_xmvn_select#:#MUVIN auswählen
+common#:#ods_connectproblem#:#Im Moment besteht ein Problem beim Datenabgleich mit ODS. Bitte versuchen Sie es später erneut.
+common#:#ods_error#:#Fehler beim Login, bitte FHKennung und Passwort prüfen!
+common#:#ods_shortpass#:#Sie haben Ihr ODS Passwort zwar richtig eingegeben, allerdings ist ihr ODS Passwort zu kurz für ILIAS. ILIAS Benötigt ein Passwort mit mindestens 6 Zeichen. Bitte ändern Sie Ihr Passwort in ODS in ein längeres und registrieren Sie sich erneut bei ILIAS.
+common#:#print_no_page_selected#:#Es wurde weder eine Seite noch ein Kapitel zum Drucken ausgewählt.
+common#:#rbac_create_dbk#:#Digibib anlegen
+common#:#rbac_create_icrs#:#ILinc Kurs anlegen
+common#:#referral_comment#:#Warum benötigen Sie Zugang zu ILIAS?
+common#:#settings_for_all_members#:#Globale Einstellung für alle Kurs/Gruppen Mitglieder
+common#:#settings_per_users#:#Einstellungen pro Kurs/Gruppen Mitglieder
+common#:#system_zeit#:#Systemzeit
+common#:#txt_account_type#:#Bitte wählen sie Ihren Status:
+common#:#txt_account_type_other#:#Zugang für alle anderen
+common#:#txt_account_type_student#:#Student/in
+common#:#txt_fhkennung#:#FHKennung
+common#:#txt_registered_student#:#Sie haben sich erfolgreich bei ILIAS Registriert und erhalten eine Bestätigung per E-Mail. Als Passwort verwenden Sie bitte das Passwort welches zur FHKennung gehört.
+common#:#txt_registered_username#:#Ihr ILIAS Benutzername lautet:
+common#:#txt_register_maintenance#:#Die Registrierung ist von 3.00 - 4.00 Uhr aufgrund von Wartungsarbeiten nicht m&ouml;glich. Wir bitten um Verst&auml;ndnis.
+common#:#txt_reg_nojs#:#Leider haben Sie Javascript abgeschaltet. Um alle Funktionen von Ilias nutzen zu können wird empfohlen JavaScript eingeschaltet zu haben.
+common#:#txt_reg_nojs_chooseform#:#Bitte wählen Sie je nach Ihrem Status das ensprechende Anmeldungsformular: <a href="#nojsformstudent">Immatrikuliert</a> | <a href="#nojsformextern">Anmeldung ohne Matrikelnummer</a>
+common#:#txt_reg_nojs_formextern#:#Anmeldung ohne Matrikelnummer
+common#:#txt_reg_nojs_formstudent#:#Anmeldung für immatrikulierte Studenten
+common#:#txt_submitted#:#Sie haben sich erfolgreich bei ILIAS registriert. Ihr Benutzerkonto muss noch vom Systemadministrator freigegeben werden. Sie werden über die erfolgreiche Freischaltung per E-Mail informiert. Wir bitten um Ihre Geduld.
+common#:#username_login#:#Matrikelnummer/Benutzername
+common#:#usr_filter_role_local#:#Zugewiesene lokale Rolle
+common#:#webfolder_instructions_text#:#<p>So öffnen Sie <b>[WEBFOLDER_TITLE]</b> als Webordner:</p>[IF_WINDOWS]<h3> Anleitung für Windows 7</h3><ol><li>Drücken Sie die Tastenkombination Windows+E zum Öffnen des Windows Explorer.</li><li>Klicken Sie in der Menüleiste auf 'Extras' und anschließend auf  'Netzlaufwerk verbinden'. Dies öffnet den Assistenten 'Netzlaufwerk verbinden'.</li><li>Geben Sie in das Feld 'Ordner' folgende Adresse ein:<br/><b>[WEBFOLDER_URI]</b><br/></li><li>Entfernen Sie den Haken bei 'Verbindung bei Anmeldung wiederherstellen'.</li><li> Klicken Sie auf 'Fertig stellen'.</li></ol><h3>Anleitung für Windows Vista</h3><ol><li>Drücken Sie die Tastenkombination Windows+E zum Öffnen des Windows Explorer.</li><li>Klicken Sie auf 'Netzlaufwerk zuordnen' in der Symbolleiste.<br/>Dies öffnet den Assistenten 'Netzlaufwerk verbinden'.</li><li>Klicken Sie auf den Link 'Verbindung mit einer Website herstellen'.</li><li>Klicken Sie auf 'Weiter'.</li><li>Wählen Sie die Option 'Eine benutzerdefinierte Netzwerkressource auswählen' aus, und klicken Sie auf 'Weiter'.</li><li>Geben Sie in das Feld 'Internet- oder Netzwerkadresse' folgende Adresse ein:<br/><b>[WEBFOLDER_URI]</b><br/>und klicken Sie auf 'Weiter'.</li><li>Geben Sie Benutzername und Passwort ein, und klicken Sie auf 'OK'.<br/>Wiederholen Sie diesen Schritt, bis Sie auf das nächste Dialogfenster gelangen.</li><li>Geben Sie einen Namen für den Webordner ein, und klicken Sie auf 'Weiter'.</li><li>Geben Sie Benutzername und Passwort ein, und klicken Sie auf 'OK'.<br/>Wiederholen Sie diesen Schritt, bis Sie auf das nächste Dialogfenster gelangen.</li><li>Klicken Sie auf Fertigstellen.</li><li>Sie können den Webordner nun über das Startmenü 'Computer' öffnen.</li></ol><h3>Anleitung für Windows XP</h3><ol><li>Drücken Sie die Tastenkombination Windows+E zum Öffnen des Windows Explorer.</li><li>Wählen Sie das Menü 'Extras > Netzlaufwerk verbinden...'.<br/>Dies öffnet den Assistenten 'Netzlaufwerk verbinden'.</li><li>Klicken Sie auf den Link 'Onlinespeicherplatz anfordern oder mit einem Netzwerkserver verbinden'.</li><li>Klicken Sie auf 'Weiter'.</li><li>Wählen Sie die Option 'Eine andere Netzwerkressource auswählen' aus, und klicken Sie auf 'Weiter'.</li><li>Geben Sie in das Feld 'Internet- oder Netzwerkadresse' folgende Adresse ein:<br/><b>[WEBFOLDER_URI]</b><br/>und klicken Sie auf 'Weiter'.</li><li>Geben Sie Benutzername und Passwort ein, und klicken Sie auf 'OK'.</li><li>Geben Sie einen Namen für den Webordner ein, und klicken Sie auf 'Weiter'.</li><li>Klicken Sie auf 'Fertig stellen'.</li><li>Der Webordner wird geöffnet. Sie können den Webordner später über das Startmenü 'Netzwerkumgebung' direkt öffnen.</li></ol><p>Falls Ihr Computer den Webordner nicht öffnen kann, nehmen Sie bitte mit <a href=\"mailto:ilias@fh-dortmund.de\">ilias@fh-dortmund.de</a> Kontakt auf.</p>[/IF_WINDOWS]
+common#:#xmvn_add#:#Hinzufügen
+common#:#xmvn_delete#:#Video löschen
+common#:#xmvn_edit_permission#:#Rechteinstellungen ändern
+common#:#xmvn_new#:#Neues Video hinzufügen
+common#:#xmvn_not_exits#:#Objekt ist nicht vorhanden
+common#:#xmvn_read#:#Lesezugriff auf Video
+common#:#xmvn_visible#:#Video Stream Sichtbarkeit
+common#:#xmvn_write#:#Video bearbeiten
+common#:#xpdl_import#:#Etherpad Importieren
+content#:#HTML_export#:#HTML-Export
+content#:#pages_from#:#Seiten von
+content#:#PDF_export#:#PDF Export
+content#:#read_offline#:#Offline lesen
+content#:#start_export#:#Export starten
+crs#:#crs_notification_list_title#:#Benachrichtigung über neue Mitglieder
+dateplaner#:#cal_booking_confirmed#:#Der Termin wurde erfolgreich gebucht.
+dateplaner#:#cal_booking_failed_info#:#Die Buchung konnte nicht vorgenommen werden, da der Termin ausgebucht ist.
+dateplaner#:#cal_cancel_booking_info#:#Bitte bestätigen Sie die Stornierung der Buchung.
+dateplaner#:#cal_ch_add_grp#:#Neue Sprechstundengruppe anlegen
+dateplaner#:#cal_ch_app_bookings#:#Buchungen
+dateplaner#:#cal_ch_app_grp#:#Sprechstundengruppen
+dateplaner#:#cal_ch_app_list#:#Sprechstundentermine
+dateplaner#:#cal_ch_assigned_apps#:#Anzahl Termine
+dateplaner#:#cal_ch_assign_participants#:#Teilnehmer zuordnen
+dateplaner#:#cal_ch_bookings_tbl#:#Gebuchte Termine
+dateplaner#:#cal_ch_booking_message_tbl#:#Kommentar zur Anmeldung
+dateplaner#:#cal_ch_booking_reminder_body#:#ihr Termin mit "%s" findet in wenigen Tagen statt.
+dateplaner#:#cal_ch_booking_reminder_subject#:#Terminerinnerung "%s"
+dateplaner#:#cal_ch_canceled_bookings#:#Die ausgewählten Buchungen wurden gelöscht.
+dateplaner#:#cal_ch_cancel_booking_info#:#Bei der Absage von Terminbuchungen, werden die Teilnehmer per Mail über die Absage der Termine informiert. Sollten Sie wünschen, dass die Teilnehmer nicht informiert werden, sollten Sie die Option Terminbuchung(en) löschen auswählen.
+dateplaner#:#cal_ch_cancel_booking_sure#:#Sind Sie sicher, dass die ausgewählten Terminbuchungen abgesagt werden sollen?
+dateplaner#:#cal_ch_cron_reminder#:#Sprechstunden-Benachrichtigungen versenden
+dateplaner#:#cal_ch_cron_reminder_days#:#Anzahl Tage
+dateplaner#:#cal_ch_cron_reminder_info#:#Wenn aktiviert, werden Erinnerungen über bevorstehende Sprechstundentermine versandt. Bitte legen Sie fest, wieviele Tage im voraus die Erinnerungen verschickt werden sollen.
+dateplaner#:#cal_ch_deleted_bookings#:#Die ausgewählten Buchungen wurden abgesagt.
+dateplaner#:#cal_ch_delete_app_booking_info#:#Bei folgenden Terminen bestehen bereits Buchungen. Wenn Sie diese Termine löschen, werden die Teilnehmer nicht über die Löschung informiert.
+dateplaner#:#cal_ch_delete_booking#:#Terminbuchung löschen
+dateplaner#:#cal_ch_delete_booking_info#:#Bei der Löschung von Terminbuchungen, werden die Teilnehmer nicht per Mail über die Löschung der Termine informiert. Sollten Sie wünschen, dass die Teilnehmer informiert werden, sollten Sie die Option Terminbuchung(en) absagen auswählen.
+dateplaner#:#cal_ch_delete_booking_sure#:#Sind Sie sicher, dass die ausgewählten Terminbuchungen gelöscht werden sollen?
+dateplaner#:#cal_ch_export_apps#:#Gebuchte Termine
+dateplaner#:#cal_ch_field_ch#:#Sprechstundentermine
+dateplaner#:#cal_ch_grps#:#Sprechstundengruppen
+dateplaner#:#cal_ch_grp_add_tbl#:#Neue Sprechstundengruppe anlegen
+dateplaner#:#cal_ch_grp_delete_sure#:#Sind Sie sicher, dass Sie die folgenden Sprechstundengruppen löschen möchten?
+dateplaner#:#cal_ch_grp_header#:#Sprechstundengruppe
+dateplaner#:#cal_ch_grp_multiple#:#Buchungen pro Teilnehmer
+dateplaner#:#cal_ch_grp_multiple_info#:#Sie können hier die Maximalanzahl von Buchungen pro Teilnehmer für diese Termingruppe festlegen.
+dateplaner#:#cal_ch_grp_no_assignment#:#-- Nicht zugeordnet --
+dateplaner#:#cal_ch_grp_selection#:#Zuordnung zu Sprechstundengruppen
+dateplaner#:#cal_ch_grp_update_tbl#:#Sprechstundengruppe bearbeiten
+dateplaner#:#cal_ch_max_books#:#Buchungen pro Teilnehmer
+dateplaner#:#cal_ch_num_appointments_info#:#Legen Sie fest, wie viel aufeinander folgende Termine generiert werden sollen.
+dateplaner#:#cal_ch_reject_booking#:#Terminbuchung absagen
+dateplaner#:#cal_ch_target_object_info#:#Begrenzt Sprechstunden auf die ausgewählten Kurse und Gruppen im Magazin. Mehrere Objekte können kommagetrennt angegeben werden.
+dateplaner#:#cal_ch_user_assignment_failed_info#:#Die folgenden Benutzer konnten keinem Termin zugeordnet werden, da die maximale Anzahl an Buchungen überschritten wurde.
+dateplaner#:#cal_ch_user_assignment_success#:#Die Benutzer wurden den ausgewählten Terminen zugeordnet.
+dateplaner#:#cal_consultation_hours_for#:#Sprechstunden von
+meta#:#md_separated_by#:#Getrennt mit ,
+ps#:#ps_export_excel#:#Excel-Export starten
+pwassist#:#pwassist_enter_username_and_email#:#<h3>Achtung!</h3>Ab sofort loggen sich Studierende bitte <b><u>nur noch</u></b> mit ihrer <b><u>FHKennung</u></b>  und dem dazugehörigen Passwort in ILIAS ein. Falls Sie Ihr Passwort vergessen haben, klicken Sie bitte auf <a href="http://fh.do/fhkennung-passwort">http://fh.do/fhkennung-passwort</a>!<br><br>DozentInnen (nur FB 1, 2 und 4) und externe BenutzerInnen geben weiterhin ihren Benutzernamen (<b>vorname.nachname</b>) und die dazugehörige E-Mail-Adresse der FH (<b>Name@fh-dortmund.de</b>) ein. Anschließend nutzen Sie den Link in der Passwort-Unterstützungs Mail und setzen ein neues Passwort. Falls hierbei wider Erwarten Probleme auftauchen, wenden Sie sich bitte an %1$s.
+common#:#objs_xlvo#:#Live Votings
+common#:#objs_xavc#:#Adobe Meetings
+common#:#objs_xflc#:#Lernkarten-Trainings
+common#:#filename_special_characters#:#&nbsp;

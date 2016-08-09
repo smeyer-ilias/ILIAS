@@ -1,0 +1,72 @@
+/**
+* ILIAS language file (Local changes only)
+*
+* @module		language file French
+* @modulegroup		language
+* @based_on		$Id: ilias_fr.lang 17656 2008-10-10 12:40:01Z akill $
+* @il_server		http://pixellinux/iliasfh
+* @il_version		3.10.1 2008-10-10
+* @created		2008-10-16 02:13:56
+* @created_by		Jan Rocho <jan.rocho@fh-dortmund.de>
+*/
+
+	+-----------------------------------------------------------------------------+
+	| ILIAS open source                                                           |
+	+-----------------------------------------------------------------------------+
+	| Copyright (c) 1998-2008 ILIAS open source, University of Cologne            |
+	|                                                                             |
+	| This program is free software; you can redistribute it and/or               |
+	| modify it under the terms of the GNU General Public License                 |
+	| as published by the Free Software Foundation; either version 2              |
+	| of the License, or (at your option) any later version.                      |
+	|                                                                             |
+	| This program is distributed in the hope that it will be useful,             |
+	| but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+	| MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+	| GNU General Public License for more details.                                |
+	|                                                                             |
+	| You should have received a copy of the GNU General Public License           |
+	| along with this program; if not, write to the Free Software                 |
+	| Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. |
+	+-----------------------------------------------------------------------------+
+
+// The language file starts beyond the HTML-comment below. DO NOT modify this line!
+// To edit your language file with a spreadsheet (i.e. Excel or StarCalc) remove all lines
+// from the first line to the HTML-comment. After editing paste the lines in place again.
+// NOTICE: Character coding of all ILIAS 3 lang files is UTF-8! Please set your editor
+// to the corresponding mode! 
+// Language file names refer to ISO 639, see: http://www.oasis-open.org/cover/iso639a.html
+<!-- language file start -->
+common#:#chat_invite#:#Invitation Chat
+common#:#chat_link_to_this_chat#:#Lien vers ce chat
+common#:#default_role#:#Dép
+common#:#default_role_error_notnull#:#Vous n'avez pas sélectionné Dép
+common#:#default_role_register#:#Dép
+common#:#default_studiengang#:#Licence
+common#:#default_studiengang_error#:#Vous n'avez pas sélectionné d'études
+common#:#hobby#:#Contact
+common#:#matriculation_exists#:#Ce matricule est déjà enregistré.
+common#:#ods_connectproblem#:#Pour le moment, il existe un problème bem des données avec l'ODS. Veuillez réessayer ultérieurement.
+common#:#ods_error#:#Erreur lors de la connexion, merci de vérifier FHKennung et votre mot de passe!
+common#:#ods_shortpass#:#Vous avez oublié votre mot de passe pour ODS saisi vrai, mais l'ODS est leur mot de passe trop court pour ILIAS. ILIAS requiert un mot de passe d'au moins 6 caractères. Merci de modifier votre mot de passe dans l'ODS dans une longue et vous inscrire à nouveau à ILIAS.
+common#:#referral_comment#:#Pourquoi vous avez besoin d'accès à l'ILIAS?
+common#:#system_zeit#:#Heure
+common#:#txt_account_type#:#Veuillez choisir votre statut:
+common#:#txt_account_type_other#:#Accès sans matricule
+common#:#txt_account_type_student#:#Pour les étudiants immatriculés
+common#:#txt_registered_student#:#Ils ont réussi à ILIAS d'inscription et obtenir une confirmation par e-mail. En tant que mot de passe, veuillez utiliser le mot de passe FHKennung.
+common#:#txt_registered_username#:#Votre nom d'utilisateur pour ILIAS est::
+common#:#txt_register_maintenance#:#L'enregistrement est de 3.00 - 4.00 heures en raison de travaux de maintenance n'est pas possible. Nous vous remercions de votre compr&eacute;hension.
+common#:#txt_reg_nojs#:#Malheureusement, vous avez désactivé JavaScript. Pour toutes les fonctions de Ilias avant de pouvoir utiliser JavaScript est recommandé d'avoir allumé.
+common#:#txt_reg_nojs_chooseform#:#Choisissez en fonction de votre statut au sujet des formulaires d'inscription: <a href="#nojsformstudent">Inscrit</a> | <a href="#nojsformextern">Inscription sans matricule</a>
+common#:#txt_reg_nojs_formextern#:#Inscription sans matricule
+common#:#txt_reg_nojs_formstudent#:#Inscription pour les étudiants immatriculés
+common#:#username_login#:#D'immatriculation ou nom d'utilisateur
+common#:#txt_fhkennung#:#FHKennung
+common#:#fhkennung#:#FHKennung
+common#:#menu_mobile#:#menu
+common#:#objs_xmvn#:#Streaming Vidéo
+common#:#objs_xpdl#:#Etherpad Lite
+common#:#il_xavc_admin#:#Adobe Connect Administrateur 
+common#:#il_xavc_member#:#Adobe Connect Membre
+common#:#obj_xavc#:#Adobe Connect

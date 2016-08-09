@@ -1,0 +1,59 @@
+/**
+* ILIAS language file
+*
+* @module		language file English
+* @modulegroup	language
+* @author 		Matthias Kunkel <m.kunkel@uni-koeln.de>
+* @version		$Id: ilias_de.lang 17112 2008-08-04 20:22:41Z akill $
+*/
+
+    +-----------------------------------------------------------------------------+
+    | ILIAS open source                                                           |
+    +-----------------------------------------------------------------------------+
+    | Copyright (c) 1998-2001 ILIAS open source, University of Cologne            |
+    |                                                                             |
+    | This program is free software; you can redistribute it and/or               |
+    | modify it under the terms of the GNU General Public License                 |
+    | as published by the Free Software Foundation; either version 2              |
+    | of the License, or (at your option) any later version.                      |
+    |                                                                             |
+    | This program is distributed in the hope that it will be useful,             |
+    | but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+    | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+    | GNU General Public License for more details.                                |
+    |                                                                             |
+    | You should have received a copy of the GNU General Public License           |
+    | along with this program; if not, write to the Free Software                 |
+    | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. |
+    +-----------------------------------------------------------------------------+
+
+// The language file starts beyond the HTML-comment below. DO NOT modify this line !
+// To edit your language file with a spreadsheet (i.e. Excel or StarCalc) remove all lines
+// from the first line to the HTML-comment. After editing paste the lines in place again.
+// Notice: Character coding of all ILIAS 3 lang files is UTF-8! Please set your editor
+// to the corresponding mode!
+// Language file names refer to ISO 639, see: http://www.oasis-open.org/cover/iso639a.html
+<!-- language file start -->
+common#:#default_studiengang#:#Studies
+common#:#txt_registered_username#:#Your ILIAS username is: 
+common#:#default_role_register#:#Faculty
+common#:#txt_register_maintenance#:#The registration forms for ILIAS are disabled from 3.00 - 4.00 AM due to system maintenance.
+common#:#txt_account_type#:#Please choose your status:
+common#:#txt_account_type_student#:#Enrolled Student
+common#:#txt_account_type_other#:#Access without immatriculation  
+common#:#default_studiengang_error#:#You did not choose your studies
+common#:#ods_error#:#Error during ODS login, please make sure you matriculation number and password are correct!
+common#:#txt_reg_nojs#:#We have noticed that you have disabled Javascript. To use all ILIAS functions without restrictions it is recommended to enable Javascript.
+common#:#txt_reg_nojs_chooseform#:#Please use the registration form according to you current status: <a href="#nojsformstudent">Enrolled Student</a> | <a href="#nojsformextern">Access without immatriculation</a>
+common#:#txt_reg_nojs_formstudent#:#Registration for Students enrolled at the FH-Dortmund
+common#:#txt_reg_nojs_formextern#:#Registration without matriculation number
+common#:#matriculation_exists#:#The matriculation number you are trying to register with is already in use.
+common#:#hobby#:#Contact person in the faculty
+common#:#default_role_error_notnull#:#You have not choosen a faculty
+common#:#default_role#:#Faculty
+common#:#referral_comment#:#Why do you need access to ILIAS?
+common#:#chat_invite#:#Chat Invite
+common#:#txt_registered_student#:#You have successfully registered an account with ILIAS and will receive a confirmation E-Mail. Please use your ODS password to access ILIAS.
+common#:#chat_link_to_this_chat#:#Link to this chat
+common#:#ods_shortpass#:#You have entered your ODS password correctly, but it is too short for use with ILIAS. Please login to your ODS account and change you password to a longer one. After changing your password, please return to ILIAS an register again.
+common#:#ods_connectproblem#:#Right now we are experiencing problems with the connection to ODS. Please try again later.
