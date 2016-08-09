@@ -129,6 +129,7 @@ class ilMiniCalendarGUI
 		{
 			$counter++;
 			//$this->showEvents($date);
+            $dont_set_td = 0; 
 			
 			
 			$a_tpl->setCurrentBlock('month_col');
@@ -137,6 +138,7 @@ class ilMiniCalendarGUI
 			{
 				$a_tpl->setVariable('DAY_CLASS','calminiapp');
 				#$a_tpl->setVariable('TD_CLASS','calminiapp');
+                $dont_set_td = 1;
 			}
 
 			include_once('./Services/Calendar/classes/class.ilCalendarUtil.php');			
@@ -150,7 +152,16 @@ class ilMiniCalendarGUI
 			#}
 			elseif(ilDateTime::_equals($date,$this->seed,IL_CAL_MONTH))
 			{
-				$a_tpl->setVariable('TD_CLASS','calministd');
+				//$a_tpl->setVariable('TD_CLASS','calministd');
+                //$a_tpl->setVariable('TD_CLASS','calministd');
+                if($dont_set_td == 0)
+                {
+                    $a_tpl->setVariable('TD_CLASS','calministd');
+                }
+                else
+                {
+                    $a_tpl->setVariable('TD_CLASS','calministd calminiapp');
+                }
 			}
 			elseif(ilDateTime::_before($date,$this->seed,IL_CAL_MONTH))
 			{

@@ -877,7 +877,10 @@ class ilPersonalSettingsGUI
 		{
 			$si = new ilSelectInputGUI($this->lng->txt("hits_per_page"), "hits_per_page");
 			
-			$hits_options = array(10,15,20,30,40,50,100,9999);
+			//$hits_options = array(10,15,20,30,40,50,100,9999);
+            // JAN
+            // added Options: 200,500,1000
+            $hits_options = array(10,15,20,30,40,50,100,200,500,1000,9999);
 			$options = array();
 
 			foreach($hits_options as $hits_option)
