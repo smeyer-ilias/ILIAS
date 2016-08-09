@@ -1264,11 +1264,13 @@ class ilUtil
 		}
 		
 		// ensure password matches the positive list of chars/special-chars
-		if( !preg_match( self::getPasswordValidChars() , $a_passwd) )
+		/*
+        if( !preg_match( self::getPasswordValidChars() , $a_passwd) )
 		{
 			$errors[] = $lng->txt('password_contains_invalid_chars');
 			$isPassword = false;
 		}
+        */
 		
 		// build custom error message
 		if( count($errors) == 1 )

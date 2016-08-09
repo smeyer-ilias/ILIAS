@@ -856,11 +856,14 @@ class ilTemplate extends ilTemplateX
 		global $ilAuth;
 		
 		if (!$this->getAddFooter()) return;
-		global $ilias, $ilClientIniFile, $ilCtrl, $ilDB, $ilSetting, $lng;
+		global $ilias, $ilClientIniFile, $ilCtrl, $ilDB, $ilSetting, $lng, $ilIliasIniFile;
 		
 		$ftpl = new ilTemplate("tpl.footer.html", true, true, "Services/UICore");
 		
-		$ftpl->setVariable("ILIAS_VERSION", $ilias->getSetting("ilias_version"));
+		//$ftpl->setVariable("ILIAS_VERSION", $ilias->getSetting("ilias_version"));
+        $ftpl->setVariable("ILIAS_VERSION", $ilias->getSetting("ilias_version").' '.$ilIliasIniFile->readVariable("fhdo","server"));
+        $ftpl->setVariable("SYSTEM_ZEIT", $lng->txt("system_zeit"));
+        $ftpl->setVariable("SYSTEM_ZEIT_ANZEIGEN", date("H:i:s"));
 		
 		$link_items = array();
 		
@@ -873,11 +876,11 @@ class ilTemplate extends ilTemplateX
 		}
 
 		// system support contacts
-		include_once("./Modules/SystemFolder/classes/class.ilSystemSupportContactsGUI.php");
-		if (($l = ilSystemSupportContactsGUI::getFooterLink()) != "")
-		{
-			$link_items[$l] = array(ilSystemSupportContactsGUI::getFooterText(), false);
-		}
+		//include_once("./Modules/SystemFolder/classes/class.ilSystemSupportContactsGUI.php");
+		//if (($l = ilSystemSupportContactsGUI::getFooterLink()) != "")
+		//{
+//			$link_items[$l] = array(ilSystemSupportContactsGUI::getFooterText(), false);
+//		}
 				
 		if (DEVMODE)
 		{
