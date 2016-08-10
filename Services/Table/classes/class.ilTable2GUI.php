@@ -57,6 +57,7 @@ class ilTable2GUI extends ilTableGUI
 	 * @var bool
 	 */
 	protected $prevent_double_submission = true;
+    protected $cse_course = false;
 
 	/**
 	 * @var string
@@ -547,6 +548,8 @@ class ilTable2GUI extends ilTableGUI
 
 	final public function setData($a_data)
 	{
+        global $ilIliasIniFile;
+        
 		// check column names against given data (to ensure proper sorting)
 		if(DEVMODE && 
 			$this->enabled["header"] && $this->enabled["sort"] && 
@@ -575,6 +578,11 @@ class ilTable2GUI extends ilTableGUI
 		}
 		
 		$this->row_data = $a_data;
+        
+        // set cse
+        if(is_array($a_data) && array_key_exists($ilIliasIniFile->readVariable("fhdo","cse_id"),$a_data)) {
+            $this->setCSEcourse(true);
+        }
 	}
 	
 	final public function getData()
@@ -1585,7 +1593,7 @@ echo "ilTabl2GUI->addSelectionButton() has been deprecated with 4.2. Please try 
 	*/
 	public function getHTML()
 	{
-		global $lng, $ilCtrl, $ilUser;
+		global $lng, $ilCtrl, $ilUser, $ilIliasIniFile;
 
 		if($this->getExportMode())
 		{
@@ -1676,15 +1684,30 @@ echo "ilTabl2GUI->addSelectionButton() has been deprecated with 4.2. Please try 
 	
 			foreach($data as $set)
 			{
-				$this->tpl->setCurrentBlock("tbl_content");
-				$this->css_row = ($this->css_row != "tblrow1")
-					? "tblrow1"
-					: "tblrow2";
-				$this->tpl->setVariable("CSS_ROW", $this->css_row);
+				if(!is_array($set))
+                {                
+                    $this->tpl->setCurrentBlock("tbl_content");
+                    $this->css_row = ($this->css_row != "tblrow1")
+                        ? "tblrow1"
+                        : "tblrow2";
+                    $this->tpl->setVariable("CSS_ROW", $this->css_row);
 
-				$this->fillRow($set);
-				$this->tpl->setCurrentBlock("tbl_content");
-				$this->tpl->parseCurrentBlock();
+                    $this->fillRow($set);
+                    $this->tpl->setCurrentBlock("tbl_content");
+                    $this->tpl->parseCurrentBlock();
+                }  elseif((isset($ilIliasIniFile) && $set['login'] != $ilIliasIniFile->readVariable("fhdo","cse_login")) || 
+                    !isset($ilIliasIniFile)) {
+                    
+                    $this->tpl->setCurrentBlock("tbl_content");
+                    $this->css_row = ($this->css_row != "tblrow1")
+                    ? "tblrow1"
+                    : "tblrow2";
+                    $this->tpl->setVariable("CSS_ROW", $this->css_row);
+ 
+                    $this->fillRow($set);
+                    $this->tpl->setCurrentBlock("tbl_content");
+                    $this->tpl->parseCurrentBlock();
+                }
 			}
 		}
 		else
@@ -2147,7 +2170,9 @@ echo "ilTabl2GUI->addSelectionButton() has been deprecated with 4.2. Please try 
 				$end = $this->max_count;
 			}
 			
-			if ($this->max_count > 0)
+			
+            /*
+            if ($this->max_count > 0)
 			{
 				if ($this->lang_support)
 				{
@@ -2158,6 +2183,31 @@ echo "ilTabl2GUI->addSelectionButton() has been deprecated with 4.2. Please try 
 					$numinfo = "(".$start." - ".$end." of ".$this->max_count.")";
 				}
 			}
+            */
+            // cse remove 1 user
+            if($this->getCSEcourse())
+            {
+                if ($this->lang_support)
+                {
+                    $numinfo = "(".($start)." - ".($end-1)." ".strtolower($this->lng->txt("of"))." ".($this->max_count-1).")";
+                }
+                else
+                {
+                    $numinfo = "(".($start)." - ".($end-1)." of ".($this->max_count-1).")";
+                }
+            }
+            else
+            {
+                if ($this->lang_support)
+                {
+                    $numinfo = "(".$start." - ".$end." ".strtolower($this->lng->txt("of"))." ".$this->max_count.")";
+                }
+                else
+                {
+                    $numinfo = "(".$start." - ".$end." of ".$this->max_count.")";
+                }
+            }
+            
 			if ($this->max_count > 0)
 			{
 				if ($this->getEnableNumInfo())
@@ -3432,6 +3482,26 @@ echo "ilTabl2GUI->addSelectionButton() has been deprecated with 4.2. Please try 
 			$this->rows_selector_off = true;
 		}
 	}
+    
+    /**
+     * Set CSE course
+     *
+     * @param bool $a_val CSE user in course
+     */
+    private function setCSEcourse ($a_val) 
+    {
+        $this->cse_course = $a_val;
+    }
+    
+    /**
+     * Get CSE course
+     *
+     * @return bool CSE user in course
+     */
+    private function getCSEcourse ()
+    {
+        return $this->cse_course;
+    }
 }
 
 ?>

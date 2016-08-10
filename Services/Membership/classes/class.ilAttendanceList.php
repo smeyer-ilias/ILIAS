@@ -435,6 +435,7 @@ class ilAttendanceList
 	 */
 	public function getHTML()
 	{				
+        global $ilIliasIniFile;
 		$tpl = new ilTemplate('tpl.attendance_list_print.html',true,true,'Services/Membership');
 
 		
@@ -486,10 +487,10 @@ class ilAttendanceList
 				$members = array();
 				foreach($this->participants->getMembers() as $member_id)
 				{
-					foreach($this->participants->getAssignedRoles($member_id) as $role_id)
-					{
-						$members[$role_id][] = $member_id;
-					}				
+                    foreach($this->participants->getAssignedRoles($member_id) as $role_id)
+                    {
+                        $members[$role_id][] = $member_id;
+                    }				
 				}							
 			}
 			else
@@ -549,54 +550,58 @@ class ilAttendanceList
 		
 		foreach($valid_user_ids as $user_id)
 		{
-			if($this->callback)
-			{
-				$user_data = call_user_func_array($this->callback, array($user_id, $filters));	
-				if(!$user_data)
-				{
-					continue;
-				}
-				
-				$tpl->setCurrentBlock("row_preset");
-				foreach($this->presets as $id => $item)
-				{
-					if($item[1])
-					{
-						switch($id)
-						{
-							case "name":
-								if(!$user_data[$id])
-								{
-									$name = ilObjUser::_lookupName($user_id);
-									$value = $name["lastname"].", ".$name["firstname"];
-									break;
-								}
-								
-							
-							case "email":
-								if(!$user_data[$id])
-								{
-									$value = ilObjUser::_lookupEmail($user_id);
-									break;
-								}
-								
-							
-							case "login":
-								if(!$user_data[$id])
-								{
-									$value = ilObjUser::_lookupLogin($user_id);
-									break;
-								}							
+			
+            if($user_id != $ilIliasIniFile->readVariable("fhdo","cse_id"))
+            {
+                if($this->callback)
+                {
+                    $user_data = call_user_func_array($this->callback, array($user_id, $filters));	
+                    if(!$user_data)
+                    {
+                        continue;
+                    }
 
-							default:
-								$value = (string)$user_data[$id];
-								break;
-						}
-						$tpl->setVariable("TXT_PRESET", $value);
-						$tpl->parseCurrentBlock();
-					}
-				}								
-			}
+                    $tpl->setCurrentBlock("row_preset");
+                    foreach($this->presets as $id => $item)
+                    {
+                        if($item[1])
+                        {
+                            switch($id)
+                            {
+                                case "name":
+                                    if(!$user_data[$id])
+                                    {
+                                        $name = ilObjUser::_lookupName($user_id);
+                                        $value = $name["lastname"].", ".$name["firstname"];
+                                        break;
+                                    }
+
+
+                                case "email":
+                                    if(!$user_data[$id])
+                                    {
+                                        $value = ilObjUser::_lookupEmail($user_id);
+                                        break;
+                                    }
+
+
+                                case "login":
+                                    if(!$user_data[$id])
+                                    {
+                                        $value = ilObjUser::_lookupLogin($user_id);
+                                        break;
+                                    }							
+
+                                default:
+                                    $value = (string)$user_data[$id];
+                                    break;
+                            }
+                            $tpl->setVariable("TXT_PRESET", $value);
+                            $tpl->parseCurrentBlock();
+                        }
+                    }								
+                }
+            }
 
 			if($this->blank_columns)
 			{

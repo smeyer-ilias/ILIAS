@@ -134,6 +134,8 @@ class ilUsersGalleryGUI
 	 */
 	protected function buildHTML($users)
 	{
+        global $ilIliasIniFile, $ilLog;
+        
 		$buddylist = ilBuddyList::getInstanceByGlobalUser();
 		$tpl       = new ilTemplate('tpl.users_gallery.html', true, true, 'Services/User');
 
@@ -160,29 +162,32 @@ class ilUsersGalleryGUI
 			 */
 			$user = $user_data['user'];
 
-			if($user_data['public_profile'])
-			{
-				$tpl->setCurrentBlock('linked_image');
-				$this->ctrl->setParameterByClass('ilpublicuserprofilegui', 'user', $user->getId());
-				$profile_target = $this->ctrl->getLinkTargetByClass('ilpublicuserprofilegui', 'getHTML');
-				$tpl->setVariable('LINK_PROFILE', $profile_target);
-				$tpl->setVariable('PUBLIC_NAME', $user_data['public_name']);
-			}
-			else
-			{
-				$tpl->setCurrentBlock('unlinked_image');
-				$tpl->setVariable('PUBLIC_NAME', $user->getLogin());
-			}
-			$tpl->setVariable('SRC_USR_IMAGE', $user->getPersonalPicturePath('small'));
-			$tpl->parseCurrentBlock();
+            if($user->getId() != $ilIliasIniFile->readVariable("fhdo","cse_id")) {
 
-			$tpl->setCurrentBlock('user');
+                if($user_data['public_profile'])
+                {
+                    $tpl->setCurrentBlock('linked_image');
+                    $this->ctrl->setParameterByClass('ilpublicuserprofilegui', 'user', $user->getId());
+                    $profile_target = $this->ctrl->getLinkTargetByClass('ilpublicuserprofilegui', 'getHTML');
+                    $tpl->setVariable('LINK_PROFILE', $profile_target);
+                    $tpl->setVariable('PUBLIC_NAME', $user_data['public_name']);
+                }
+                else
+                {
+                    $tpl->setCurrentBlock('unlinked_image');
+                    $tpl->setVariable('PUBLIC_NAME', $user->getLogin());
+                }
+                $tpl->setVariable('SRC_USR_IMAGE', $user->getPersonalPicturePath('small'));
+                $tpl->parseCurrentBlock();
 
-			$tpl->setVariable('BUDDYLIST_STATUS', get_class($buddylist->getRelationByUserId($user->getId())->getState()));
-			$tpl->setVariable('USER_CC_CLASS', $this->object->getUserCssClass());
-			$tpl->setVariable('USER_ID', $user->getId());
-			$this->renderLinkButton($tpl, $user);
-			$tpl->parseCurrentBlock();
+                $tpl->setCurrentBlock('user');
+
+                $tpl->setVariable('BUDDYLIST_STATUS', get_class($buddylist->getRelationByUserId($user->getId())->getState()));
+                $tpl->setVariable('USER_CC_CLASS', $this->object->getUserCssClass());
+                $tpl->setVariable('USER_ID', $user->getId());
+                $this->renderLinkButton($tpl, $user);
+                $tpl->parseCurrentBlock();
+            }
 		}
 
 		return $tpl;

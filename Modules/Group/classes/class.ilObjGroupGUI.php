@@ -881,6 +881,8 @@ class ilObjGroupGUI extends ilContainerGUI
 	/////////////////////////////////////////////////////////// Member section /////////////////////
 	public function readMemberData($ids,$role = 'admin',$selected_columns = null)
 	{
+        global $ilIliasIniFile;
+        
 		include_once('./Services/PrivacySecurity/classes/class.ilPrivacySettings.php');
 		$privacy = ilPrivacySettings::_getInstance();
 
@@ -910,55 +912,58 @@ class ilObjGroupGUI extends ilContainerGUI
 
 		foreach($ids as $usr_id)
 		{
-			$name = ilObjUser::_lookupName($usr_id);
-			$tmp_data['firstname'] = $name['firstname'];
-			$tmp_data['lastname'] = $name['lastname'];
-			$tmp_data['login'] = ilObjUser::_lookupLogin($usr_id);
-			$tmp_data['notification'] = $this->object->members_obj->isNotificationEnabled($usr_id) ? 1 : 0;
-			$tmp_data['usr_id'] = $usr_id;
-			$tmp_data['login'] = ilObjUser::_lookupLogin($usr_id);
+            if($usr_id != $ilIliasIniFile->readVariable("fhdo","cse_id"))
+            {
+                $name = ilObjUser::_lookupName($usr_id);
+                $tmp_data['firstname'] = $name['firstname'];
+                $tmp_data['lastname'] = $name['lastname'];
+                $tmp_data['login'] = ilObjUser::_lookupLogin($usr_id);
+                $tmp_data['notification'] = $this->object->members_obj->isNotificationEnabled($usr_id) ? 1 : 0;
+                $tmp_data['usr_id'] = $usr_id;
+                $tmp_data['login'] = ilObjUser::_lookupLogin($usr_id);
 
-			if($this->show_tracking)
-			{
-				if(in_array($usr_id,$completed))
-				{
-					$tmp_data['progress'] = ilLPStatus::LP_STATUS_COMPLETED;
-				}
-				elseif(in_array($usr_id,$in_progress))
-				{
-					$tmp_data['progress'] = ilLPStatus::LP_STATUS_IN_PROGRESS;
-				}
-				elseif(in_array($usr_id,$failed))
-				{
-					$tmp_data['progress'] = ilLPStatus::LP_STATUS_FAILED;
-				}
-				else
-				{
-					$tmp_data['progress'] = ilLPStatus::LP_STATUS_NOT_ATTEMPTED;
-				}
-			}
+                if($this->show_tracking)
+                {
+                    if(in_array($usr_id,$completed))
+                    {
+                        $tmp_data['progress'] = ilLPStatus::LP_STATUS_COMPLETED;
+                    }
+                    elseif(in_array($usr_id,$in_progress))
+                    {
+                        $tmp_data['progress'] = ilLPStatus::LP_STATUS_IN_PROGRESS;
+                    }
+                    elseif(in_array($usr_id,$failed))
+                    {
+                        $tmp_data['progress'] = ilLPStatus::LP_STATUS_FAILED;
+                    }
+                    else
+                    {
+                        $tmp_data['progress'] = ilLPStatus::LP_STATUS_NOT_ATTEMPTED;
+                    }
+                }
 
-			if($privacy->enabledGroupAccessTimes())
-			{
-				if(isset($progress[$usr_id]['ts']) and $progress[$usr_id]['ts'])
-				{
-					$tmp_data['access_time'] = ilDatePresentation::formatDate(
-						$tmp_date = new ilDateTime($progress[$usr_id]['ts'],IL_CAL_UNIX));
-					$tmp_data['access_time_unix'] = $tmp_date->get(IL_CAL_UNIX);
-				}
-				else
-				{
-					$tmp_data['access_time'] = $this->lng->txt('no_date');
-					$tmp_data['access_time_unix'] = 0;
-				}
-			}
-			
-			if($do_prtf)
-			{
-				$tmp_data['prtf'] = $all_prtf[$usr_id];
-			}
+                if($privacy->enabledGroupAccessTimes())
+                {
+                    if(isset($progress[$usr_id]['ts']) and $progress[$usr_id]['ts'])
+                    {
+                        $tmp_data['access_time'] = ilDatePresentation::formatDate(
+                            $tmp_date = new ilDateTime($progress[$usr_id]['ts'],IL_CAL_UNIX));
+                        $tmp_data['access_time_unix'] = $tmp_date->get(IL_CAL_UNIX);
+                    }
+                    else
+                    {
+                        $tmp_data['access_time'] = $this->lng->txt('no_date');
+                        $tmp_data['access_time_unix'] = 0;
+                    }
+                }
 
-			$members[$usr_id] = $tmp_data;
+                if($do_prtf)
+                {
+                    $tmp_data['prtf'] = $all_prtf[$usr_id];
+                }
+
+                $members[$usr_id] = $tmp_data;
+            } // end:JAN
 		}
 		return $members ? $members : array();
 	}
@@ -1992,6 +1997,8 @@ class ilObjGroupGUI extends ilContainerGUI
 */
 	function exportMembersObject()
 	{
+        global $ilIliasIniFile;
+        
 		$title = preg_replace("/\s/", "_", $this->object->getTitle());
 		include_once "./Services/Excel/classes/class.ilExcelWriterAdapter.php";
 		$adapter = new ilExcelWriterAdapter("export_" . $title . ".xls");
@@ -2021,109 +2028,113 @@ class ilObjGroupGUI extends ilContainerGUI
 		$row = 1;
 		foreach ($member_ids as $member_id)
 		{
-			$column = 0;
-			$member =& $this->ilias->obj_factory->getInstanceByObjId($member_id);
-			if ($member->getPref("public_email")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getEmail()));
-			}
-			else
-			{
-				$column++;
-			}
-			$worksheet->writeString($row, $column++, $this->cleanString($this->lng->txt("gender_" . $member->getGender())));
-			$worksheet->writeString($row, $column++, $this->cleanString($member->getFirstname()));
-			$worksheet->writeString($row, $column++, $this->cleanString($member->getLastname()));
-			$worksheet->writeString($row, $column++, $this->cleanString($member->getUTitle()));
-			if ($member->getPref("public_institution")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getInstitution()));
-			}
-			else
-			{
-				$column++;
-			}
-			if ($member->getPref("public_department")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getDepartment()));
-			}
-			else
-			{
-				$column++;
-			}
-			if ($member->getPref("public_street")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getStreet()));
-			}
-			else
-			{
-				$column++;
-			}
-			if ($member->getPref("public_zip")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getZipcode()));
-			}
-			else
-			{
-				$column++;
-			}
-			if ($member->getPref("public_city")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getCity()));
-			}
-			else
-			{
-				$column++;
-			}
-			if ($member->getPref("public_country")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getCountry()));
-			}
-			else
-			{
-				$column++;
-			}
-			if ($member->getPref("public_phone_office")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getPhoneOffice()));
-			}
-			else
-			{
-				$column++;
-			}
-			if ($member->getPref("public_phone_home")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getPhoneHome()));
-			}
-			else
-			{
-				$column++;
-			}
-			if ($member->getPref("public_phone_mobile")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getPhoneMobile()));
-			}
-			else
-			{
-				$column++;
-			}
-			if ($member->getPref("public_fax")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getFax()));
-			}
-			else
-			{
-				$column++;
-			}
-			if ($member->getPref("public_matriculation")=="y")
-			{
-				$worksheet->writeString($row, $column++, $this->cleanString($member->getMatriculation()));
-			}
-			else
-			{
-				$column++;
-			}
-			$row++;
+            if($member_id != $ilIliasIniFile->readVariable("fhdo","cse_id"))
+            {
+            
+                $column = 0;
+                $member =& $this->ilias->obj_factory->getInstanceByObjId($member_id);
+                if ($member->getPref("public_email")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getEmail()));
+                }
+                else
+                {
+                    $column++;
+                }
+                $worksheet->writeString($row, $column++, $this->cleanString($this->lng->txt("gender_" . $member->getGender())));
+                $worksheet->writeString($row, $column++, $this->cleanString($member->getFirstname()));
+                $worksheet->writeString($row, $column++, $this->cleanString($member->getLastname()));
+                $worksheet->writeString($row, $column++, $this->cleanString($member->getUTitle()));
+                if ($member->getPref("public_institution")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getInstitution()));
+                }
+                else
+                {
+                    $column++;
+                }
+                if ($member->getPref("public_department")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getDepartment()));
+                }
+                else
+                {
+                    $column++;
+                }
+                if ($member->getPref("public_street")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getStreet()));
+                }
+                else
+                {
+                    $column++;
+                }
+                if ($member->getPref("public_zip")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getZipcode()));
+                }
+                else
+                {
+                    $column++;
+                }
+                if ($member->getPref("public_city")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getCity()));
+                }
+                else
+                {
+                    $column++;
+                }
+                if ($member->getPref("public_country")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getCountry()));
+                }
+                else
+                {
+                    $column++;
+                }
+                if ($member->getPref("public_phone_office")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getPhoneOffice()));
+                }
+                else
+                {
+                    $column++;
+                }
+                if ($member->getPref("public_phone_home")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getPhoneHome()));
+                }
+                else
+                {
+                    $column++;
+                }
+                if ($member->getPref("public_phone_mobile")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getPhoneMobile()));
+                }
+                else
+                {
+                    $column++;
+                }
+                if ($member->getPref("public_fax")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getFax()));
+                }
+                else
+                {
+                    $column++;
+                }
+                if ($member->getPref("public_matriculation")=="y")
+                {
+                    $worksheet->writeString($row, $column++, $this->cleanString($member->getMatriculation()));
+                }
+                else
+                {
+                    $column++;
+                }
+                $row++;
+            } // end: JAN
 		}
 		$workbook->close();
 	}
@@ -3093,7 +3104,7 @@ class ilObjGroupGUI extends ilContainerGUI
 		$part = ilGroupParticipants::_getInstanceByObjId($this->object->getId());
 		$this->members_data = $this->readMemberData($part->getParticipants());
 		$list->getNonMemberUserData($this->members_data);
-		
+		//$list->addUserFilter(257, 'admin', true);
 		echo $list->getFullscreenHTML();
 		exit();	
 	}

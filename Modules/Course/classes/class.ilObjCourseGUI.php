@@ -3643,7 +3643,7 @@ class ilObjCourseGUI extends ilContainerGUI
 	
 	function fetchPrintMemberData($a_members)
 	{
-		global $ilAccess,$lng;
+		global $ilAccess,$lng,$ilIliasIniFile;
 
 		$lng->loadLanguageModule('trac');
 
@@ -3669,88 +3669,94 @@ class ilObjCourseGUI extends ilContainerGUI
 		
 		foreach($a_members as $member_id)
 		{
-			// GET USER OBJ
-			if($tmp_obj = ilObjectFactory::getInstanceByObjId($member_id,false))
-			{
-				$print_member[$member_id]['login'] = $tmp_obj->getLogin();
-				$print_member[$member_id]['name'] = $tmp_obj->getLastname().', '.$tmp_obj->getFirstname();
+            // JAN
+            // only get member if not cse
+            if($member_id != $ilIliasIniFile->readVariable("fhdo","cse_id"))
+            {
+                
+                // GET USER OBJ
+                if($tmp_obj = ilObjectFactory::getInstanceByObjId($member_id,false))
+                {
+                    $print_member[$member_id]['login'] = $tmp_obj->getLogin();
+                    $print_member[$member_id]['name'] = $tmp_obj->getLastname().', '.$tmp_obj->getFirstname();
 
-				if($this->object->getMembersObject()->isAdmin($member_id))
-				{
-					$print_member[$member_id]['role'] = $this->lng->txt("il_crs_admin");
-				}
-				elseif($this->object->getMembersObject()->isTutor($member_id))
-				{
-					$print_member[$member_id]['role'] = $this->lng->txt("il_crs_tutor");
-				}
-				elseif($this->object->getMembersObject()->isMember($member_id))
-				{
-					$print_member[$member_id]['role'] = $this->lng->txt("il_crs_member");
-				}
-				if($this->object->getMembersObject()->isAdmin($member_id) or $this->object->getMembersObject()->isTutor($member_id))
-				{
-					if($this->object->getMembersObject()->isNotificationEnabled($member_id))
-					{
-						$print_member[$member_id]['status'] = $this->lng->txt("crs_notify");
-					}
-					else
-					{
-						$print_member[$member_id]['status'] = $this->lng->txt("crs_no_notify");
-					}
-				}
-				else
-				{
-					if($this->object->getMembersObject()->isBlocked($member_id))
-					{
-						$print_member[$member_id]['status'] = $this->lng->txt("crs_blocked");
-					}
-					else
-					{
-						$print_member[$member_id]['status'] = $this->lng->txt("crs_unblocked");
-					}
-				}
-	
-				if($is_admin)
-				{
-					$print_member[$member_id]['passed'] = $this->object->getMembersObject()->hasPassed($member_id) ?
-									  $this->lng->txt('crs_member_passed') :
-									  $this->lng->txt('crs_member_not_passed');
-					
-				}
-				if($privacy->enabledCourseAccessTimes())
-				{
-					if(isset($progress[$member_id]['ts']) and $progress[$member_id]['ts'])
-					{
-						ilDatePresentation::setUseRelativeDates(false);
-						$print_member[$member_id]['access'] = ilDatePresentation::formatDate(new ilDateTime($progress[$member_id]['ts'],IL_CAL_UNIX));
-						ilDatePresentation::setUseRelativeDates(true);
-					}
-					else
-					{
-						$print_member[$member_id]['access'] = $this->lng->txt('no_date');
-					}
-				}
-				if($this->show_tracking)
-				{
-					if(in_array($member_id,$completed))
-					{
-						$print_member[$member_id]['progress'] = $this->lng->txt(ilLPStatus::LP_STATUS_COMPLETED);
-					}
-					elseif(in_array($member_id,$in_progress))
-					{
-						$print_member[$member_id]['progress'] = $this->lng->txt(ilLPStatus::LP_STATUS_IN_PROGRESS);
-					}
-					elseif(in_array($member_id,$failed))
-					{
-						$print_member[$member_id]['progress'] = $this->lng->txt(ilLPStatus::LP_STATUS_FAILED);
-					}
-					else
-					{
-						$print_member[$member_id]['progress'] = $this->lng->txt(ilLPStatus::LP_STATUS_NOT_ATTEMPTED);
-					}
-				}
-				
-			}
+                    if($this->object->getMembersObject()->isAdmin($member_id))
+                    {
+                        $print_member[$member_id]['role'] = $this->lng->txt("il_crs_admin");
+                    }
+                    elseif($this->object->getMembersObject()->isTutor($member_id))
+                    {
+                        $print_member[$member_id]['role'] = $this->lng->txt("il_crs_tutor");
+                    }
+                    elseif($this->object->getMembersObject()->isMember($member_id))
+                    {
+                        $print_member[$member_id]['role'] = $this->lng->txt("il_crs_member");
+                    }
+                    if($this->object->getMembersObject()->isAdmin($member_id) or $this->object->getMembersObject()->isTutor($member_id))
+                    {
+                        if($this->object->getMembersObject()->isNotificationEnabled($member_id))
+                        {
+                            $print_member[$member_id]['status'] = $this->lng->txt("crs_notify");
+                        }
+                        else
+                        {
+                            $print_member[$member_id]['status'] = $this->lng->txt("crs_no_notify");
+                        }
+                    }
+                    else
+                    {
+                        if($this->object->getMembersObject()->isBlocked($member_id))
+                        {
+                            $print_member[$member_id]['status'] = $this->lng->txt("crs_blocked");
+                        }
+                        else
+                        {
+                            $print_member[$member_id]['status'] = $this->lng->txt("crs_unblocked");
+                        }
+                    }
+
+                    if($is_admin)
+                    {
+                        $print_member[$member_id]['passed'] = $this->object->getMembersObject()->hasPassed($member_id) ?
+                                          $this->lng->txt('crs_member_passed') :
+                                          $this->lng->txt('crs_member_not_passed');
+
+                    }
+                    if($privacy->enabledCourseAccessTimes())
+                    {
+                        if(isset($progress[$member_id]['ts']) and $progress[$member_id]['ts'])
+                        {
+                            ilDatePresentation::setUseRelativeDates(false);
+                            $print_member[$member_id]['access'] = ilDatePresentation::formatDate(new ilDateTime($progress[$member_id]['ts'],IL_CAL_UNIX));
+                            ilDatePresentation::setUseRelativeDates(true);
+                        }
+                        else
+                        {
+                            $print_member[$member_id]['access'] = $this->lng->txt('no_date');
+                        }
+                    }
+                    if($this->show_tracking)
+                    {
+                        if(in_array($member_id,$completed))
+                        {
+                            $print_member[$member_id]['progress'] = $this->lng->txt(ilLPStatus::LP_STATUS_COMPLETED);
+                        }
+                        elseif(in_array($member_id,$in_progress))
+                        {
+                            $print_member[$member_id]['progress'] = $this->lng->txt(ilLPStatus::LP_STATUS_IN_PROGRESS);
+                        }
+                        elseif(in_array($member_id,$failed))
+                        {
+                            $print_member[$member_id]['progress'] = $this->lng->txt(ilLPStatus::LP_STATUS_FAILED);
+                        }
+                        else
+                        {
+                            $print_member[$member_id]['progress'] = $this->lng->txt(ilLPStatus::LP_STATUS_NOT_ATTEMPTED);
+                        }
+                    }
+
+                }
+            } // end: JAN
 		}
 		
 		switch($_SESSION['crs_print_sort'])
