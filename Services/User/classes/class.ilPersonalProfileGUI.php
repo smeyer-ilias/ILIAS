@@ -1224,11 +1224,15 @@ class ilPersonalProfileGUI
 
 				if(!$parent)
 				{
-					$form->addItem($cb);
+                    // don't add matriculation to public profile
+                    if($key != 'matriculation')
+					   $form->addItem($cb);
 				}
 				else
 				{
-					$parent->addSubItem($cb);
+                    // don't add matriculation to public profile
+                    if($key != 'matriculation')
+					   $parent->addSubItem($cb);
 				}
 			}
 		}
