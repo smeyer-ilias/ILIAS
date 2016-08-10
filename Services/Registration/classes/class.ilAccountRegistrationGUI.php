@@ -124,7 +124,16 @@ class ilAccountRegistrationGUI
 			{
 				$code->setInfo($lng->txt("registration_code_optional_info"));
 			}
-			$this->form->addItem($code);	
+			$this->form->addItem($code);
+            
+            // JAN
+            // begin-patch code_username
+            // adds a hidden username field
+            $usernamefield = new ilTextInputGUI("", "username");
+            $usernamefield->setInputType("hidden");
+            $usernamefield->setHiddenTitle();
+            $this->form->addItem($usernamefield);
+            // end-patch code_username
 		}
 		
 
@@ -177,6 +186,14 @@ class ilAccountRegistrationGUI
 		$up = new ilUserProfile();
 		$up->setMode(ilUserProfile::MODE_REGISTRATION);
 		$up->skipGroup("preferences");
+        
+        // JAN
+        // begin-patch code_username
+        // skip default username field
+        if($this->code_enabled) {
+            $up->skipField("username");
+        }
+        // end-patch code_username
 		
 		$up->setAjaxCallback(
 			$this->ctrl->getLinkTarget($this, 'doProfileAutoComplete', '', true)
@@ -308,6 +325,21 @@ class ilAccountRegistrationGUI
 					{
 						$valid_role = $role_id;
 					}
+                    
+                    // JAN
+                    // begin-patch code_username
+                    // If code, generate username from first and lastname
+                    $il_account = $this->form->getInput('usr_firstname').'.'.$this->form->getInput('usr_lastname');
+                    include_once './Services/Utilities/classes/class.ilStr.php';
+                    $il_account = ilStr::strToLower($il_account);
+                    $uml = array('ä','ö','ü','ß','ñ','é','è','á','ó','ú','Ä','Ö','Ü','ç','å','ã','â', 'á', 'à', 'æ','À', 'Á', 'Â', 'Ã', 'Å', 'Æ','Ç','È','É','Ê','Ë', 'Ì', 'Í', 'Î', 'Ï','Ð', 'Ñ','Ò','Ó', 'Ô', 'Õ', 'Ø', 'Ù', 'Ú', 'Û', 'Ý','ì','í','î','ï','ò','ô','õ','ø','ù','û','ý','ÿ','\'');
+                    $rep = array('ae','oe','ue','ss','n','e','e','a','o','u','Ae','Oe','Ue','c','a','a','a','a','a','a','A','A','A','A','A','Ae','C','E','E','E','E','I','I','I','I','D','N','O','O','O','O','O','U','U','U','Y','i','i','i','i','o','o','o','o','u','u','y','y','_');
+                    $il_account = str_replace($uml, $rep, $il_account);
+                    $il_account = str_replace(' ', '_', $il_account);
+ 
+                    include_once 'Services/User/classes/class.ilUserUtil.php';
+                    $_POST['username'] = ilUserUtil::generateLogin($il_account);
+                    // end-patch code_username
 				}
 			}			
 		}
@@ -407,26 +439,31 @@ class ilAccountRegistrationGUI
 			$form_valid = false;
 		}			
 
-		// validate username
-		$login_obj = $this->form->getItemByPostVar('username');
-		$login = $this->form->getInput("username");
-		if (!ilUtil::isLogin($login))
-		{
-			$login_obj->setAlert($lng->txt("login_invalid"));
-			$form_valid = false;
-		}
-		else if (ilObjUser::_loginExists($login))
-		{
-			$login_obj->setAlert($lng->txt("login_exists"));
-			$form_valid = false;
-		}
-		else if ((int)$ilSetting->get('allow_change_loginname') &&
-			(int)$ilSetting->get('reuse_of_loginnames') == 0 &&
-			ilObjUser::_doesLoginnameExistInHistory($login))
-		{
-			$login_obj->setAlert($lng->txt('login_exists'));
-			$form_valid = false;
-		}
+		        // JAN
+        // begin-patch code_username
+        if(!$this->code_enabled) {
+            // validate username
+            $login_obj = $this->form->getItemByPostVar('username');
+            $login = $this->form->getInput("username");
+            if (!ilUtil::isLogin($login)) {
+                $login_obj->setAlert($lng->txt("login_invalid"));
+                $form_valid = false;
+            } else if (ilObjUser::_loginExists($login)) {
+                $login_obj->setAlert($lng->txt("login_exists"));
+                $form_valid = false;
+            } else if ((int)$ilSetting->get('allow_change_loginname') &&
+                (int)$ilSetting->get('reuse_of_loginnames') == 0 &&
+                ilObjUser::_doesLoginnameExistInHistory($login)
+            ) {
+                $login_obj->setAlert($lng->txt('login_exists'));
+                $form_valid = false;
+            }
+        }
+        // end-patch code_username;
+ 
+        // JAN DEBUG
+        //echo 'DEBUG TEST';
+        //print_r($_POST);
 
 		if(!$form_valid)
 		{
@@ -562,7 +599,13 @@ class ilAccountRegistrationGUI
 
 		$this->code_was_used = false;
 		if($this->code_enabled)
-		{					 
+		{		
+            
+            $sh = new ilFormSectionHeaderGUI();
+            //$sh->setTitle($lng->txt("registration_code"));
+            $sh->setTitle($lng->txt("registration_code"));
+            $this->form->addItem($sh);
+            
 			$code_local_roles = $code_has_access_limit = null;
 			
 			// #10853 - could be optional
