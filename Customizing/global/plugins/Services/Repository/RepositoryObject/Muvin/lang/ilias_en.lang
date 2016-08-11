@@ -1,0 +1,52 @@
+// 
+// English Language File for MUVINObject Plugin
+//
+
+<!-- language file start -->
+
+obj_xmvn#:#Streaming Video
+objs_xmvn#:#Video Streams
+obj_xmvn_duplicate#:#Copy
+objs_xmvn_duplicate#:#Copy MUVIN
+obj_xmvn_select#:#Select MUVIN
+xmvn_add#:#Add Video
+xmvn_new#:#Add New Video
+xmvn_read#:#Read access to Video
+xmvn_write#:#Edit Video
+xmvn_delete#:#Delete MUVIN
+xmvn_visible#:#Video stream is visible
+xmvn_edit_permission#:#Change permission settings
+xmvn_not_exits#:#Object was not found
+crs_create_xmvn#:#Create MUVIN
+grp_create_xmvn#:#Create MUVIN
+fold_create_xmvn#:#Create MUVIN
+root_create_xmvn#:#Create MUVIN
+cat_create_xmvn#:#Create MUVIN
+rbac_create_xmvn#:#Create MUVIN
+content#:#Content
+properties#:#Properties
+edit_properties#:#Edit Properties
+title#:#Title
+description#:#Description
+option_one#:#MUVIN Document ID
+option_two#:#Keywords
+save#:#Save
+cancel#:#Cancel
+edit#:#Edit
+status#:#Status
+offline#:#Offline
+muvin_keywords#:#Keywords
+muvin_type#:#Document Type
+muvin_aspect#:#Player Size
+type_d6#:#Documentary, Educational Film
+type_d9#:#Miscellaneous Video
+type_e1#:#Speech, Lecture, Presentation
+files#:#Files
+no_files#:#No files uploaded yet.
+uploaded_files#:#Uploaded files:
+add_new_file#:#Add a new file:
+no_java#:#You have not installed the required Java plugin for your browser. 
+no_video_uploaded#:#No video uploaded yet. Please add a video using the "Files" tab.
+watch_video#:#View movie:
+not_saved_no_upload#:#Please edit and save preferences first.
+info_file_format#:#Allowed Files: Flash Video (flv), MP4 (Video Codec: H.264). The maximum allowed Bitrate is 3072 Kb/s.

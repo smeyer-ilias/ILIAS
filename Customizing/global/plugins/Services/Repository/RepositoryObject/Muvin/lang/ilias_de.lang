@@ -1,0 +1,52 @@
+// 
+// German Language File for MUVINObject Plugin
+//
+
+<!-- language file start -->
+
+obj_xmvn#:#Streaming Video
+objs_xmvn#:#Video Streams
+obj_xmvn_duplicate#:#Kopieren
+objs_xmvn_duplicate#:#MUVIN kopieren
+obj_xmvn_select#:#MUVIN auswählen
+xmvn_add#:#Hinzufügen
+xmvn_new#:#Neues Video hinzufügen
+xmvn_read#:#Lesezugriff auf Video
+xmvn_write#:#Video bearbeiten
+xmvn_delete#:#Video löschen
+xmvn_visible#:#Video Stream Sichtbarkeit
+xmvn_edit_permission#:#Rechteinstellungen ändern
+xmvn_not_exits#:#Objekt ist nicht vorhanden
+crs_create_xmvn#:#Create MUVIN
+grp_create_xmvn#:#Create MUVIN
+fold_create_xmvn#:#Create MUVIN
+root_create_xmvn#:#Create MUVIN
+cat_create_xmvn#:#Create MUVIN
+rbac_create_xmvn#:#Create MUVIN
+content#:#Ansehen
+properties#:#Einstellungen
+edit_properties#:#Einstellungen bearbeiten
+title#:#Titel
+description#:#Beschreibung
+option_one#:#MUVIN Document ID
+option_two#:#Keywords
+save#:#Speichern
+cancel#:#Abbrechen
+edit#:#Bearbeiten
+status#:#Status
+offline#:#Offline
+muvin_keywords#:#Stichwörter
+muvin_type#:#Dokumententyp
+muvin_aspect#:#Größe Videofenster
+type_d6#:#Dokumentarfilm, Lehrfilm
+type_d9#:#Sonstiges Videomaterial
+type_e1#:#Rede, Vortrag, Präsentation
+files#:#Dateien
+no_files#:#Noch keine Dateien vorhanden.
+uploaded_files#:#Vorhandene Dateien:
+add_new_file#:#Neue Datei hinzufügen:
+no_java#:#In Ihrem Browser ist nicht das erforderliche Java-Plug-in installiert.
+no_video_uploaded#:#Kein Video vorhanden. Bitte unter "Dateien" ein Video bereitstellen.
+watch_video#:#Film ansehen:
+not_saved_no_upload#:#Bitte erst die Einstellungen bearbeiten und speichern.
+info_file_format#:#Zugelassene Dateiformate: Flash Video (flv), MP4 (Video Codec: H.264). Bitte als Bitrate maximal 3072 Kb/s verwenden.

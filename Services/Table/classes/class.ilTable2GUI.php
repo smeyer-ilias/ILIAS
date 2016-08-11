@@ -580,7 +580,7 @@ class ilTable2GUI extends ilTableGUI
 		$this->row_data = $a_data;
         
         // set cse
-        if(is_array($a_data) && array_key_exists($ilIliasIniFile->readVariable("fhdo","cse_id"),$a_data)) {
+        if(is_array($a_data) && isset($ilIliasIniFile) && array_key_exists($ilIliasIniFile->readVariable("fhdo","cse_id"),$a_data)) {
             $this->setCSEcourse(true);
         }
 	}

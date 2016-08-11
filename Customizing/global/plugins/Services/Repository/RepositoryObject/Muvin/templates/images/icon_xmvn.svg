@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="32px" height="32px" viewBox="0 0 192.756 192.756" enable-background="new 0 0 192.756 192.756"
+	 xml:space="preserve">
+<polygon fill="#343434" points="166.825,131.931 84.388,2.512 10.587,49.445 93.06,178.92 "/>
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="28.8721" y1="50.7656" x2="97.0752" y2="50.7656">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#3AAA35"/>
+	</linearGradient>
+	<polygon fill="url(#SVGID_1_)" points="28.872,47.53 51.489,83.037 97.075,54.003 74.456,18.494 	"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="55.5439" y1="92.6377" x2="123.7461" y2="92.6377">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#3AAA35"/>
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" points="123.746,95.874 78.16,124.91 55.544,89.402 101.128,60.366 	"/>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="82.2129" y1="134.5088" x2="150.417" y2="134.5088">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#3AAA35"/>
+	</linearGradient>
+	<polygon fill="url(#SVGID_3_)" points="150.417,137.745 104.829,166.781 82.213,131.273 127.799,102.237 	"/>
+</g>
+<g>
+	
+		<rect x="77.051" y="9.381" transform="matrix(-0.5373 -0.8434 0.8434 -0.5373 113.9531 93.5623)" fill="#F1F1F1" width="11.184" height="12.28"/>
+	
+		<rect x="17.126" y="47.554" transform="matrix(-0.5372 -0.8435 0.8435 -0.5372 -10.3689 101.6982)" fill="#F1F1F1" width="11.182" height="12.28"/>
+</g>
+<g>
+	
+		<rect x="88.613" y="27.533" transform="matrix(-0.5373 -0.8434 0.8434 -0.5373 116.4221 131.2171)" fill="#F1F1F1" width="11.183" height="12.281"/>
+	
+		<rect x="28.687" y="65.703" transform="matrix(0.5372 0.8434 -0.8434 0.5372 76.4571 4.3346)" fill="#F1F1F1" width="11.183" height="12.282"/>
+</g>
+<g>
+	
+		<rect x="99.625" y="46.231" transform="matrix(0.8434 -0.5373 0.5373 0.8434 -11.2799 64.9487)" fill="#F1F1F1" width="12.282" height="11.183"/>
+	
+		<rect x="40.247" y="83.855" transform="matrix(0.537 0.8436 -0.8436 0.537 97.1366 2.9959)" fill="#F1F1F1" width="11.183" height="12.28"/>
+</g>
+<g>
+	
+		<rect x="111.736" y="63.832" transform="matrix(0.5373 0.8434 -0.8434 0.5373 113.3005 -66.5765)" fill="#F1F1F1" width="11.183" height="12.281"/>
+	
+		<rect x="51.809" y="102.004" transform="matrix(0.5371 0.8435 -0.8435 0.5371 117.7887 1.6407)" fill="#F1F1F1" width="11.182" height="12.281"/>
+</g>
+<g>
+	
+		<rect x="123.297" y="81.982" transform="matrix(0.5373 0.8434 -0.8434 0.5373 133.957 -67.9291)" fill="#F1F1F1" width="11.183" height="12.281"/>
+	
+		<rect x="63.37" y="120.155" transform="matrix(0.5373 0.8434 -0.8434 0.5373 138.4229 0.2743)" fill="#F1F1F1" width="11.183" height="12.28"/>
+</g>
+<g>
+	
+		<rect x="134.857" y="100.134" transform="matrix(0.5372 0.8434 -0.8434 0.5372 154.6309 -69.2799)" fill="#F1F1F1" width="11.185" height="12.28"/>
+	
+		<rect x="74.93" y="138.305" transform="matrix(0.5371 0.8435 -0.8435 0.5371 159.1175 -1.0566)" fill="#F1F1F1" width="11.182" height="12.278"/>
+</g>
+<g>
+	
+		<rect x="146.418" y="118.284" transform="matrix(0.5372 0.8434 -0.8434 0.5372 175.2856 -70.6309)" fill="#F1F1F1" width="11.183" height="12.281"/>
+	
+		<rect x="86.492" y="156.454" transform="matrix(0.5373 0.8434 -0.8434 0.5373 179.7363 -2.4307)" fill="#F1F1F1" width="11.183" height="12.282"/>
+</g>
+<line fill="none" x1="-5.872" y1="61.128" x2="8.934" y2="51.711"/>
+<ellipse opacity="0.25" fill="#878787" cx="105.378" cy="182.878" rx="70" ry="3"/>
+</svg>

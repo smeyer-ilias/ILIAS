@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- some basic configuration options -->
+
+<configuration>
+	<server>http://muvin.uaruhr.de/</server>
+	<faculties>
+		<faculty>
+			<ilias_cat>31</ilias_cat>
+			<muvin_id>FHDO.ARCH</muvin_id>
+		</faculty>
+		<faculty>
+			<ilias_cat>32</ilias_cat>
+			<muvin_id>FHDO.DES</muvin_id>
+		</faculty>
+		<faculty>
+			<ilias_cat>33</ilias_cat>
+			<muvin_id>FHDO.IE</muvin_id>
+		</faculty>
+		<faculty>
+			<ilias_cat>34</ilias_cat>
+			<muvin_id>FHDO.INF</muvin_id>
+		</faculty>
+		<faculty>
+			<ilias_cat>35</ilias_cat>
+			<muvin_id>FHDO.MASCH</muvin_id>
+		</faculty>
+		<faculty>
+			<ilias_cat>36</ilias_cat>
+			<muvin_id>FHDO.ASW</muvin_id>
+		</faculty>
+		<faculty>
+			<ilias_cat>37</ilias_cat>
+			<muvin_id>FHDO.WI</muvin_id>
+		</faculty>
+	</faculties>
+    <user>fhdoread</user>
+    <password>tudo11!</password>
+</configuration>
