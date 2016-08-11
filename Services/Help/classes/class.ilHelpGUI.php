@@ -251,6 +251,9 @@ class ilHelpGUI
 			$h_tpl->setVariable("CLOSE_IMG", ilGlyphGUI::get(ilGlyphGUI::CLOSE));
 			echo $h_tpl->get();
 		}
+        
+        $this->callForHelp();
+        
 		exit;
 	}
 	
@@ -539,6 +542,35 @@ class ilHelpGUI
 		echo $h_tpl->get();;
 		exit;
 	}
+    
+    /**
+     * callForHelp
+     *
+     * @param
+     * @return
+     */
+    function callForHelp()
+    {
+        global $ilUser, $ilDB;
+        
+        $r = $ilDB->query("SELECT usr_id FROM usr_data ".
+            " WHERE login = ".$ilDB->quote($ilUser->login)
+            );
+        
+        if ($r->numRows() == 1)
+        {
+            $rec = $r->fetchRow(DB_FETCHMODE_OBJECT);
+            
+            $a_helpPage = explode("&",$ilUser->ilias->auth->server['QUERY_STRING']);
+            
+            $ilDB->insert('ui_uihk_helpanalytics',
+            array('usr_id' => array('integer', $rec->usr_id),
+                  'access_time' => array('text', date('r')),
+                  'access_query' => array('text', $a_helpPage[0]),
+                  'session_id' => array('text', $ilUser->ilias->auth->cookie['PHPSESSID'])
+            ));
+        }
+    }
 
 }
 ?>
