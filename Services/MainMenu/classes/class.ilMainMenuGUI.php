@@ -281,6 +281,11 @@ class ilMainMenuGUI
 				$this->tpl->setCurrentBlock("userisanonymous");
 				$this->tpl->setVariable("TXT_NOT_LOGGED_IN",$lng->txt("not_logged_in"));
 				$this->tpl->setVariable("TXT_LOGIN",$lng->txt("log_in"));
+                
+                //JAN, patch to hide header icon on reduced view (portfolio)
+                $this->tpl->setVariable("HEADER_ICON",ilUtil::getImagePath("HeaderIcon.svg"));
+                $this->tpl->setVariable("HEADER_HIDE",' hideHeaderIcon');
+                // end patch
 
 				// #13058
 				$target_str = ($this->getLoginTargetPar() != "")
