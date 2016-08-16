@@ -1,0 +1,3 @@
+[submodule "Customizing/global/plugins/Services/Repository/RepositoryObject/EtherpadLite"]
+	path = Customizing/global/plugins/Services/Repository/RepositoryObject/EtherpadLite
+	url = https://github.com/jrocho/ILIAS-Etherpad-Lite-Plugin
