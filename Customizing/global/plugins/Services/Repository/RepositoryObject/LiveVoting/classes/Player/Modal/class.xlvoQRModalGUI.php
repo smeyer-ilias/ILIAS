@@ -20,11 +20,12 @@ class xlvoQRModalGUI extends ilModalGUI {
 		$ilModalGUI->setId('QRModal');
 		$ilModalGUI->setHeading('PIN: ' . $xlvoVotingConfig->getPin());
 
-		$short_link = xlvoConf::getShortLinkURL() . $xlvoVotingConfig->getPin();
+		//$short_link = xlvoConf::getShortLinkURL() . $xlvoVotingConfig->getPin();
+        $short_link = substr(xlvoConf::getShortLinkURL(),0,-1);
+        $short_link_qr = $short_link.'?pin='. $xlvoVotingConfig->getPin();
 
 		$modal_body = '<span class="label label-default xlvo-label-url resize">' . $short_link . '</span>';
-		$modal_body .= '<img id="xlvo-modal-qr" src="' . xlvoQR::getImageDataString($short_link, 1200) . '">';
-
+        $modal_body .= '<img id="xlvo-modal-qr" src="' . xlvoQR::getImageDataString($short_link_qr, 1200) . '">';
 		$ilModalGUI->setBody($modal_body);
 		$ilModalGUI->setType(ilModalGUI::TYPE_LARGE);
 

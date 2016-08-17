@@ -80,8 +80,10 @@ class xlvoPlayerGUI extends xlvoGUI {
 		$xlvoVotingConfig = $this->manager->getVotingConfig();
 		$template->setVariable('PIN', $xlvoVotingConfig->getPin());
 
-		$short_link = xlvoConf::getShortLinkURL() . $xlvoVotingConfig->getPin();
-		$template->setVariable('QR-CODE', xlvoQR::getImageDataString($short_link, 180));
+		//$short_link = xlvoConf::getShortLinkURL() . $xlvoVotingConfig->getPin();
+        $short_link = substr(xlvoConf::getShortLinkURL(),0,-1);
+        $short_link_qr = $short_link.'?pin='. $xlvoVotingConfig->getPin();
+        $template->setVariable('QR-CODE', xlvoQR::getImageDataString($short_link_qr, 180));
 		$template->setVariable('SHORTLINK', $short_link);
 		$template->setVariable('MODAL', xlvoQRModalGUI::getInstanceFromVotingConfig($xlvoVotingConfig)->getHTML());
 
