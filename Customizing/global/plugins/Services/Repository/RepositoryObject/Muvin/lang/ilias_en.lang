@@ -50,3 +50,4 @@ no_video_uploaded#:#No video uploaded yet. Please add a video using the "Files" 
 watch_video#:#View movie:
 not_saved_no_upload#:#Please edit and save preferences first.
 info_file_format#:#Allowed Files: Flash Video (flv), MP4 (Video Codec: H.264). The maximum allowed Bitrate is 3072 Kb/s.
+nothing_to_configure#:#This plugin does not offer any configuration options.
