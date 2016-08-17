@@ -1,3 +1,6 @@
 [submodule "Customizing/global/plugins/Services/Repository/RepositoryObject/EtherpadLite"]
 	path = Customizing/global/plugins/Services/Repository/RepositoryObject/EtherpadLite
 	url = https://github.com/jrocho/ILIAS-Etherpad-Lite-Plugin
+[submodule "Customizing/global/plugins/Services/Repository/RepositoryObject/Flashcards"]
+	path = Customizing/global/plugins/Services/Repository/RepositoryObject/Flashcards
+	url = https://github.com/ilifau/Flashcards.git
