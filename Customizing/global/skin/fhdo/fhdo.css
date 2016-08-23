@@ -6569,7 +6569,7 @@ li#nontab_members_view a:focus {
   color: #ffffff;
 }
 div.il_ealearning {
-  margin: 20px 0 0 0;
+  margin: 10px 0 10px 0;
 }
 /* --------------------------------------------------------------
    GLOBAL STYLES
@@ -7109,12 +7109,12 @@ footer.ilFooter {
   right: 0;
   bottom: -1px !important;
   font-size: 0.9em;
-  height: 160px;
+  height: 120px;
   margin: 0 auto;
   padding: 20px 0 0;
   text-align: left;
   color: white;
-  background-color: #f0f1ea;
+  background-color: #dddddd;
 }
 footer.ilFooter div.ilFooterContainer {
   color: #222222;
@@ -7873,7 +7873,7 @@ a.ilTreeView {
   position: fixed;
   top: 117px;
   z-index: 1020;
-  bottom: 160px;
+  bottom: 120px;
   background-color: #fff;
   border: 1px solid #e0e0e0;
   border-left: none;
@@ -7891,8 +7891,8 @@ a.ilTreeView > img {
   max-width: inherit;
   background-color: #fff;
   border-right: 2px solid #e0e0e0;
-  width: 50px;
-  height: 50px;
+  width: 28px;
+  height: 28px;
 }
 a.ilTreeView:hover > img,
 a.ilTreeView:active > img,
@@ -9088,6 +9088,9 @@ div.ilTopMemberView h3 {
   background-color: #7c7c7c;
   color: white;
   border: 0;
+}
+.nav > li > a:hover {
+  background-color: #dcdcdc;
 }
 [dir="rtl"] .nav-tabs > li {
   margin: 0 0 0 4px;
@@ -11534,6 +11537,9 @@ a.hideHeaderIcon,
     color: #222;
     margin-bottom: 5px;
     padding: 15px;
+  }
+  footer.ilFooter {
+    height: 160px;
   }
   textarea {
     max-width: 100%;
