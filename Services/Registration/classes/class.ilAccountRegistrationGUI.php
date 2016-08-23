@@ -912,6 +912,7 @@ class ilAccountRegistrationGUI
 		{
 			$this->tpl->setCurrentBlock('activation');
 			$this->tpl->setVariable('TXT_REGISTERED', $lng->txt('txt_registered'));
+            $this->tpl->setVariable('TXT_REGISTERED_USERNAME', $lng->txt('txt_registered_username'));
 			$this->tpl->setVariable('FORMACTION', 'login.php?cmd=post&target=' . ilUtil::stripSlashes($_GET['target']));
 			if(ilSession::get('forceShoppingCartRedirect'))
 			{
@@ -920,6 +921,7 @@ class ilAccountRegistrationGUI
 			$this->tpl->setVariable('TARGET', 'target="_parent"');
 			$this->tpl->setVariable('TXT_LOGIN', $lng->txt('login_to_ilias'));
 			$this->tpl->setVariable('USERNAME', $this->userObj->getLogin());
+            $this->tpl->setVariable('USERNAME_SHOW', $this->userObj->getLogin());
 			$this->tpl->setVariable('PASSWORD', $password);
 			$this->tpl->parseCurrentBlock();
 		}
