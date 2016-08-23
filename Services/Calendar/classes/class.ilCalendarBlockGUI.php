@@ -371,6 +371,7 @@ class ilCalendarBlockGUI extends ilBlockGUI
 			{
 				$week_has_events = true;
 				$a_tpl->setVariable('DAY_CLASS','calminiapp');
+                $dont_set_td = 1;
 			}
 			
 			
