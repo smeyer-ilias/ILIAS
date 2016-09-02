@@ -11743,7 +11743,7 @@ a.hideHeaderIcon,
   }
   #ilTopNav button.navbar-toggle {
     position: fixed;
-    top: 0px;
+    top: 0;
     left: 0;
     height: 40px;
     border-radius: 0px;
