@@ -15,6 +15,7 @@ if ($existing_pin) {
 	xlvoInitialisation::setCookiePIN(trim($_REQUEST['pin'], '/'));
 }
 global $ilCtrl;
+
 /**
  * @var ilCtrl $ilCtrl
  */
