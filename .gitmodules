@@ -7,3 +7,6 @@
 [submodule "Customizing/global/plugins/Services/Repository/RepositoryObject/AdobeConnect"]
 	path = Customizing/global/plugins/Services/Repository/RepositoryObject/AdobeConnect
 	url = https://github.com/DatabayAG/ILIAS_AdobeConnectPlugin.git
+[submodule "Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting"]
+	path = Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting
+	url = https://github.com/studer-raimann/LiveVoting.git
