@@ -9654,6 +9654,14 @@ div.il_SearchFragment {
 #search_area_form .form-horizontal .control-label {
   padding-top: 0;
 }
+/* temp fix jan */
+div#search_options,
+div#il_prop_cont_item_filter_enabled {
+  background-color: #f8f8f8 !important;
+}
+div#il_prop_cont_item_filter_enabled label.control-label {
+  width: inherit;
+}
 /* Services/Help */
 #ilHelpText .ilc_text_inline_Strong {
   font-weight: bold;
