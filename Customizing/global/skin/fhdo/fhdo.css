@@ -11429,6 +11429,9 @@ div.ilNewObjectSelector {
   margin-bottom: 8px;
   padding: 0 10px;
 }
+div.ilNewObjectSelector ~ div {
+  clear: right;
+}
 div.ilNewObjectSelector > .btn-group {
   display: block;
   width: 100%;
