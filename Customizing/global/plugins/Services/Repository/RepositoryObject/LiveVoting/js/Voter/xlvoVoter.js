@@ -31,7 +31,7 @@ var xlvoVoter = {
         has_countdown: false,
         countdown_classname: ''
     },
-    delay: 5000,
+    delay: 3000,
     counter: 0,
     forced_update: 300,
     timeout: null,

@@ -35,7 +35,7 @@ class xlvoConf extends ActiveRecord {
 			//if (ilHTTPS::getInstance()->isDetected()) {
             // $url = 'https://' . $url;
 			//} else {
-            $url = 'http://' . $url;
+            $url = 'https://' . $url;
 			//   }
 		} else {
 			$url = ILIAS_HTTP_PATH . '/Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php?pin=';

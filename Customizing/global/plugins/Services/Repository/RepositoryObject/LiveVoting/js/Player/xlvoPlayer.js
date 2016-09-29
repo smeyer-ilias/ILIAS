@@ -18,7 +18,7 @@ var xlvoPlayer = {
     },
     buttons_handled: false,
     toolbar_loaded: false,
-    delay: 5000,
+    delay: 3000,
     counter: 1,
     timeout: null,
     request_pending: false,
@@ -349,7 +349,7 @@ var xlvoPlayer = {
         $.get(this.base_url, {cmd: "getAttendees"})
             .done(function (data) {
                 $('#xlvo-attendees').html(data + ' Online');
-                xlvoPlayer.timeout = setTimeout(xlvoPlayer.updateAttendees, 5000);
+                xlvoPlayer.timeout = setTimeout(xlvoPlayer.updateAttendees, 1000);
                 xlvoPlayer.endRequest();
             });
     },
