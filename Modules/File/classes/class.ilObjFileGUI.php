@@ -853,6 +853,42 @@ class ilObjFileGUI extends ilObject2GUI
 		include_once "Services/User/classes/class.ilUserUtil.php";
 		$info->addProperty($this->lng->txt("file_uploaded_by"), ilUserUtil::getNamePresentation($uploader));
 		
+        // begin-patch file_stat
+        require_once 'Services/Tracking/classes/class.ilChangeEvent.php';
+        global $ilUser;
+        if ($ilUser->getId() != ANONYMOUS_USER_ID)
+        {
+            $readEvents = ilChangeEvent::_lookupReadEvents($this->object->getId());
+            $count_users = 0;
+            $count_user_reads = 0;
+            $count_anonymous_reads = 0;
+            foreach ($readEvents as $evt)
+            {
+                if ($evt['usr_id'] == ANONYMOUS_USER_ID)
+                {
+                    $count_anonymous_reads += $evt['read_count'];
+                }
+                else
+                {
+                    $count_user_reads += $evt['read_count'];
+                    $count_users++;
+                }
+            }
+            if ($count_anonymous_reads > 0)
+            {
+                $info->addProperty($this->lng->txt("readcount_anonymous_users"),$count_anonymous_reads);
+            }
+            if ($count_user_reads > 0)
+            {
+                $info->addProperty($this->lng->txt("readcount_users"),$count_user_reads);
+            }
+            if ($count_users > 0)
+            {
+                $info->addProperty($this->lng->txt("accesscount_registered_users"),$count_users);
+            }
+        }
+        // end-patch file-stat
+        
 		// download link added in repository
 		if ($this->id_type == self::REPOSITORY_NODE_ID && $this->checkPermissionBool("read", "sendfile"))
 		{
