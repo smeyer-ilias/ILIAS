@@ -138,6 +138,11 @@ class ilDataCollectionRecordListGUI {
 		$list->setRecordData($records);
 
 		if (count($options) > 0) {
+			//#0019146: Main Table is always visible in the menu-dropdown, if some other table is visible too
+			$main_table_id = $this->parent_obj->getDataCollectionObject()->getMainTableId();
+			if (!in_array($main_table_id, array_keys($options))) {
+				$options = array($main_table_id => ilDataCollectionCache::getTableCache($main_table_id)->getTitle()) + $options;
+			}
 			include_once './Services/Form/classes/class.ilSelectInputGUI.php';
 			$table_selection = new ilSelectInputGUI('', 'table_id');
 			$table_selection->setOptions($options);
@@ -425,7 +430,10 @@ class ilDataCollectionRecordListGUI {
 			}
 		}
 		foreach ($titles as $key => $value) {
-			if (!isset($import_fields[$key])) {
+			$std_field_titles = ilDataCollectionStandardField::_getAllStandardFieldTitles();
+			if (in_array($value, $std_field_titles)) {
+				$warnings[] = "(1, " . ilDataCollectionImporter::getExcelCharForInteger($key) . ") \"" . $value . "\" " . $lng->txt("dcl_std_field_not_importable");
+			} elseif (!isset($import_fields[$key])) {
 				$warnings[] = "(1, " . ilDataCollectionImporter::getExcelCharForInteger($key) . ") \"" . $value . "\" " . $lng->txt("dcl_row_not_found");
 			}
 		}
