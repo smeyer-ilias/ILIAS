@@ -816,6 +816,7 @@ class ilInitialisation
 		{
 			$GLOBALS['ilLog']->write("Fatal Error: ilInitialisation - ".$a_message);
 		}
+        header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
 		die($a_message);
 	}
 	
