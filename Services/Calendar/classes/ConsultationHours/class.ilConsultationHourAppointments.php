@@ -121,42 +121,63 @@ class ilConsultationHourAppointments
 		return $entries;
 	}
 
+	// begin-patch fhdo_ch
 	/**
 	 * Get consultation hour manager for current user
-	 * @param	string	$a_as_name
-	 * @return	int | string
+	 * @param	bool $a_as_name
+	 * @return	array
 	 */
 	public static function getManager($a_as_name = false)
 	{
 		global $ilDB, $ilUser;
 		
-		$set = $ilDB->query('SELECT admin_id FROM cal_ch_settings'.
-			' WHERE user_id = '.$ilDB->quote($ilUser->getId(), 'integer'));
-		$row = $ilDB->fetchAssoc($set);
-		if($row && $row['admin_id'])
+		$res = $ilDB->query(
+			'SELECT admin_id FROM cal_ch_settings '.
+			'WHERE user_id = '.$ilDB->quote($ilUser->getId(), 'integer')
+		);
+		
+		$managers = array();
+		
+		while($row = $res->fetchRow(DB_FETCHMODE_OBJECT))
 		{
+			if(!$row->admin_id)
+			{
+				continue;
+			}
 			if($a_as_name)
 			{
-				return ilObjUser::_lookupLogin($row['admin_id']);
+				$managers[] = ilObjUser::_lookupLogin($row->admin_id); 
 			}
-			return (int)$row['admin_id'];
+			else
+			{
+				$managers[] = (int) $row->admin_id;
+			}
 		}
+		return $managers;
 	}
 
 	/**
 	 * Set consultation hour manager for current user
-	 * @param	string	$a_user_name
+	 * @param	array $a_user_names
 	 * @return bool
 	 */
-	public static function setManager($a_user_name)
+	public static function setManager($a_user_names)
 	{
 		global $ilDB, $ilUser;
-
-		$user_id = false;
-		if($a_user_name)
+		
+		if(!is_array($a_user_names))
 		{
-			$user_id = ilObjUser::_loginExists($a_user_name);
-			if(!$user_id)
+			$a_user_names = array();
+		}
+		
+		$user_ids = array();
+		foreach($a_user_names as $name)
+		{
+			if($name)
+			{
+				$user_ids[$name] = ilObjUser::_loginExists($name);
+			}
+			if(!$user_ids[$name])
 			{
 				return false;
 			}
@@ -164,16 +185,20 @@ class ilConsultationHourAppointments
 
 		$ilDB->manipulate('DELETE FROM cal_ch_settings'.
 				' WHERE user_id = '.$ilDB->quote($ilUser->getId(), 'integer'));
-		
-		if($user_id && $user_id != $ilUser->getId())
-		{
-			$ilDB->manipulate('INSERT INTO cal_ch_settings (user_id, admin_id)'.
-					' VALUES ('.$ilDB->quote($ilUser->getId(), 'integer').','.
-					$ilDB->quote($user_id, 'integer').')');
-		}
 
+		foreach(array_unique($user_ids) as $user_id)
+		{
+			if($user_id && $user_id != $ilUser->getId())
+			{
+				$ilDB->manipulate('INSERT INTO cal_ch_settings (user_id, admin_id)'.
+						' VALUES ('.$ilDB->quote($ilUser->getId(), 'integer').','.
+						$ilDB->quote($user_id, 'integer').')');
+			}
+		}
 		return true;
 	}
+	// begin-patch fhdo_ch
+	
 
 	/**
 	 * Get all managed consultation hours users for current users

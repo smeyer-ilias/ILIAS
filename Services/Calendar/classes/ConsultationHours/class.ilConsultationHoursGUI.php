@@ -1291,6 +1291,7 @@ class ilConsultationHoursGUI
 
 		$mng = new ilTextInputGUI($this->lng->txt('cal_ch_manager'), 'mng');
 		$mng->setInfo($this->lng->txt('cal_ch_manager_info'));
+		$mng->setMulti(true);
 		$form->addItem($mng);
 
 		$mng->setValue(ilConsultationHourAppointments::getManager(true));
