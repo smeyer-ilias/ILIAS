@@ -408,12 +408,26 @@ class ilAuthContainerECS extends Auth_Container
 	 */
 	protected function resetMailOptions($a_usr_id)
 	{
+		global $rbacsystem;
+		
 		include_once './Services/Mail/classes/class.ilMailOptions.php';
+		include_once './Services/Mail/classes/class.ilMailGlobalServices.php';
+		
+		$mail_ref_id = ilMailGlobalServices::getMailObjectRefId();
+		if($rbacsystem->checkAccessOfUser($a_usr_id, 'smtp_mail', $mail_ref_id))
+		{
+			$mail_type = IL_MAIL_BOTH;
+		}
+		else
+		{
+			$mail_type = IL_MAIL_LOCAL;
+		}
+		
 		$options = new ilMailOptions($a_usr_id);
 		$options->updateOptions(
 				$options->getSignature(),
 				$options->getLinebreak(),
-				IL_MAIL_LOCAL,
+				$mail_type,
 				$options->getCronjobNotification()
 		);
 	}
