@@ -13,3 +13,39 @@
 <?php
 	$ilCtrlStructureReader->getStructure();
 ?>
+<#2>
+<?php
+$ilDB->modifyTableColumn(
+	'wiki_stat_page',
+	'num_ratings',
+	array(
+		'type' => 'integer',
+		'length' => 4,
+		'notnull' => true,
+		'default' => 0
+	)
+);
+?>
+<#3>
+<?php
+$ilDB->modifyTableColumn(
+	'wiki_stat_page',
+	'avg_rating',
+	array(
+		'type' => 'integer',
+		'length' => 4,
+		'notnull' => true,
+		'default' => 0
+	)
+);
+?>
+<#4>
+<?php
+$query = "SELECT value FROM settings WHERE module = %s AND keyword = %s";
+$res = $ilDB->queryF($query, array('text', 'text'), array("mobs", "black_list_file_types"));
+if (!$ilDB->fetchAssoc($res))
+{
+	$mset = new ilSetting("mobs");
+	$mset->set("black_list_file_types", "html");
+}
+?>
