@@ -13,7 +13,8 @@ if (null !== ($cms = filter_input(INPUT_GET, 'cmsid', FILTER_VALIDATE_INT, FILTE
         echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
 
-    if (!($stmt = $mysqli->prepare("select obj_id from ecs_course_assignments where cms_id = (?) "))) {
+    if (!($stmt = $mysqli->prepare("select ref_id from ecs_course_assignments as ecs, object_reference as objref".  
+                                   "where ecs.cms_id = (?) and objref.obj_id = ecs.obj_id "))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
     $id = $_GET['cmsid'];
