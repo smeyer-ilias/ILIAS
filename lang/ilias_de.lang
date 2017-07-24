@@ -9063,7 +9063,7 @@ prtf#:#prtf_exercise_submitted_info#:#Sie haben Ihr Portfolio am %s eingereicht.
 prtf#:#prtf_existing_portfolio#:#Vorhandenes Portfolio
 prtf#:#prtf_finalize_portfolio#:#Portfolio abschließen und abgeben
 prtf#:#prtf_finalized#:#Das Portfolio wurde abgegeben.
-prtf#:#prtf_first_page_title#:#Typ der 1. Seite
+prtf#:#prtf_first_page_title#:#Beginnt mit:
 prtf#:#prtf_font_color#:#Schriftfarbe###deprecated 
 prtf#:#prtf_new_portfolio#:#Neues Portfolio
 prtf#:#prtf_no_blogs_info#:#Wenn Sie im Bereich "%s" einen Blog anlegen, können Sie dieses auch als Teil Ihres Portfolios verwenden.
@@ -12032,7 +12032,7 @@ dcl#:#dcl_msg_tableviews_delete_all#:#Löschen nicht möglich: Es muss mindesten
 dcl#:#dcl_msg_tables_delete_all#:#Löschen nicht möglich: Es muss mindestens eine Tabelle existieren
 dcl#:#dcl_msg_tables_deleted#:#Tabellen gelöscht
 dcl#:#dcl_tables_confirm_delete#:#Sind Sie sicher, dass die folgenden Tabellen gelöscht werden sollen?
-dcl#:#dcl_msg_info_alternatives#:#Die gewünschte Einzelansicht konnte nicht angezeigt werden, da entweder keine Einzelansicht für diese Tabellenansicht existiert oder Sie nicht genügend Zurgriffsrechte besitzen. Wählen Sie aus der Liste eine für Sie verfügbare Einzelansicht, um den Datensatz dennoch anzuzeigen.
+dcl#:#dcl_msg_info_alternatives#:#Die gewünschte Einzelansicht konnte nicht angezeigt werden, da entweder keine Einzelansicht für diese Tabellenansicht existiert oder Sie nicht genügend Zugriffsrechte besitzen. Wählen Sie aus der Liste eine für Sie verfügbare Einzelansicht, um den Datensatz dennoch anzuzeigen.
 dcl#:#dcl_tableviews_confirm_delete#:#Sind Sie sicher, dass die folgenden Ansichten gelöscht werden sollen?
 dcl#:#dcl_tableview_confirm_delete#:#Sind Sie sicher, dass die folgende Ansicht gelöscht werden sollen?
 dcl#:#dcl_tableview_fieldsettings#:#Feldspezifische Einstellungen
@@ -13095,10 +13095,10 @@ prtt#:#prtt_activation_limited_visibility_info#:#Falls aktiv, ist die Portfoliov
 content#:#cont_profile_mode_template_inherit_info#:#Verwendet die Daten des Profils
 prtf#:#prtf_template_editor_placeholder_info#:#Dieser Platzhalter wird im Portfolio ersetzt.
 prtf#:#prtf_creation_mode#:#Neues Portfolio
-prtf#:#prtf_creation_mode_template#:#Aus Vorlage erstellen
-prtf#:#prtf_creation_mode_scratch#:#Ohne Vorlage erstellen
-prtf#:#prtf_template_import_blog_create#:#Neuen Blog erstellen
-prtf#:#prtf_template_import_blog_reuse#:#Bestehenden Blog nutzen
+prtf#:#prtf_creation_mode_template#:#Aus einer Portfoliovorlage erstellen
+prtf#:#prtf_creation_mode_scratch#:#Ohne Portfoliovorlage erstellen
+prtf#:#prtf_template_import_blog_create#:#Neues Blog erstellen
+prtf#:#prtf_template_import_blog_reuse#:#Bestehendes Blog nutzen
 prtf#:#prtf_template_import_blog_ignore#:#Blog-Seite entfernen
 prtf#:#prtf_create_template_from_portfolio#:#Portfolio
 prtf#:#prtf_create_template_from_portfolio_info#:#Wählen Sie ein Portfolio um dessen Inhalte und Einstellungen für die Vorlage zu übernehmen.
