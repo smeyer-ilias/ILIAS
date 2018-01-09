@@ -1,4 +1,4 @@
-* Copyright (c) 1998-2017 ILIAS open source e-Learning e.V., Extended GPL, see docs/LICENSE */
+/* Copyright (c) 1998-2018 ILIAS open source e-Learning e.V., Extended GPL, see docs/LICENSE */
 /**
 * ILIAS language file (All entries)
 *
@@ -1924,6 +1924,7 @@ cmps#:#cmps_id#:#ID
 cmps#:#cmps_ilias_max_version#:#Maximale ILIAS-Version
 cmps#:#cmps_ilias_min_version#:#Minimale ILIAS-Version
 cmps#:#cmps_inactive#:#Inaktiv
+cmps#:#cmps_install#:#Installieren
 cmps#:#cmps_lang_files#:#Sprachdatei
 cmps#:#cmps_lang_prefix#:#Präfix Sprachvariable
 cmps#:#cmps_languages#:#Sprachen
@@ -8822,6 +8823,7 @@ survey#:#phrase_added#:#Phrase hinzugefügt
 survey#:#phrase_new#:#Neue Phrase erstellen
 survey#:#phrase_saved#:#Die Phrase wurde erfolgreich gespeichert
 survey#:#please_enter_mail_code#:#Bitte verwenden Sie den Platzhalter für den Zugangscode [code].
+survey#:#please_enter_mail_url#:#Bitte verwenden Sie den Platzhalter für die URL [url].
 survey#:#please_select#:#-- bitte auswählen --
 survey#:#predefined_users#:#Ausgewählten Benutzern auf den Schreibtisch legen
 survey#:#preview#:#Vorschau
@@ -12422,7 +12424,7 @@ mail#:#mail_threshold#:#Schwellenwert
 mail#:#mail_threshold_info#:#Interne Mails, die älter als der hier definierte Schwellenwert sind, werden unwiderruflich gelöscht (inklusive evtl vorhandener Anhänge).<br> Bitte bedenken Sie, dass bei erstmaliger Ausführung dieses Cron-Jobs je nach Schwellenwert sehr viele Nachrichten gelöscht werden und eine E-Mail als Warnung nicht mehr versendet werden kann.
 mail#:#mail_orphaned_mails_desc#:#Löschen alter oder verwaister Mails
 mail#:#only_inbox_trash#:#Nur Posteingang/Papierkorb berücksichtigen
-mail#:#only_inbox_trash_info#:#Fallls aktiviert, werden ausschließlich Mails gelöscht, die sich zum Zeitpunkt der Cron-Job-Ausführung im Posteingang und Papierkorb der jeweiligen Benutzer befinden. Ansonsten werden alle Mails unabhängig vom Ordner gelöscht.
+mail#:#only_inbox_trash_info#:#Falls aktiviert, werden ausschließlich Mails gelöscht, die sich zum Zeitpunkt der Cron-Job-Ausführung im Posteingang und Papierkorb der jeweiligen Benutzer befinden. Ansonsten werden alle Mails unabhängig vom Ordner gelöscht.
 mail#:#mail_notify_orphaned#:#Benachrichtigungsmail
 mail#:#mail_notify_orphaned_info#:#Wenn Sie hier einen Wert größer oder gleich 1 eintragen, sendet ILIAS eine E-Mail an den Benutzer bevor eine interne Mail gelöscht wird. Bitte stellen Sie sicher, dass ein externer E-Mail-Empfang möglich ist.
 prtt#:#prtt_portfolio_created#:#Portfoliovorlage wurde hinzugefügt
@@ -12576,7 +12578,7 @@ exc#:#exc_adopt_group_teams_conflict#:#Benutzer "%1$s" ist bereits in Gruppe "%2
 exc#:#exc_adopt_group_teams_added#:#%s Benutzer wurden hinzugefügt.
 exc#:#exc_adopt_group_teams_blocked#:#%s Benutzer waren bereits vorhanden.
 exc#:#exc_deadline_ext_mismatch#:#Die Nachfrist muss nach dem Abgabetermin enden.
-exc#:#exc_peer_review_ass_setting_info#:#Nachdem der Abgabetermin und ggfs. die Nachfrist verstrichen sind, können Teilnehmer ihre Arbeitsergebnisse gegenseitig bewerten. Genaue Einstellungen zum Peer-Feedback werden im gleichnamigen Reiter vorgenommen. Der Reiter wird eingeblendet, wenn diese Option aktiviert und gepeichert wurde. 
+exc#:#exc_peer_review_ass_setting_info#:#Nachdem der Abgabetermin und ggfs. die Nachfrist verstrichen sind, können Teilnehmer ihre Arbeitsergebnisse gegenseitig bewerten. Genaue Einstellungen zum Peer-Feedback werden im gleichnamigen Reiter vorgenommen. Der Reiter wird eingeblendet, wenn diese Option aktiviert und gespeichert wurde.
 exc#:#exc_peer_review_min_number#:#Geforderte Anzahl von Feedbacks
 exc#:#exc_peer_review_min_number_info#:#Anzahl von Feedback, die ein Teilnehmer den Peers geben muss. Sollte die Anzahl der geforderten Feedbacks die Anzahl der tatsächlichen Einreichungen übersteigen, wird die geforderte Anzahl automatisch auf die Anzahl der tatsächlichen Einreichungen reduziert.
 exc#:#exc_criteria_catalogues#:#Kriterienkataloge
@@ -12709,13 +12711,13 @@ content#:#cont_upload_multi_srt_howto#:#Erlaubt das Hochladen mehrerer Untertite
 content#:#cont_moved_srt_files#:#Die Untertitel-Dateien wurden den Medienobjekten zugeordnet.
 content#:#cont_subtitle_file#:#SRT-ZIP-Datei
 content#:#cont_multi_srt_files#:#SRT-Dateien
-content#:#cont_master_language_only#:#Hauptsprache für Übersetzung (Master)
+content#:#cont_master_language_only#:#Hauptsprache für Übersetzung - Master
 content#:#cont_import#:#Import
-content#:#cont_trans_import_info#:#Wenn Sie dieses Modul als "XML/Hauptsprache für Übersetzung (Master)" in eine andere Installation exportiert haben, können Sie hier die übersetzten Export-Dateien dieser Installation wieder importieren.
+content#:#cont_trans_import_info#:#Wenn Sie dieses Modul als "XML (Hauptsprache für Übersetzung - Master" in eine andere Installation exportiert haben, können Sie hier die übersetzten Export-Dateien dieser Installation wieder importieren.
 content#:#cont_import_trans#:#Übersetzung importieren
 content#:#cont_import_lang#:#Zielsprache
-mep#:#mep_master_language_only#:#Hauptsprache für Übersetzung (Master)
-mep#:#mep_trans_import_info#:#Wenn Sie dieses Modul als "XML/Hauptsprache für Übersetzung (Master)" in eine andere Installation exportiert haben, können Sie hier die übersetzten Export-Dateien dieser Installation wieder importieren.
+mep#:#mep_master_language_only#:#Hauptsprache für Übersetzung - Master
+mep#:#mep_trans_import_info#:#Wenn Sie dieses Modul als "XML (Hauptsprache für Übersetzung - Master" in eine andere Installation exportiert haben, können Sie hier die übersetzten Export-Dateien dieser Installation wieder importieren.
 mep#:#mep_import_trans#:#Übersetzung importieren
 mep#:#mep_import_lang#:#Zielsprache
 content#:#cont_snippet_from_another_installation#:#Inhaltsbaustein stammt von einer anderen ILIAS-Installation.
@@ -13968,10 +13970,10 @@ prtf#:#prtf_add_existing_blog#:#Vorhandenes Blog nutzen
 blog#:#blog_draft_text#:#Unveröffentlichter Beitrag
 user#:#usr_letter_avatars#:#Letter-Avatare
 user#:#usr_letter_avatars_info#:#Zeigt die Initialen des Benutzernamens oder Logins an, wenn kein öffentliches Profilbild vorliegt.
-mep#:#mep_master_language_only_no_media#:#Hauptsprache für Übersetzung (ohne Medienobjekte)
-content#:#cont_master_language_only_no_media#:#Hauptsprache für Übersetzung (ohne Medienobjekte)
-mep#:#mep_content#:#Content
-mep#:#mep_media_subtitles#:#Media Subtitles
+mep#:#mep_master_language_only_no_media#:#Hauptsprache für Übersetzung - ohne Medienobjekte
+content#:#cont_master_language_only_no_media#:#Hauptsprache für Übersetzung - ohne Medienobjekte
+mep#:#mep_content#:#Medienobjekte
+mep#:#mep_media_subtitles#:#Untertitel
 content#:#cont_last_visited_page#:#Zuletzt besuchte Seite
 content#:#cont_first_page#:#Erste Seite
 content#:#cont_lm_starting_point#:#Startseite für ILIAS-Lernmodule
@@ -14141,3 +14143,4 @@ common#:#obj_exc_duplicate#:#Übung kopieren
 meta#:#adt_error_max_length#:#Der eingegebene Text is zu lang, bitte geben Sie einen kürzeren Text ein.
 form#:#form_chars_remaining#:#Verbleibende Zeichen:
 poll#:#poll_voting_period_full_info#:#Voting period from %s to %s###20 12 2017 new variable
+crs#:#crs_subscription_min_members_err#:#Die minimale Anzahl darf nicht größer als die maximale Anzahl sein.
