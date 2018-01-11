@@ -12,6 +12,8 @@
 	RewriteRule ^vote(/[\w]*|) Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php?pin=$1 [L]
 
 	RewriteRule ^data/.*/.*/.*$ ./Services/WebAccessChecker/wac.php [L]
+
+	RedirectMatch 404 /\.git
 </IfModule>
 <IfModule mod_xsendfile.c>
 	XSendFile On
