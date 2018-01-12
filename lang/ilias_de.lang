@@ -50,7 +50,7 @@ lti#:#lti_released_objects#:#Objekt-Freigaben
 lti#:#lti_consumer#:#Released for
 orgu#:#orgu_global_set_form#:#Globale Einstellungen
 orgu#:#orgu_global_set_positions#:#Anzeige von Benutzerdaten nach Positionen in Organisationseinheiten
-orgu#:#orgu_global_set_positions_type_active#:#Positionen in
+orgu#:#orgu_global_set_positions_type_active#:#Positionen in: 
 orgu#:#orgu_global_set_type_changeable#:#Verhalten neuer Objekte
 orgu#:#orgu_global_set_type_changeable_object#:#Änderbare Einstellung im Objekt
 orgu#:#orgu_global_set_type_changeable_no#:#Positionen sind im Objekt nicht deaktivierbar
@@ -555,16 +555,16 @@ assessment#:#dont_use_questionpool#:#Fragen nicht in einen Fragenpool einfügen 
 assessment#:#duplicate#:#Kopieren
 assessment#:#duplicate_matching_values_selected#:#Sie haben mindestens einen doppelten Zuordnungswert ausgewählt!
 assessment#:#duplicate_order_values_entered#:#Sie haben mindestens eine doppelte Reihenfolge angegeben!
-assessment#:#ects_allow_ects_grades#:#ECTS-Note zusätzlich zur erreichten Note anzeigen
+assessment#:#ects_grade_desc_prefix#:#Bedeutung der Note: 
+assessment#:#ects_grade_a_desc#:#hervorragende Leistungen mit nur geringen Fehlern
+assessment#:#ects_grade_b_desc#:#über dem durchschnittlichen Standard, aber mit einigen Fehlern
+assessment#:#ects_grade_c_desc#:#allgemeine Leistung mit nennenswerten Fehlern
+assessment#:#ects_grade_d_desc#:#gerechte Leistung, aber mit erheblichen Mängeln
+assessment#:#ects_grade_e_desc#:#die Leistung erfüllt die Mindestkriterien
+assessment#:#ects_grade_f_desc#:#es sind erhebliche Verbesserungen erforderlich
+assessment#:#ects_grade_fx_desc#:#es sind Verbesserungen erforderlich, bevor die Leistung anerkannt wird
 assessment#:#ects_grade#:#ECTS-Note
-assessment#:#ects_grade_a#:#ausgezeichnete Leistungen und nur wenige unbedeutende Fehler
-assessment#:#ects_grade_a_short#:#HERVORRAGEND
-assessment#:#ects_grade_b_short#:#SEHR GUT
-assessment#:#ects_grade_c_short#:#GUT
-assessment#:#ects_grade_d_short#:#BEFRIEDIGEND
-assessment#:#ects_grade_e_short#:#AUSREICHEND
-assessment#:#ects_grade_f#:#es sind erhebliche Verbesserungen erforderlich
-assessment#:#ects_grade_fx#:#es sind Verbesserungen erforderlich, bevor die Leistung anerkannt wird
+assessment#:#ects_allow_ects_grades#:#ECTS-Note zusätzlich zur erreichten Note anzeigen
 assessment#:#ects_output_of_ects_grades#:#Ausgabe von ECTS-Noten
 assessment#:#use_ects_fx#:#Verwenden der ECTS-Note 'FX'
 assessment#:#ects_fx_threshold#:#Grenzwert
@@ -788,7 +788,7 @@ assessment#:#grading_obligations_listlabel#:#Verpflichtende Fragen
 assessment#:#grading_obligations_answered_listentry#:#Beantwortet
 assessment#:#grading_obligations_missing_listentry#:#Offen
 assessment#:#grading_mark_msg#:#Sie haben die Note &quot;[mark]&quot; erzielt.
-assessment#:#mark_tst_ects#:#Ihre ECTS-Note lautet &quot;[markects]&quot;
+assessment#:#mark_tst_ects#:#Ihre ECTS-Note lautet "[markects]" (European Credit Transfer System)
 assessment#:#tst_pass_finished_on#:#Testdurchlauf beendet am
 assessment#:#matches#:#passt zu
 assessment#:#matching_pairs#:#Zuordnungspaare
@@ -10539,6 +10539,7 @@ common#:#file_rollback_done#:#Dateiversion %s ist nun die aktuelle Version.
 common#:#file_version_new_version#:#Neue Version
 common#:#file_version_create#:#Initiale Version
 common#:#file_version_replace#:#Alle Versionen ersetzt
+common#:#file_version_rollback#:#Auf Version %s von %s zurückkehren
 common#:#file_rollback#:#Zur aktuellen Version machen
 obj#:#edit_questions#:#Fragen bearbeiten
 common#:#frm_import#:#Forum importieren
@@ -10987,6 +10988,7 @@ obj#:#obj_orgunit_positions#:#Zugriffsregelungen nach Organisationseinheiten
 obj#:#obj_orgunit_positions_info#:#Wenn aktiviert, können zusätzliche Zugriffsregelungen über Positionen in Organisationseinheiten vergeben werden.
 orgu#:#authorities#:#Befugnisse
 orgu#:#positions#:#Positionen
+orgu#:#add_position#:#Position hinzufügen
 orgu#:#scope_1#:#eigener Organisationseinheit
 orgu#:#scope_2#:#untergeordneten Organisationseinheiten
 orgu#:#scope_3#:#allen Organisationseinheiten
@@ -11005,13 +11007,15 @@ mst#:#mst_memb_status_waitinglist#:#Warteliste
 mst#:#mst_memb_status_registered#:#Angemeldet
 mst#:#mst_show_courses#:#Einschreibungen
 mst#:#mst_courses_of#:#Einschreibungen von %s
+orgu#:#msg_position_udpated#:#Position updated
+orgu#:#remove_successful#:#Der Benutzer wurde erfolgreich entfernt.
 orgu#:#orgu_enable_my_staff#:#‘Ansicht Mitarbeiter’ aktivieren
 orgu#:#orgu_enable_my_staff_info#:#The Ansicht ‘Meine Mitarbeiter’ zeigt die Lernfortschritte der eigenen Mitarbeiter an.
 orgu#:#org_op_manage_members#:#Mitglieder bearbeiten
 orgu#:#org_op_read_learning_progress#:#Lernfortschritt von anderen Benutzern einsehen
-orgu#:#org_op_edit_submissions_grades#:#Abgaben von anderen Benutzern bearbeiten.
-rbac#:#org_op_edit_submissions_grades#:#Abgaben von anderen Benutzern bearbeiten.
-orgu#:#org_op_write_learning_progress#:#Lernfortschritt von anderen Benutzern setzen.
+orgu#:#org_op_edit_submissions_grades#:#Abgaben von anderen Benutzern bearbeiten
+rbac#:#org_op_edit_submissions_grades#:#Abgaben von anderen Benutzern bearbeiten
+orgu#:#org_op_write_learning_progress#:#Lernfortschritt von anderen Benutzern setzen
 rbac#:#org_op_write_learning_progress#:#Lernfortschritt untergeordneter Benutzer setzen
 rbac#:#positions_override_operations#:#Globale Einstellungen überschreiben
 orgu#:#form_title_org_default_permissions_update#:#Standardrechte
