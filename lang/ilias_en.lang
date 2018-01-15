@@ -640,6 +640,7 @@ assessment#:#ass_lac_expression#:#Expression
 assessment#:#ass_lac_unable_to_parse_condition#:#The condition "%s" can not be validated.
 assessment#:#tst_skill_triggerings_num_req_answers#:#Required Amount of Answers for Competence Triggers
 assessment#:#tst_skill_triggerings_num_req_answers_desc#:#Competences aren't triggered before this amount of answered questions contributes to the competence level calculation.
+assessment#:#tst_skill_triggerings_num_req_answers_not_reached_warn#:#At least one of the competences addressed by this test is not triggered by the minimal required amount of questions.<br />The required amount of questions: %s
 assessment#:#export_essay_qst_with_html#:#Export Essay Question with HTML code
 assessment#:#export_essay_qst_with_html_desc#:#If activated it is possible to export Essay Question with HTML to Excel.
 assessment#:#qpl_qst_skl_usg_skill_col#:#Competence
@@ -1418,8 +1419,6 @@ certificate#:#certificate_background_image#:#Background Image
 certificate#:#certificate_confirm_deletion_text#:#Do you really want to delete the certificate and all its related data?
 certificate#:#certificate_custom#:#Custom...
 certificate#:#certificate_edit#:#Create/Edit a Certificate Template
-certificate#:#certificate_enabled_scorm_introduction#:#If checked, the certificate will be offered for all users who finished the SCORM learning module.
-certificate#:#certificate_enabled_scorm#:#Enabled
 certificate#:#certificate_error_import#:#An error occurred during the import of a certificate!
 certificate#:#certificate_error_upload_bgimage#:#An error occurred during the upload of the background image!
 certificate#:#certificate_export#:#Export
