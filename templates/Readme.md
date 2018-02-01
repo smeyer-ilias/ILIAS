@@ -175,7 +175,8 @@ close to a square, this may be all that is needed. Probably you want to change
 the file favicon `.ico` in ILIAS' root directory too. For non-square Icons you
 may refer to:
 
-[Installation and Maintenance » Change the ILIAS icon](http://www.ilias.de/docu/goto_docu_pg_68691_367.html)
+[Installation and Maintenance » Change the ILIAS
+icon](http://www.ilias.de/docu/goto_docu_pg_68691_367.html)
 
 ### Migration
 
