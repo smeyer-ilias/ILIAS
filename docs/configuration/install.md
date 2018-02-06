@@ -118,7 +118,7 @@ harder to find someone who can help when things go south. You SHALL NOT use a
 different configuration unless you are an experienced system administrator.
 
 <a name="server"></a>
-### Server
+#### Server
 
   * Server OS: Linux
   * Web Server: Apache 2 (mod_php, php-fpm)
@@ -127,7 +127,7 @@ different configuration unless you are an experienced system administrator.
   * PHP: Version 5.5+ and 7.0+ are supported
   
 <a name="client"></a>
-### Client
+#### Client
 
   * Desktop: Windows 7+, MacOS X 10.7+, Linux
   * Web Browser: IE11+, Microsoft Edge, Firefox 14+, Chrome 18+, Safari 7+
@@ -148,7 +148,7 @@ On MySQL 5.6+ and Galera the `Strict SQL Mode` MUST be disabled. See [MySQL
 Strict Mode](#mysql-strict-mode-56) for details.
 
 <a name="manual-installation-on-linux"></a>
-### Manual Installation on Linux
+## Manual Installation on Linux
 
 You can download the latest ILIAS release at
 http://www.ilias.de/docu/goto.php?target=st_229 or clone it from GitHub at
@@ -162,7 +162,8 @@ future releases and versions.
   ILIAS](#recommended-setup-for-running-ilias))
   * Untar/Clone ILIAS into the web servers docroot (e.g. /var/www/html/)
   * Create directory outside the web servers docroot (e.g. /var/www/files/)
-  * Change owner/group to www-data (on Debian) or apache (on RHEL) for the files and directories created above
+  * Change owner/group to www-data (on Debian) or apache (on RHEL) for the files
+  and directories created above
 
 <a name="git-clonecheckout"></a>
 ### Git Clone/Checkout
@@ -185,7 +186,7 @@ For more details on file access rights see [File Access
 Rights](#file-access-rights) in the Security section of this document.
 
 <a name="dependency-installation"></a>
-### Dependency Installation
+## Dependency Installation
 
 Depending on your Linux Distribution you have several ways to install the
 required dependencies. We RECOMMEND to always use your distributions package
@@ -361,7 +362,8 @@ to `/etc/mysql/my.cnf`):
 sql_mode=IGNORE_SPACE,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 ```
 
-After restarting the MySQL-Server use the following command to confirm the changes:
+After restarting the MySQL-Server use the following command to confirm the
+changes:
 
 ```
 mysql -i -BN -e 'SELECT @@sql_mode' | grep -E 'ONLY_FULL_GROUP_BY|STRICT_TRANS_TABLES|STRICT_ALL_TABLES'
@@ -457,7 +459,8 @@ package names vary by distribution):
 <a name="installation-wizard"></a>
 ### Installation Wizard
 
-After having all dependencies installed and configured you should be able to run the ILIAS Installation Wizard using `http://yourservername.org/setup/setup.php`.
+After having all dependencies installed and configured you should be able to run
+the ILIAS Installation Wizard using `http://yourservername.org/setup/setup.php`.
 
 Make sure to reload your Apache configuration before entering the Wizard.
 Otherwise there are unmet dependencies in the setup (like XLS and GD are both
@@ -654,7 +657,9 @@ To improve the security of your ILIAS users you SHOULD set the following Headers
   * `X-XSS-Protection: 1; mode=block`
   * `X-Frame-Options: SAMEORIGIN`
 
-For Apache on Debian systems you can turn those headers on by editing `/etc/apache2/conf-enabled/security.conf`. You MUST enable `mod_headers` and `mod_env` for this.
+For Apache on Debian systems you can turn those headers on by editing
+`/etc/apache2/conf-enabled/security.conf`. You MUST enable `mod_headers` and
+`mod_env` for this.
 
 For Nginx you can simply add for example `add_header X-Frame-Options
 "SAMEORIGIN";` in your `server` configuration.
