@@ -1,6 +1,6 @@
 # Docs
 
-`Docs` contains information about the ILIAS license as well as useful help for
+*Docs* contains information about the ILIAS license as well as useful help for
 installing and configuring ILIAS ([configuration](configuration)) and for
 understanding the code base of ILIAS for contributing and extending it
 ([documentation](documentation)).
