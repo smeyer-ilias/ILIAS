@@ -561,8 +561,8 @@ processes those files SHOULD be owned by `root` wherever possible.
 
 The only files and directories that must be owned/writeable by the web user are:
 
-  * ilias.ini.php
-  * data/
+  * `ilias.ini.php`
+  * `data/`
   * ILIAS data dir outside of the webservers docroot
 
 All the other files and directories should be owned by `root`, but readable by
