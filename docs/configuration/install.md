@@ -147,6 +147,8 @@ We RECOMMEND to use MySQL/MariaDB with the following settings:
 On MySQL 5.6+ and Galera the `Strict SQL Mode` MUST be disabled. See [MySQL
 Strict Mode](#mysql-strict-mode-56) for details.
 
+On MySQL/MariaDB ```innodb_large_prefix``` must be set to ```OFF``` if the ```ROW_FORMAT ``` is set to ```COMPACT```.
+
 <a name="manual-installation-on-linux"></a>
 ## Manual Installation on Linux
 
@@ -789,7 +791,8 @@ supported versions for each ILIAS release.
 
 | ILIAS Version   | PHP Version                           |
 |-----------------|---------------------------------------|
-| 5.2.x           | 5.5.x - 5.6.x, 7.0.x                  |
+| 5.3.x           | 5.6.x, 7.0.x, 7.1.x                   |
+| 5.2.x           | 5.5.x - 5.6.x, 7.0.x, 7.1.x           |
 | 5.0.x - 5.1.x   | 5.3.x - 5.5.x                         |
 | 4.4.x           | 5.3.x - 5.5.x                         |
 | 4.3.x           | 5.2.6 - 5.4.x                         |
