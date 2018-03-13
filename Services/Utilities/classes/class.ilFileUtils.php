@@ -626,6 +626,7 @@ class ilFileUtils
 			'oga',   // AUDIO__OGG,
 			'ogg',   // AUDIO__OGG,
 			'ogv',   //  VIDEO__OGG,
+			'old',   //  no real file extension, but used in mail/forum components,
 			'p',   //  TEXT__X_PASCAL,
 			'pas',   //  TEXT__PASCAL,
 			'pbm',   //  IMAGE__X_PORTABLE_BITMAP,
@@ -735,6 +736,26 @@ class ilFileUtils
 		return $a_filename;
 	}
 
+
+	/**
+	 * Rename a file
+	 *
+	 * @param $a_source
+	 * @param $a_target
+	 * @return bool
+	 * @throws ilFileUtilsException
+	 */
+	public static function rename($a_source, $a_target)
+	{
+		$pi = pathinfo($a_target);
+		if (!in_array(strtolower($pi["extension"]), self::getValidExtensions()))
+		{
+			include_once("./Services/Utilities/classes/class.ilFileUtilsException.php");
+			throw new ilFileUtilsException("Invalid target file ".$a_target.".");
+		}
+
+		return rename($a_source, $a_target);
+	}
 
 	
 } // END class.ilFileUtils
