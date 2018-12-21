@@ -25214,7 +25214,7 @@ if ($media_cont_mig == 1)
 	// set the following value of $run_migration from 'true' to 'false'.
 	//
 
-	$run_migration = true;
+	$run_migration = false;
 
 	if ($run_migration)
 	{
