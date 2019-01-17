@@ -266,7 +266,7 @@ class ilExAssignmentEditorGUI
 		// type specific end
 		//
 
-		if($a_type == ilExAssignment::TYPE_UPLOAD_TEAM)
+		if($ass_type->usesTeams())
 		{
 			if($a_mode == "edit") {
 				$has_teams = (bool)count(ilExAssignmentTeam::getAssignmentTeamMap($this->assignment->getId()));
@@ -501,13 +501,6 @@ class ilExAssignmentEditorGUI
 			$max_file_tgl->addSubItem($max_file);
 		}
 
-		if($ass_type->usesTeams())
-		{
-			$cbtut = new ilCheckboxInputGUI($lng->txt("exc_team_management_tutor"), "team_tutor");
-			$cbtut->setInfo($lng->txt("exc_team_management_tutor_info"));
-			$cbtut->setChecked(false);
-			$form->addItem($cbtut);
-		}
 		// after submission
 		$sub_header = new ilFormSectionHeaderGUI();
 		$sub_header->setTitle($lng->txt("exc_after_submission"), "after_submission");
@@ -644,6 +637,9 @@ class ilExAssignmentEditorGUI
 		
 		if($valid)
 		{
+			$type = $a_form->getInput("type");
+			$ass_type = $this->types->getById($type);
+
 			// dates
 			
 			$time_start = $a_form->getItemByPostVar("start_time")->getDate();
@@ -757,20 +753,24 @@ class ilExAssignmentEditorGUI
 				}				
 			}
 
-			if($a_form->getInput("team_creation") == ilExAssignment::TEAMS_FORMED_BY_RANDOM &&
-				$a_form->getInput("team_creator") == ilExAssignment::TEAMS_FORMED_BY_TUTOR)
+			if($ass_type->usesTeams())
 			{
-				$team_validation = $this->validationTeamsFormation(
-					$a_form->getInput("number_teams"),
-					$a_form->getInput("min_participants_team"),
-					$a_form->getInput("max_participants_team")
-				);
-				if($team_validation['status'] == 'error') {
-					$a_form->getItemByPostVar("team_creation")
-						->setAlert($team_validation['msg']);
-					$a_form->getItemByPostVar($team_validation["field"])
-						->setAlert($lng->txt("exc_value_can_not_set"));
-					$valid = false;
+				if ($a_form->getInput("team_creation") == ilExAssignment::TEAMS_FORMED_BY_RANDOM &&
+					$a_form->getInput("team_creator") == ilExAssignment::TEAMS_FORMED_BY_TUTOR)
+				{
+					$team_validation = $this->validationTeamsFormation(
+						$a_form->getInput("number_teams"),
+						$a_form->getInput("min_participants_team"),
+						$a_form->getInput("max_participants_team")
+					);
+					if ($team_validation['status'] == 'error')
+					{
+						$a_form->getItemByPostVar("team_creation")
+							->setAlert($team_validation['msg']);
+						$a_form->getItemByPostVar($team_validation["field"])
+							->setAlert($lng->txt("exc_value_can_not_set"));
+						$valid = false;
+					}
 				}
 			}
 
@@ -1040,18 +1040,7 @@ class ilExAssignmentEditorGUI
 			$ass->update();
 
 			ilUtil::sendSuccess($lng->txt("msg_obj_modified"), true);
-						
-			// adopt teams for team upload?
-			if ($ass_type->usesTeams())
-			{				
-				include_once "Modules/Exercise/classes/class.ilExAssignmentTeam.php";
-				if(sizeof(ilExAssignmentTeam::getAdoptableTeamAssignments($this->exercise_id, $ass->getId())))
-				{
-					$ilCtrl->setParameter($this, "ass_id", $ass->getId());
-					$ilCtrl->redirect($this, "adoptTeamAssignmentsForm");
-				}
-			}			
-			
+
 			// because of sub-tabs we stay on settings screen
 			$ilCtrl->setParameter($this, "ass_id", $ass->getId());
 			$ilCtrl->redirect($this, "editAssignment");
@@ -1068,7 +1057,6 @@ class ilExAssignmentEditorGUI
 	 */
 	function editAssignmentObject()
 	{
-		$tpl = $this->tpl;
 		$ilTabs = $this->tabs;
 		$tpl = $this->tpl;
 		

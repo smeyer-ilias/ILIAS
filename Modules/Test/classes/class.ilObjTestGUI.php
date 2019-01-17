@@ -349,6 +349,8 @@ class ilObjTestGUI extends ilObjectGUI
 				$this->prepareOutput();
 				$this->addHeaderAction();
 
+				$DIC->tabs()->activateTab(ilTestTabsManager::TAB_ID_SETTINGS);
+
 				$guiFactory = new ilCertificateGUIFactory();
 				$output_gui = $guiFactory->create($this->object);
 
@@ -2435,8 +2437,7 @@ class ilObjTestGUI extends ilObjectGUI
         // prepare generation before contents are processed (for mathjax)
 		else
 		{
-			require_once 'Services/PDFGeneration/classes/class.ilPDFGeneration.php';
-			ilPDFGeneration::prepareGeneration();
+			ilPDFGeneratorUtils::prepareGenerationRequest("Test", PDF_PRINT_VIEW_QUESTIONS);
 		}
 
 		$this->tpl->addCss(ilUtil::getStyleSheetLocation("output", "test_print.css", "Modules/Test"), "print");
@@ -2539,9 +2540,8 @@ class ilObjTestGUI extends ilObjectGUI
 			require_once 'Services/WebAccessChecker/classes/class.ilWACSignedPath.php';
 			ilWACSignedPath::setTokenMaxLifetimeInSeconds(60);
 
-            // prepare generation before contents are processed (for mathjax)
-			require_once 'Services/PDFGeneration/classes/class.ilPDFGeneration.php';
-			ilPDFGeneration::prepareGeneration();
+			// prepare generation before contents are processed (for mathjax)
+			ilPDFGeneratorUtils::prepareGenerationRequest("Test", PDF_PRINT_VIEW_QUESTIONS);
 		}
 		
 		foreach ($this->object->questions as $question)
@@ -2736,7 +2736,7 @@ class ilObjTestGUI extends ilObjectGUI
 				return;
 		}
 
-		if( $questionSetTypeSettingSwitched && !$this->getOfflineStatus() )
+		if( $questionSetTypeSettingSwitched && !$this->object->getOfflineStatus() )
 		{
 			$this->object->setOfflineStatus(true);
 
