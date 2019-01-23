@@ -100,3 +100,15 @@ $ilCtrlStructureReader->getStructure();
 require_once 'Services/Migration/DBUpdate_3560/classes/class.ilDBUpdateNewObjectType.php';
 ilDBUpdateNewObjectType::applyInitialPermissionGuideline('iass', true, false);
 ?>
+<#11>
+<?php
+$ilCtrlStructureReader->getStructure();
+?>
+<#12>
+<?php
+$ilCtrlStructureReader->getStructure();
+?>
+<#13>
+<?php
+$ilCtrlStructureReader->getStructure();
+?>

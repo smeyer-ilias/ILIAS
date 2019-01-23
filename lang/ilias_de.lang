@@ -1323,7 +1323,18 @@ assessment#:#tst_participant#:#Teilnehmer
 assessment#:#tst_participant_status#:#Teilnehmerstatus
 assessment#:#tst_participating_users#:#Teilnehmende Benutzer
 assessment#:#tst_tbl_invited_users#:#Ausgewählte Teilnehmer
+assessment#:#tst_tbl_participants#:#Teilnehmer
 assessment#:#tst_tbl_results_grades#:#Ergebnisse und Noten
+assessment#:#tst_answered_questions_of_total#:#%s von %s
+assessment#:#tst_reached_points_of_max#:#%s von %s
+assessment#:#tst_passed#:#Bestanden
+assessment#:#tst_failed#:#Durchgefallen
+assessment#:#tst_tbl_col_scored_pass#:#Bewerteter Durchlauf
+assessment#:#tst_tbl_col_answered_questions#:#Beantwortete Fragen
+assessment#:#tst_tbl_col_reached_points#:#Erreichte Punkte
+assessment#:#tst_tbl_col_percent_result#:#Ergebnis
+assessment#:#tst_tbl_col_passed_status#:#Bewertung
+assessment#:#tst_tbl_col_final_mark#:#Note
 assessment#:#tst_pass_best_pass#:#Besten Testdurchlauf bewerten
 assessment#:#tst_pass_best_pass_desc#:#Es wird der Testdurchlauf bewertet, bei dem der Teilnehmer die höchste Punktezahl erreicht hat. Diese Einstellungen greift nur, wenn mehrere Testdurchläufe durchgeführt werden können.
 assessment#:#tst_pass_details#:#Detaillierte Ergebnisse
@@ -10940,6 +10951,7 @@ assessment#:#tst_imap_qst_mode#:#Antwortmodus
 assessment#:#tst_imap_qst_mode_sc#:#Single Choice
 assessment#:#tst_imap_qst_mode_mc#:#Multiple Choice
 assessment#:#fixedparticipants_subtab#:#Ausgewählte Teilnehmer
+assessment#:#autoparticipants_subtab#:#Teilnehmer
 assessment#:#redirect_after_finishing_tst#:#Weiterleitung
 assessment#:#redirect_after_finishing_tst_desc#:#Teilnehmer werden nach Beenden des Tests automatisch zu einer definierten Webseite weitergeleitet. Dies geschieht nur, wenn der Test so konfiguriert wurde, dass die Teilnehmer ihre Testergebnisse nach Beenden des Tests nicht einsehen können.
 assessment#:#redirect_after_finishing_rule#:#Weiterleitung
@@ -14487,13 +14499,13 @@ exc#:#exc_reminder_peer_body#:#the following assignment has no feedback from you
 exc#:#exc_reminder_link#:#URL
 exc#:#exc_reminder_cron_ok#:#Reminders sent:
 cond#:#cond_under_parent_control#:#Die Vorbedingungen werden vom übergeordneten Objekt verwaltet.
-skll#:#skll_lhist_skill_achieved#:#Status $4$ of $3$ was assigned in $1$.
-badge#:#badge_lhist_badge_completed#:#Badge $3$ was awarded.
-badge#:#badge_lhist_badge_completed_in#:#Badge $3$ was awarded in $1$.
-crs#:#crs_lhist_objective_completed#:#Mastered $3$ in $1$.
-trac#:#trac_lhist_obj_completed_in#:#$1$ was completed in $2$.
-trac#:#trac_lhist_obj_completed#:#$1$ was completed.
-lhist#:#lhist_learning_history#:#Learning History
+skll#:#skll_lhist_skill_achieved#:#Status $4$ von $3$ wurde zugewiesen in $1$.
+badge#:#badge_lhist_badge_completed#:#Badge $3$ wurde erworben.
+badge#:#badge_lhist_badge_completed_in#:#Badge $3$ wurde erworben in $1$.
+crs#:#crs_lhist_objective_completed#:#Bestanden $3$ in $1$.
+trac#:#trac_lhist_obj_completed_in#:#$1$ wurde abgeschlossen in $2$.
+trac#:#trac_lhist_obj_completed#:#$1$ wurde abgeschlossen.
+lhist#:#lhist_learning_history#:#Lernverlauf
 mme#:#main#:#Hauptmenü
 mme#:#subtab_topitems#:#Haupteinträge
 mme#:#subtab_subitems#:#Einträge
@@ -14561,8 +14573,8 @@ mme#:#type_link#:#Link
 mme#:#type_link_list#:#Link Liste
 mme#:#type_complex#:#Komplex
 mme#:#type_repository_link#:#Magazin-Link
-lhist#:#lhist_no_entries#:#Achieve your goals! Learn something today to further your learning history.
-pd#:#pd_enable_learning_history#:#Lernhistorie
+lhist#:#lhist_no_entries#:#Verfolge weiter Deine Ziele! Lerne heute etwas, um Deinen Lernverlauf zu erweitern.
+pd#:#pd_enable_learning_history#:#Lernverlauf
 pd#:#pd_enable_learning_history_info#:#Aktiviert eine Übersicht aller Lernerfolge eines Benutzers.
 blog#:#blog_keyword_enter#:#Geben Sie ein Schlagwort ein und drücken Sie Enter.
 news#:#news_news_block#:#News Block
@@ -14642,19 +14654,19 @@ user#:#user_prompt_repeat_info#:#Benutzer werden wiederholt aufgefordert ihr Pro
 user#:#user_profile_prompt_text_info#:#Dieser Text ersetzt den "Standard Infotext Benutzerprofil", falls der Benutzer zur Veröffentlichung des Profils aufgefordert wird.
 lhist#:#lhist_first_login#:#First Login
 prtf#:#prtf_decl_authorship#:#Selbständigkeitserklärung
-pd#:#pd_achievements#:#Achievements
+pd#:#pd_achievements#:#Lernerfolge
 content#:#cont_got_lock_release#:#This page has been locked for your editing until %1. Please release the page after you have done all your changes.
 prtf#:#prtf_download_submission#:#Kopie der Abgabe herunterladen
-content#:#cont_ed_insert_learning_history#:#Lernhistorie einfügen
+content#:#cont_ed_insert_learning_history#:#Lernverlauf
 lhist#:#lhist_all#:#All
 lhist#:#lhist_selected#:#Selected
 lhist#:#lhist_manual#:#Manual
 lhist#:#lhist_period#:#Period
-lhist#:#lhist_type_of_achievement#:#Type of Achievement
-lhist#:#cont_update_lhist#:#Edit Learning History Element
-lhist#:#cont_create_lhist#:#Create Learning History Element
-lhist#:#lhist_cont_placeholder_text#:#This element will show the learning history in the presentation mode of the portfolio.
-lhist#:#lhist_lhist#:#Learning History
+lhist#:#lhist_type_of_achievement#:#Typ des Lernerfolgs
+lhist#:#cont_update_lhist#:#Element für Lernverlaufs bearbeiten
+lhist#:#cont_create_lhist#:#Element für Lernverlauf erstellen
+lhist#:#lhist_cont_placeholder_text#:#Dieses Element zeigt den Lernverlauf in der Präsentationsansicht des Portfolios.
+lhist#:#lhist_lhist#:#Lernverlauf
 skmg#:#skmg_materials_ressources#:#Ressourcen/Materialien
 wsp#:#error_creating_certificate_pdf#:#Das Zertifikat konnte nicht erstellt werden. Bitte lassen Sie den Zertifikatsserver durch einen Administrator prüfen.
 cert#:#certificate_migration_confirm_start#:#Ihre Zertifikate bleiben seit ILIAS 5.4 immer in Ihrer Hand. Auch wenn Kurse, Tests oder Lernmodule gelöscht werden, können Sie weiterhin auf alle erworbenen Zertifikate zugreifen. Um diese neue Funktion zu nutzen, müssen Sie Ihre alten Zertifikate einmalig migrieren.
