@@ -3471,6 +3471,7 @@ common#:#select_max_one_item#:#Please select one item only
 common#:#select_object_to_link#:#Please select the object which you want to link
 common#:#select_one#:#Please select one.
 common#:#select_questionpool#:#Insert questions into
+common#:#select_question_pool_info#:#As long as the import file contains questions, these questions will be imported to the selected questionpool as well.
 common#:#select#:#Select
 common#:#selected_items_back#:#Back to Personal Items
 common#:#selected_items#:#Personal Items
@@ -7881,7 +7882,7 @@ dateplaner#:#cal_notification_info#:#If enabled, all course/group participants w
 dateplaner#:#cal_adm_notification_info#:#Choose this option, to send optional mail notifications to course/group participants about changed appointments.
 rbac#:#rbac_add_new_local_role#:#Add New Local Role
 search#:#search_item_filter_form#:#Search by Type
-search#:#search_item_filter_form_info#:#Search can be restricted to the chosen file types.
+search#:#search_item_filter_form_info#:#Search can be restricted to the chosen object types.
 administration#:#group_export#:#Visible in Groups
 tbl#:#tbl_export_csv#:#Export CSV
 tbl#:#tbl_export_excel#:#Export Excel
@@ -9907,6 +9908,7 @@ dcl#:#dcl_activate_notification#:#Enable Notification
 dcl#:#dcl_table_id#:#Table ID
 dcl#:#dcl_add_new_record#:#Add New Entry
 dcl#:#dcl_list_fields#:#Fields
+dcl#:#dcl_list_visibility_and_filter#:#Visibility and filter
 dcl#:#dcl_add_new_field#:#Add New Field
 dcl#:#dcl_add_new_table#:#Add New Table
 dcl#:#dcl_add_new_view#:#Add New View
@@ -10041,7 +10043,7 @@ content#:#cont_show_adv#:#Show Advanced Knowledge
 content#:#cont_hide_adv#:#Hide Advanced Knowledge
 registration#:#reg_email_domains#:#The following e-mail address domains are valid: %s
 registration#:#reg_allowed_domains#:#Allowed E-Mail Address Domains
-registration#:#reg_allowed_domains_info#:#Use * as wildcard and ; as separator. Registration codes override these rules.
+registration#:#reg_allowed_domains_info#:#Use * as wildcard and ; as separator. E.g. "*@ilias.de". Registration codes override these rules.
 pd#:#block_show_pdcal#:#Show Calendar
 pd#:#block_show_pdmail#:#Show Mail
 pd#:#block_show_pdsysmess#:#Show System Messages
@@ -11471,6 +11473,7 @@ search#:#search_mime_powerpoint#:#Powerpoint Files
 search#:#search_mime_image#:#Images
 search#:#lucene_show_sub_relevance#:#Show Sub-Item Relevance
 search#:#search_mime_filter_form#:#Mime Type Filter
+search#:#search_mime_filter_form_info#:#Search can be restricted to the chosen mime types.
 search#:#lucene_prefix_wildcard#:#Prefix Wildcard Queries
 search#:#lucene_prefix_wildcard_info#:#Supports prefix wildcard queries: ‘*LIAS’ finds ‘ILIAS’
 obj#:#obj_select_master_lang#:#Please select the master language. The current content will be assigned to the master language. The master language cannot be changed afterwards.
@@ -12573,6 +12576,7 @@ crs#:#crs_hide_all_obj#:#Collapse All
 notes#:#notes_comment_deleted#:#The comment has been deleted.
 notes#:#notes_comments_deleted#:#The comments have been deleted.
 orgu#:#ou_id_not_valid#:#Import-ID not found.
+orgu#:#ou_more_than_one_match_found#:#More then one match found.
 blog#:#blog_profile_picture_repository_info#:#Profile pictures of the authors are only shown on the postings pages, not on overview pages.
 blog#:#blog_confirm_delete_contributors#:#Are you sure you want to delete the following contributors?
 news#:#news_rss#:#RSS
@@ -14469,7 +14473,7 @@ exc#:#feedback_from#:#Feedback from
 exc#:#text_assignment#:#Text Assignment
 exc#:#not_yet#:#not yet
 exc#:#grade_evaluate#:#Grade and Evaluate
-exc#:#submissions_feedback#:#Submissions and Feedback
+exc#:#submissions_feedback#:#Submissions and Peer Feedback
 exc#:#submissions_only#:#Submissions Only
 exc#:#filter#:#Filter
 exc#:#fiter_no_results#:#The current filter did not match any submission.
@@ -14720,6 +14724,8 @@ iass#:#iass_sort_name_asc#:#Username ascending
 iass#:#iass_sort_name_desc#:#Username descending
 iass#:#iass_sort_examiner_login_asc#:#Examiner ascending
 iass#:#iass_sort_examiner_login_desc#:#Examiner descending
+iass#:#iass_sort_changetime_asc#:#Last Change ascending
+iass#:#iass_sort_changetime_desc#:#Last Change descending
 exc#:#exc_team_formation#:#Team Formation
 exc#:#exc_team_by_participants#:#Participants Self-Organise Forming Teams
 exc#:#exc_team_by_participants_info#:#Participants opt for teams.
@@ -14785,7 +14791,7 @@ sess#:#sess_contact#:#Contact
 sess#:#sess_mem_contacts#:#Tutorial Support
 dateplaner#:#cal_calendar_subscription_modal_title#:#Calendar Subscription
 sess#:#sess_members#:#Participants
-grp#:#grp_contact#:#Contact
+grp#:#grp_contact#:#Support
 grp#:#grp_mem_contacts#:#Tutorial Support
 common#:#lso_new#:#New Learning Sequence
 common#:#lso_add#:#Add Learning Sequence
@@ -14970,3 +14976,5 @@ exc#:#exc_down_files_started_bg#:#Download of submission files has started. Plea
 lso#:#lso_news_online_title#:#A new learning sequence object is online!
 lso#:#lso_news_online_txt#:#A new object for your learning sequence was just published.
 user#:#user_profile_info_std#:#Default User Profile Info
+lti#:#lti_cron_title#:#LTI Outcome Service
+lti#:#lti_cron_title_desc#:#Synchronizes the learning progress of LTI users with the LTI consumer, if it supports the outcome service. This cron job is only required to transfer status updates after Learning progress settings updates.
