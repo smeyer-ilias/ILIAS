@@ -519,3 +519,15 @@ require_once('./Services/Migration/DBUpdate_3560/classes/class.ilDBUpdateNewObje
 ilDBUpdateNewObjectType::updateOperationOrder('participate', 1010);
 ilDBUpdateNewObjectType::updateOperationOrder('unparticipate', 1020);
 ?>
+<#33>
+<?php
+$ilCtrlStructureReader->getStructure();
+?>
+<#34>
+<?php
+/**
+ * @var $ilDB ilDBInterface
+ */
+$ilDB->modifyTableColumn('il_gs_identifications', 'identification', ['length' => 255]);
+$ilDB->modifyTableColumn('il_mm_items', 'identification', ['length' => 255]);
+?>
