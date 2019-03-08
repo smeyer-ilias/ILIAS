@@ -71,6 +71,7 @@ auth#:#auth_oidc_update_field_info#:#Automatisch aktualisieren
 auth#:#auth_oidc_role_mapping_table#:#Zurodnung von ILIAS-Rollen zu OpenId Connect Attributen
 auth#:#auth_oidc_update_role_info#:#Nur bei Erstanmeldung (automatische Synchronisierung) anwenden
 content#:#cont_lpe_openid_connect_login#:#OpenId Connect Login
+common#:#msg_wrong_filetypes#:#Erlaubte Dateiendungen:
 common#:#obj_ltis#:#LTI
 common#:#obj_ltis_desc#:#Learning Tools Interoperability
 common#:#lti_outcome_info#:#Sendet den Lernfortschrittstatus von LTI-Benutzern an LTI-Tool-Consumer.
@@ -14137,8 +14138,8 @@ book#:#book_open#:#Buchungspool öffnen
 book#:#book_booking_information#:#Information
 sess#:#sess_open#:#Sitzung öffnen
 dateplaner#:#cal_show_weeks#:#Anzeige Wochenspalte
-dateplaner#:#cal_def_show_weeks#:#Default-Anzeige Wochenspalte
-dateplaner#:#cal_show_weeks_info#:#Zeigt die Wochen im Seitenblock "Kalender" an. Benutzer können die Anzeige deaktivieren.
+dateplaner#:#cal_def_show_weeks#:#Anzeige Wochenspalte
+dateplaner#:#cal_show_weeks_info#:#Zeigt die Wochen im Seitenblock "Kalender" an.
 dateplaner#:#cal_usr_show_weeks#:#Anzeige Wochenspalte
 dateplaner#:#cal_usr_show_weeks_info#:#Zeigt die Wochen im Seitenblock "Kalender" an.
 dateplaner#:#cal_grp_curr_grp#:#Aktuelle Gruppe
@@ -15002,3 +15003,4 @@ crs#:#crs_tile_and_session_limit_not_supported#:#Die gleichzeitige Aktivierung v
 content#:#cont_choose_file_source#:#Quelle
 content#:#cont_choose_local#:#Lokales Verzeichnis
 content#:#cont_choose_upload_dir#:#Upload-Verzeichnis
+sess#:#sess_assign#:#Zuordnen
