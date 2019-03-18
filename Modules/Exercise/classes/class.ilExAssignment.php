@@ -1391,6 +1391,7 @@ class ilExAssignment
 	static function orderAssByDeadline($a_ex_id)
 	{
 		global $DIC;
+
 		$ilDB = $DIC->database();
 		
 		$set = $ilDB->query("SELECT id FROM exc_assignment ".
