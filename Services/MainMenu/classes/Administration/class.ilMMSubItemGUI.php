@@ -30,44 +30,56 @@ class ilMMSubItemGUI extends ilMMAbstractItemGUI {
 		global $DIC;
 		switch ($cmd) {
 			case self::CMD_ADD:
+				$this->access->checkAccessAndThrowException('write');
 				$this->tab_handling->initTabs(ilObjMainMenuGUI::TAB_MAIN, ilMMSubItemGUI::CMD_VIEW_SUB_ITEMS, true, self::class);
 
 				return $this->add($DIC);
 			case self::CMD_CREATE:
+				$this->access->checkAccessAndThrowException('write');
 				$this->tab_handling->initTabs(ilObjMainMenuGUI::TAB_MAIN, ilMMSubItemGUI::CMD_VIEW_SUB_ITEMS, true, self::class);
-				$this->create($DIC);
-				break;
+
+				return $this->create($DIC);
 			case self::CMD_EDIT:
+				$this->access->checkAccessAndThrowException('write');
 				$this->tab_handling->initTabs(ilObjMainMenuGUI::TAB_MAIN, ilMMSubItemGUI::CMD_VIEW_SUB_ITEMS, true, self::class);
 
 				return $this->edit($DIC);
 			case self::CMD_UPDATE:
+				$this->access->checkAccessAndThrowException('write');
 				$this->tab_handling->initTabs(ilObjMainMenuGUI::TAB_MAIN, ilMMSubItemGUI::CMD_VIEW_SUB_ITEMS, true, self::class);
-				$this->update($DIC);
-				break;
+
+				return $this->update($DIC);
 			case self::CMD_APPLY_FILTER:
+				$this->access->checkAccessAndThrowException('visible,read');
 				$this->applyFilter();
 				break;
 			case self::CMD_RESET_FILTER :
+				$this->access->checkAccessAndThrowException('visible,read');
 				$this->resetFilter();
 				break;
 			case self::CMD_VIEW_SUB_ITEMS:
+				$this->access->checkAccessAndThrowException('visible,read');
 				$this->tab_handling->initTabs(ilObjMainMenuGUI::TAB_MAIN, $cmd);
 
 				return $this->index();
 			case self::CMD_SAVE_TABLE:
+				$this->access->checkAccessAndThrowException('write');
 				$this->saveTable();
 				break;
 			case self::CMD_CONFIRM_DELETE:
+				$this->access->checkAccessAndThrowException('write');
+
 				return $this->confirmDelete();
 				break;
 			case self::CMD_DELETE:
+				$this->access->checkAccessAndThrowException('write');
 				$this->delete();
 				break;
 			case self::CMD_CANCEL:
 				$this->cancel();
 				break;
 			case self::CMD_RENDER_INTERRUPTIVE:
+				$this->access->checkAccessAndThrowException('write');
 				$this->renderInterruptiveModal();
 				break;
 		}
@@ -129,13 +141,16 @@ class ilMMSubItemGUI extends ilMMAbstractItemGUI {
 	/**
 	 * @param $DIC
 	 *
+	 * @return string
 	 * @throws Throwable
 	 */
 	private function create($DIC) {
 		$f = new ilMMSubitemFormGUI($DIC->ctrl(), $DIC->ui()->factory(), $DIC->ui()->renderer(), $this->lng, $this->repository->getItemFacade(), $this->repository);
-		$f->save();
+		if ($f->save()) {
+			$this->cancel();
+		}
 
-		$this->cancel();
+		return $f->getHTML();
 	}
 
 
@@ -155,13 +170,16 @@ class ilMMSubItemGUI extends ilMMAbstractItemGUI {
 	/**
 	 * @param $DIC
 	 *
+	 * @return string
 	 * @throws Throwable
 	 */
 	private function update($DIC) {
 		$f = new ilMMSubitemFormGUI($DIC->ctrl(), $DIC->ui()->factory(), $DIC->ui()->renderer(), $this->lng, $this->getMMItemFromRequest(), $this->repository);
-		$f->save();
+		if ($f->save()) {
+			$this->cancel();
+		}
 
-		$this->cancel();
+		return $f->getHTML();
 	}
 
 
@@ -187,14 +205,16 @@ class ilMMSubItemGUI extends ilMMAbstractItemGUI {
 	 */
 	private function index(): string {
 		// ADD NEW
-		$b = ilLinkButton::getInstance();
-		$b->setUrl($this->ctrl->getLinkTarget($this, ilMMSubItemGUI::CMD_ADD));
-		$b->setCaption($this->lng->txt(ilMMSubItemGUI::CMD_ADD), false);
+		if ($this->access->hasUserPermissionTo('write')) {
+			$b = ilLinkButton::getInstance();
+			$b->setUrl($this->ctrl->getLinkTarget($this, ilMMSubItemGUI::CMD_ADD));
+			$b->setCaption($this->lng->txt(ilMMSubItemGUI::CMD_ADD), false);
 
-		$this->toolbar->addButtonInstance($b);
+			$this->toolbar->addButtonInstance($b);
+		}
 
 		// TABLE
-		$table = new ilMMSubItemTableGUI($this, $this->repository);
+		$table = new ilMMSubItemTableGUI($this, $this->repository, $this->access);
 		$table->setShowRowsSelector(false);
 
 		return $table->getHTML();

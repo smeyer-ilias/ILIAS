@@ -390,9 +390,7 @@ class ilObjLearningSequence extends ilContainer
 			$this->conditions_db::STD_ALWAYS_OPERATOR => $this->lng->txt('condition_always')
 		];
 		foreach ($condition_types as $cond_type) {
-			if(! in_array($cond_type, $this->conditions_db::EXCLUDE_OPERATORS)) {
-				$conditions[$cond_type] = $this->lng->txt($cond_type);
-			}
+			$conditions[$cond_type] = $this->lng->txt($cond_type);
 		}
 		return $conditions;
 
@@ -541,7 +539,7 @@ class ilObjLearningSequence extends ilContainer
 
 			$kiosk_template = new ilTemplate("tpl.kioskpage.html", true, true, 'Modules/LearningSequence');
 
-			$toc_gui = new ilLSTOCGUI($url_builder, $this->template, $this->ctrl);
+			$toc_gui = new ilLSTOCGUI($url_builder, $this->ctrl);
 			$loc_gui = new ilLSLocatorGUI($url_builder, $DIC["ui.factory"]);
 
 			$window_title = $this->il_settings->get('short_inst_name');

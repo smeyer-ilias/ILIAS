@@ -9646,7 +9646,7 @@ bibl#:#download_original_file#:#Download Original File###24 10 2013 new variable
 bibl#:#Type#:#Type###24 10 2013 new variable
 bibl#:#override_entries#:#Override Entries###24 10 2013 new variable
 bibl#:#bibl_edit#:#Edit Bibliography###24 10 2013 new variable
-bibl#:#bibliography file#:#Bibliography File###24 10 2013 new variable
+bibl#:#bibliography_file#:#Bibliography File###24 10 2013 new variable
 bibl#:#obj_bibl_duplicate#:#Duplicate Bibliography###24 10 2013 new variable
 bibl#:#detail_view#:#Detail View###24 10 2013 new variable
 rbac#:#bibl_visible#:#Bibliography is visible###24 10 2013 new variable
@@ -14820,8 +14820,6 @@ lso#:#lso_player_next#:#Next###10 11 2018 new variable
 lso#:#lso_read#:#User has read access to Learning Sequence###10 11 2018 new variable
 lso#:#lso_edit_permission#:#User can change permission settings###10 11 2018 new variable
 lso#:#condition_always#:#Always###10 11 2018 new variable
-lso#:#condition_completed#:#Completed###10 11 2018 new variable
-lso#:#condition_failed#:#Failed###10 11 2018 new variable
 rbac#:#rbac_create_lso#:#Create Learning Sequence###10 11 2018 new variable
 lso#:#lso_settings_intro#:#Intropage Settings###10 11 2018 new variable
 lso#:#lso_settings_extro#:#Exitpage Settings###10 11 2018 new variable
@@ -15013,3 +15011,35 @@ content#:#cont_choose_file_source#:#Source###12 03 2019 new variable
 content#:#cont_choose_local#:#Local directory###12 03 2019 new variable
 content#:#cont_choose_upload_dir#:#Upload directory###12 03 2019 new variable
 sess#:#sess_assign#:#Assign###12 03 2019 new variable
+common#:#webdav_additional_information#:#To be sure, that Windows Explorer can add a WebDAV connection, read the installation instruction file <a href="%s" target="_blank">install.md</a> chapter: "WebDAV Configuration (OPTIONAL)"###20 03 2019 new variable
+rbac#:#lso_read_learning_progress#:#User can view learning progress of other users###20 03 2019 new variable
+rbac#:#lso_lp_other_users#:#User can view learning progress of other users###20 03 2019 new variable
+lso#:#lso_start_item#:#Start###20 03 2019 new variable
+lso#:#finished#:#Finished###20 03 2019 new variable
+lso#:#not_finished#:#Not Finished###20 03 2019 new variable
+lso#:#failed#:#Failed###20 03 2019 new variable
+common#:#certificate_selection#:#Origin of Certificates###20 03 2019 new variable
+common#:#certificate_persistent_option#:#Persistent Certificates###20 03 2019 new variable
+common#:#certificate_workspace_option#:#Workspace Certificates###20 03 2019 new variable
+common#:#certificate_file_already_exists_error#:#The certificate file already exists in the file system.###20 03 2019 new variable
+common#:#certificate_file_not_found_error#:#The certificate file doesn't exist in the file system anymore. Die Zertikatsdatei wurde im Dateisystem nicht mehr gefunden.###20 03 2019 new variable
+common#:#certificate_file_input_output_error#:#The certificate file was found but couldn't be deleted because of internal errors. Please contact your administrator.###20 03 2019 new variable
+certificate#:#persistent_certificate_mode#:#User Certificate Creation###20 03 2019 new variable
+certificate#:#persistent_certificate_mode_cron#:#Cron Job###20 03 2019 new variable
+certificate#:#persistent_certificate_mode_cron_info#:#This option is recommended for systems with high user interaction.###20 03 2019 new variable
+certificate#:#persistent_certificate_mode_instant#:#Instant###20 03 2019 new variable
+certificate#:#persistent_certificate_mode_instant_info#:#This option is recommended for systems with low up to mediocre user interactions. Systems that tend to big loading times during creation for multiple user certificates should switch to the "Cron Job" option.###20 03 2019 new variable
+grp#:#grp_lim_assigned#:#Already assigned to associated group "%s".###25 04 2019 new variable
+skmg#:#skmg_usage_type_info_seval#:#Self Evaluations###25 04 2019 new variable
+buddysystem#:#buddy_noti_cr_profile_not_published#:#Profile not published###25 04 2019 new variable
+content#:#cont_Attention#:#Attention###25 04 2019 new variable
+content#:#cont_Confirmation#:#Confirmation###25 04 2019 new variable
+content#:#cont_Information#:#Information###25 04 2019 new variable
+content#:#cont_Link#:#Link###25 04 2019 new variable
+content#:#cont_Literature#:#Literature###25 04 2019 new variable
+content#:#cont_Separator#:#Separator###25 04 2019 new variable
+content#:#cont_StandardCenter#:#Standard Center###25 04 2019 new variable
+content#:#cont_Interaction#:#Interaction###25 04 2019 new variable
+content#:#cont_Background#:#Background###25 04 2019 new variable
+dateplaner#:#cal_usr_info#:#Appointment Information###25 04 2019 new variable
+certificate#:#certificate_learning_progress_must_be_active#:#Only objects with an active Learning Progress can be selected. The Learning Progress is deactivated on the following objects: %s###25 04 2019 new variable
