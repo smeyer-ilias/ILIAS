@@ -1,5 +1,8 @@
 <?php
 
+use ILIAS\GlobalScreen\Scope\MainMenu\Factory\isItem;
+use ILIAS\GlobalScreen\Scope\MainMenu\Factory\Item\Lost;
+
 /**
  * Class ilMMItemStorage
  *
@@ -9,12 +12,16 @@ class ilMMItemStorage extends CachedActiveRecord
 {
 
     /**
-     * @param \ILIAS\GlobalScreen\Scope\MainMenu\Factory\isItem $item
+     * @param isItem $item
      *
      * @return ilMMItemStorage
      */
-    public static function register(\ILIAS\GlobalScreen\Scope\MainMenu\Factory\isItem $item)
+    public static function register(isItem $item) : ilMMItemStorage
     {
+        if ($item instanceof Lost) {
+            return new self();
+        }
+
         $mm_item = ilMMItemStorage::find($item->getProviderIdentification()->serialize());
         if ($mm_item === null) {
             $mm_item = new ilMMItemStorage();
@@ -46,9 +53,7 @@ class ilMMItemStorage extends CachedActiveRecord
      */
     public function getCache() : ilGlobalCache
     {
-        global $DIC;
-
-        return $DIC->globalScreen()->storage()->cache();
+        return ilGlobalCache::getInstance(ilGlobalCache::COMP_GLOBAL_SCREEN);
     }
 
 
