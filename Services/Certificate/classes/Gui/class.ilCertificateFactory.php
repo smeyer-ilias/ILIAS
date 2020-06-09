@@ -24,7 +24,7 @@ class ilCertificateFactory
                 break;
             case 'crs':
                 $adapter = new ilCourseCertificateAdapter($object);
-                $placeholderDescriptionObject = new ilCoursePlaceholderDescription();
+                $placeholderDescriptionObject = new ilCoursePlaceholderDescription($object->getId());
                 $placeholderValuesObject = new ilCoursePlaceholderValues();
                 $certificatePath = ilCertificatePathConstants::COURSE_PATH . $object->getId() . '/';
                 break;

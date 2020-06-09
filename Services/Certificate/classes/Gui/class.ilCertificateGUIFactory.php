@@ -70,7 +70,7 @@ class ilCertificateGUIFactory
                 break;
             case 'crs':
                 $adapter = new ilCourseCertificateAdapter($object);
-                $placeholderDescriptionObject = new ilCoursePlaceholderDescription();
+                $placeholderDescriptionObject = new ilCoursePlaceholderDescription($objectId);
                 $placeholderValuesObject = new ilCoursePlaceholderValues();
 
                 $certificatePath = ilCertificatePathConstants::COURSE_PATH . $objectId . '/';
