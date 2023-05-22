@@ -510,9 +510,10 @@ class ilUserDefinedFields
                 case UDF_TYPE_TEXT:
                 case UDF_TYPE_SELECT:
                 case UDF_TYPE_WYSIWYG:
-                    continue;
+                    break;
+                default:
+                    $definition_ids[$definition['field_type']][] = $definition['field_id'];
             }
-            $definition_ids[$definition['field_type']][] = $definition['field_id'];
         }
         return $definition_ids;
     }
