@@ -498,6 +498,25 @@ class ilUserDefinedFields
         return true;
     }
 
+    // begin-patch ovb_udf
+    /**
+     * @return array
+     */
+    public function getDefinitionIdsByPluginType()
+    {
+        $definition_ids = [];
+        foreach ($this->getDefinitions() as $idx => $definition) {
+            switch ($definition['field_type']) {
+                case UDF_TYPE_TEXT:
+                case UDF_TYPE_SELECT:
+                case UDF_TYPE_WYSIWYG:
+                    continue;
+            }
+            $definition_ids[$definition['field_type']][] = $definition['field_id'];
+        }
+        return $definition_ids;
+    }
+    // end-patch ovb_udf
 
 
     // Private

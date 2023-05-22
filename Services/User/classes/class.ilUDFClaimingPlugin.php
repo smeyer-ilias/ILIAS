@@ -156,7 +156,9 @@ abstract class ilUDFClaimingPlugin extends ilPlugin
         
         // validating type
         $a_type = (int) $a_type;
-        if (!self::isValidFieldType($a_type)) {
+        // begin-patch ovb_udf
+        if (!static::isValidFieldType($a_type)) {
+            // end-patch ovb_udf
             return;
         }
         
@@ -194,7 +196,6 @@ abstract class ilUDFClaimingPlugin extends ilPlugin
         global $DIC;
 
         $ilDB = $DIC['ilDB'];
-                
         if (self::hasDBField($a_field_id)) {
             $old = self::getDBField($a_field_id);
             

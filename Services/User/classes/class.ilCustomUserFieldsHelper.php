@@ -110,7 +110,39 @@ class ilCustomUserFieldsHelper
         }
         return $plugins;
     }
-    
+
+    // begin-patch ovb_udf
+    /**
+     * Check if plugin uses default value storage
+     * @param array $definition
+     * @return bool
+     */
+    public function usesCustomValueStorage(array $definition) : bool
+    {
+        foreach ($this->getActivePlugins() as $plugin) {
+            if ($plugin->getDefinitionType() == $definition['field_type']) {
+                return $plugin->usesCustomValueStorage();
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @param array $definition
+     * @param int $user_id
+     * @param string $value
+     */
+    public function updateCustomValue(array $definition, int $user_id, $value)
+    {
+        foreach ($this->getActivePlugins() as $plugin) {
+            if ($plugin->getDefinitionType() == $definition['field_type']) {
+                return $plugin->updateCustomValue($definition, $user_id, $value);
+            }
+        }
+        return;
+    }
+    // begin-patch ovb_udf
+
     /**
      * Get form property for definition
      * @param array $definition

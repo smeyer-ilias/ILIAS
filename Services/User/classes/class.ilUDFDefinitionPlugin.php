@@ -52,6 +52,26 @@ abstract class ilUDFDefinitionPlugin extends ilPlugin
      */
     abstract public function getFormPropertyForDefinition($definition, $a_default_value = null);
 
+    // begin-patch ovb_udf
+    /**
+     * Checks whether a custom storage of user defined values is implemented
+     * @param $field_id
+     * @return bool
+     */
+    public function usesCustomValueStorage() : bool
+    {
+        return false;
+    }
+
+    /**
+     * @param array $definition
+     * @param int $user_id
+     * @param mixed $value
+     */
+    public function updateCustomValue(array $definition, int $user_id, $value)
+    {
+    }
+    // end-patch ovb_udf
 
     /**
      * If user data data is not stored in table udf_text, return an array with user data for each

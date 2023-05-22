@@ -99,9 +99,13 @@ class ilUserDefinedData
         $sql = '';
         $field_def = array();
         foreach ($udf_obj->getDefinitions() as $definition) {
-            //			$field_def['f_'.$definition['field_id']] = array('text',$this->get($definition['field_id']));
-            
-            //			$sql .= ("`".(int) $definition['field_id']."` = ".$this->db->quote($this->get($definition['field_id'])).", ");
+            // begin-patch ovb_udf
+            $def_helper = ilCustomUserFieldsHelper::getInstance();
+            if ($def_helper->usesCustomValueStorage($definition)) {
+                $def_helper->updateCustomValue($definition, $this->getUserId(), $this->get('f_' . $definition['field_id']));
+                continue;
+            }
+            // begin-patch ovb_udf_storage
 
             if ($definition["field_type"] == UDF_TYPE_WYSIWYG) {
                 $ilDB->replace(
@@ -253,5 +257,22 @@ class ilUserDefinedData
         while ($row = $res->fetchRow(ilDBConstants::FETCHMODE_ASSOC)) {
             $this->user_data["f_" . $row["field_id"]] = $row["value"];
         }
+
+        // begin-patch ovb_udf
+        $user_fields_helper = ilCustomUserFieldsHelper::getInstance();
+        $definitions = ilUserDefinedFields::_getInstance();
+        foreach ($definitions->getDefinitionIdsByPluginType() as $field_type => $field_ids) {
+            $plugin_data = self::lookupData([$this->usr_id], $field_ids);
+            foreach ($plugin_data as $usr_id => $user_data) {
+                foreach ($user_data as $field_id => $field_value) {
+
+                    $definition = $definitions->getDefinition($field_id);
+                    if ($user_fields_helper->usesCustomValueStorage($definition)) {
+                        $this->user_data['f_' . $field_id] = $field_value;
+                    }
+                }
+            }
+        }
+        // end-patch ovb_udf
     }
 }
