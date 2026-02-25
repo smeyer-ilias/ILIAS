@@ -522,6 +522,16 @@ class ilObjGroupGUI extends ilContainerGUI
         $sort->setSortMode($sort_mode);
         $sort->update();
 
+        ilContainer::_writeContainerSetting(
+            $new_object->getId(),
+            ilObjectServiceSettingsGUI::CALENDAR_ACTIVATION,
+            '0'
+        );
+        ilContainer::_writeContainerSetting(
+            $new_object->getId(),
+            ilObjectServiceSettingsGUI::CALENDAR_VISIBILITY,
+            '0'
+        );
 
         // Add user as admin and enable notification
         $members_obj = ilGroupParticipants::_getInstanceByObjId($new_object->getId());
